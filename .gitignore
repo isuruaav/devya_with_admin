@@ -1,0 +1,41 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+auth.json
+*.key
+*.pem
+
+# Dependencies and generated frontend bundles
+node_modules/
+vendor/
+/devya/public/build/
+/devya/public/hot
+/devya/public/storage/
+
+# Local databases, archives, and logs
+*.sqlite
+*.sqlite-*
+*.db
+*.sql
+*.zip
+*.log
+
+# Preserve Laravel's directory placeholders, not runtime data or uploads.
+/devya/storage/**
+!/devya/storage/**/
+!/devya/storage/**/.gitignore
+/devya/bootstrap/cache/*
+!/devya/bootstrap/cache/.gitignore
+
+# Local reports, test caches, and editor files
+/project-structure.txt
+/devya-system-routes.txt
+/devya/*phpstan*.txt
+.phpunit.result.cache
+.phpunit.cache/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.codex/

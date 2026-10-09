@@ -1,0 +1,1614 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+/* Filament PHP classes */
+@source '../../../../app/Filament/**/*.php';
+
+/* Filament Blade views */
+@source '../../../../resources/views/filament/**/*.blade.php';
+
+/* All application Blade views used by Filament */
+@source '../../../../resources/views/**/*.blade.php';
+
+/* JavaScript / Alpine classes if needed */
+@source '../../../../resources/js/**/*.js';
+
+@source "../../../views/filament/resources/online-appointments/**/*.blade.php";
+
+@source "../../../../resources/views/filament/pages/**/*.blade.php";
+
+@source "../../../../resources/views/**/*.blade.php";
+
+@source inline("bg-emerald-700 bg-emerald-800 bg-blue-700 bg-blue-800 bg-amber-500 bg-amber-600 bg-amber-100 bg-white bg-slate-50 bg-slate-900 bg-slate-950 text-white text-emerald-100 text-emerald-400 text-emerald-700 text-blue-100 text-blue-400 text-blue-700 text-amber-50 text-amber-600 text-amber-800 text-slate-900 text-slate-400 text-slate-500 text-slate-600 text-slate-700 border-white/10 border-white/20 border-amber-100 border-amber-200");
+
+/* =========================================================
+   AYURVEDIC HOSPITAL PORTAL - MODERN CLEAN WHITE THEME
+   ========================================================= */
+
+/* 1. Global Page Light Background */
+html, body, .fi-layout, .fi-simple-layout {
+    background-color: #f3f4f6 !important;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(52, 211, 153, 0.08) 0%, transparent 40%) !important;
+    background-attachment: fixed !important;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    color: #1f2937 !important;
+}
+
+/* 2. Left Sidebar Styling (Menus Area) */
+.fi-sidebar {
+    background: #ffffff !important;
+    border-right: 1px solid #e5e7eb !important;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Sidebar Brand Header */
+.fi-sidebar-header {
+    border-bottom: 1px solid #f3f4f6 !important;
+    padding: 1.25rem !important;
+    background: #ecfdf5 !important;
+}
+
+.fi-sidebar-header span,
+.fi-sidebar-header a {
+    color: #065f46 !important;
+    font-weight: 800 !important;
+    font-size: 1.15rem !important;
+    letter-spacing: 0.03em !important;
+}
+
+/* Sidebar Navigation Buttons */
+.fi-sidebar-item-button {
+    border-radius: 0.75rem !important;
+    margin: 0.2rem 0.6rem !important;
+    transition: all 0.2s ease !important;
+    color: #374151 !important;
+    font-weight: 600 !important;
+}
+
+.fi-sidebar-item-button:hover {
+    background: #ecfdf5 !important;
+    color: #047857 !important;
+    transform: translateX(4px) !important;
+}
+
+/* Active Menu Item Highlight */
+.fi-sidebar-item-active .fi-sidebar-item-button {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+    font-weight: 700 !important;
+}
+
+.fi-sidebar-item-icon {
+    color: #10b981 !important;
+}
+
+.fi-sidebar-item-active .fi-sidebar-item-icon {
+    color: #ffffff !important;
+}
+
+/* 3. Top Navigation Bar (Header) */
+.fi-topbar {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Top Bar User Pill / Profile Trigger */
+.fi-user-menu-trigger {
+    background: #f0fdf4 !important;
+    border: 1px solid #a7f3d0 !important;
+    padding: 0.4rem 0.8rem !important;
+    border-radius: 9999px !important;
+}
+
+.fi-user-menu-trigger:hover {
+    background: #d1fae5 !important;
+}
+
+.fi-user-avatar {
+    border: 2px solid #10b981 !important;
+}
+
+/* Dropdown Menu (User Profile & Logout) */
+.fi-dropdown-panel {
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.fi-dropdown-list-item {
+    color: #374151 !important;
+    border-radius: 0.5rem !important;
+    margin: 0.2rem !important;
+    font-weight: 600 !important;
+}
+
+.fi-dropdown-list-item:hover {
+    background: #ecfdf5 !important;
+    color: #047857 !important;
+}
+
+/* 4. Dashboard Cards & Widgets */
+.fi-wi-stats-overview-stat,
+.fi-wi-widget,
+.fi-section,
+.fi-simple-main {
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 1.25rem !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+    transition: all 0.25s ease !important;
+}
+
+.fi-wi-stats-overview-stat:hover,
+.fi-wi-widget:hover {
+    border-color: #a7f3d0 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06) !important;
+}
+
+.fi-wi-stats-overview-stat-label {
+    color: #6b7280 !important;
+    font-weight: 600 !important;
+}
+
+.fi-wi-stats-overview-stat-value {
+    color: #111827 !important;
+    font-weight: 800 !important;
+    font-size: 2.1rem !important;
+}
+
+.fi-wi-stats-overview-stat-description {
+    color: #059669 !important;
+    font-weight: 600 !important;
+}
+
+/* 5. Tables & Forms */
+.fi-ta {
+    background: #ffffff !important;
+    border-radius: 1.25rem !important;
+    border: 1px solid #e5e7eb !important;
+    overflow: hidden !important;
+}
+
+.fi-ta-header-cell {
+    background: #f9fafb !important;
+    color: #374151 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+}
+
+.fi-ta-record:hover {
+    background: #f0fdf4 !important;
+}
+
+.fi-ta-cell {
+    color: #1f2937 !important;
+}
+
+/* Form Inputs */
+.fi-simple-main label,
+.fi-fo-field-wrp-label,
+.fi-fo-field-wrp-label span {
+    color: #1f2937 !important;
+    font-weight: 700 !important;
+}
+
+.fi-input-wrp {
+    background: #ffffff !important;
+    border: 1.5px solid #d1d5db !important;
+    border-radius: 0.75rem !important;
+}
+
+.fi-input-wrp:focus-within {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15) !important;
+}
+
+.fi-input-wrp input {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+}
+
+/* Consultation line items */
+.fi-fo-repeater {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 1rem !important;
+    background: #f9fafb !important;
+    padding: 0.75rem !important;
+}
+
+.fi-fo-repeater-item {
+    border: 1px solid #d1d5db !important;
+    border-radius: 0.75rem !important;
+    background: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+}
+
+.fi-fo-repeater-item + .fi-fo-repeater-item {
+    margin-top: 0.75rem !important;
+}
+
+.consultation-line-items + .consultation-line-items {
+    margin-top: 1.25rem;
+}
+
+/* My Stock dashboard */
+.stock-summary-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 1.25rem !important;
+}
+
+.stock-card {
+    min-height: 9.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stock-card:hover {
+    transform: translateY(-3px);
+}
+
+.stock-card-blue {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+}
+
+.stock-card-orange {
+    background: linear-gradient(135deg, #fbbf24, #f97316) !important;
+}
+
+.stock-card-green {
+    background: linear-gradient(135deg, #10b981, #0f766e) !important;
+}
+
+.stock-card-red {
+    background: linear-gradient(135deg, #f43f5e, #dc2626) !important;
+}
+
+.stock-table-panel {
+    width: 100% !important;
+}
+
+/* Billing page hero */
+.billing-hero {
+    display: block !important;
+    background: linear-gradient(135deg, #047857 0%, #0f766e 52%, #155e75 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(167, 243, 208, 0.35) !important;
+    min-height: 10rem;
+}
+
+.billing-hero-label,
+.billing-hero-title,
+.billing-hero-description {
+    display: block !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+.billing-hero-label {
+    color: #a7f3d0 !important;
+    font-size: 0.875rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+}
+
+.billing-hero-title {
+    margin-top: 0.35rem !important;
+    font-size: clamp(1.5rem, 3vw, 2rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+}
+
+.billing-hero-description {
+    margin-top: 0.7rem !important;
+    max-width: 42rem;
+    color: #d1fae5 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+}
+
+.history-hero {
+    background: linear-gradient(135deg, #4338ca 0%, #6366f1 52%, #0891b2 100%) !important;
+    color: #ffffff !important;
+}
+
+.history-hero-label,
+.history-hero-title,
+.history-hero-description {
+    display: block !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+.history-hero-label {
+    color: #c7d2fe !important;
+    font-size: 0.875rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+}
+
+.history-hero-title {
+    margin-top: 0.35rem !important;
+    font-size: clamp(1.5rem, 3vw, 2rem) !important;
+    font-weight: 800 !important;
+}
+
+.history-hero-description {
+    margin-top: 0.7rem !important;
+    color: #e0e7ff !important;
+    font-size: 0.95rem !important;
+}
+
+.history-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.history-count {
+    border-radius: 9999px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.7rem;
+    white-space: nowrap;
+}
+
+.medical-record-card {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.medical-record-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
+
+.medical-record-field {
+    border-radius: 0.75rem;
+    background: #f8fafc;
+    padding: 0.8rem;
+}
+
+.medical-record-label {
+    color: #6366f1;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.medical-record-value {
+    margin-top: 0.35rem;
+    color: #374151;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.history-choice-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    background: #ffffff;
+    padding: 1.25rem;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.history-choice-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.1);
+}
+
+.history-choice-icon {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.85rem;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.history-choice-indigo {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+.history-choice-cyan {
+    background: linear-gradient(135deg, #0891b2, #0e7490);
+}
+
+.history-choice-title {
+    color: #111827;
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.history-choice-description {
+    margin-top: 0.25rem;
+    color: #6b7280;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.history-choice-arrow {
+    margin-left: auto;
+    color: #6366f1;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease;
+}
+
+.history-choice-card:hover .history-choice-arrow {
+    transform: translateX(4px);
+}
+
+.reports-hero { background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 52%, #0891b2 100%) !important; }
+.reports-hero-label, .reports-hero-title, .reports-hero-description { display: block !important; color: #fff !important; opacity: 1 !important; }
+.reports-hero-label { color: #ddd6fe !important; font-size: .875rem !important; font-weight: 700 !important; letter-spacing: .04em !important; text-transform: uppercase !important; }
+.reports-hero-title { margin-top: .35rem !important; font-size: clamp(1.5rem, 3vw, 2rem) !important; font-weight: 800 !important; }
+.reports-hero-description { margin-top: .7rem !important; color: #ede9fe !important; }
+.report-choice-card, .report-summary-panel, .report-filter-panel { border: 1px solid #e5e7eb; border-radius: 1rem; background: #fff; box-shadow: 0 4px 15px rgba(15,23,42,.05); }
+.report-choice-card { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; transition: transform .2s ease, box-shadow .2s ease; }
+.report-choice-card:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(15,23,42,.1); }
+.report-choice-icon { display: grid; flex: 0 0 auto; place-items: center; width: 3rem; height: 3rem; border-radius: .85rem; color: #fff; font-size: .75rem; font-weight: 800; }
+.report-choice-purple { background: linear-gradient(135deg, #7c3aed, #4f46e5); }
+.report-choice-green { background: linear-gradient(135deg, #059669, #0f766e); }
+.report-choice-title { color: #111827; font-size: 1.05rem; font-weight: 800; }
+.report-choice-description { margin-top: .25rem; color: #6b7280; font-size: .85rem; line-height: 1.5; }
+.report-choice-arrow { margin-left: auto; color: #6366f1; font-size: 1.5rem; }
+.report-section-heading { border-bottom: 1px solid #e5e7eb; padding: 1rem 1.25rem; color: #111827; font-size: 1rem; font-weight: 800; }
+.report-metric { display: flex; flex-direction: column; gap: .35rem; border-radius: .75rem; background: #f8fafc; padding: 1rem; }
+.report-metric span { color: #6b7280; font-size: .78rem; font-weight: 700; }
+.report-metric strong { color: #111827; font-size: 1.2rem; }
+.report-metric-purple { background: #f5f3ff; }
+.report-metric-blue { background: #eff6ff; }
+.report-filter-panel { display: grid; gap: 1.25rem; padding: 1.25rem; }
+.report-filter-label { display: grid; gap: .4rem; color: #374151; font-size: .78rem; font-weight: 800; }
+.report-filter-input { width: 100%; border: 1px solid #d1d5db; border-radius: .65rem; padding: .65rem .75rem; color: #111827; }
+.income-card { border-radius: .9rem; padding: 1.25rem; color: #fff; }
+.income-card-green { background: linear-gradient(135deg, #059669, #0f766e); }
+.income-card-blue { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+.income-card h3 { font-size: 1rem; font-weight: 800; }
+.income-card span { font-size: .75rem; opacity: .85; }
+.income-card > strong { display: block; margin-top: 1rem; font-size: 1.8rem; }
+.income-breakdown { display: grid; gap: .45rem; margin-top: 1rem; border-top: 1px solid rgba(255,255,255,.25); padding-top: .8rem; }
+.income-breakdown span { display: flex; justify-content: space-between; }
+.income-breakdown b { color: #fff; }
+
+/* Expense and net profit report */
+.expense-report-filter {
+    display: grid !important;
+    gap: 1rem !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 1rem !important;
+    background: #ffffff !important;
+    padding: 1.25rem !important;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05) !important;
+}
+
+.expense-report-filter-title {
+    color: #111827 !important;
+    font-size: 1rem !important;
+    font-weight: 800 !important;
+}
+
+.expense-report-filter-description {
+    margin-top: 0.25rem !important;
+    color: #6b7280 !important;
+    font-size: 0.875rem !important;
+}
+
+.expense-report-filter-fields {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: end !important;
+    gap: 1rem !important;
+}
+
+.expense-report-filter-field {
+    display: grid !important;
+    gap: 0.4rem !important;
+    color: #374151 !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+}
+
+.expense-report-filter-field input {
+    width: 100% !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 0.65rem !important;
+    background: #ffffff !important;
+    padding: 0.65rem 0.75rem !important;
+    color: #111827 !important;
+}
+
+.expense-report-filter-field input:focus {
+    border-color: #059669 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
+    outline: none !important;
+}
+
+.expense-report-filter-field small {
+    color: #dc2626 !important;
+    font-size: 0.75rem !important;
+}
+
+.expense-report-filter-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.65rem !important;
+}
+
+.expense-report-filter-button {
+    border-radius: 0.65rem !important;
+    padding: 0.65rem 1rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.expense-report-filter-button:hover {
+    transform: translateY(-1px) !important;
+}
+
+.expense-report-filter-button-primary {
+    background: #047857 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(4, 120, 87, 0.2) !important;
+}
+
+.expense-report-filter-button-secondary {
+    border: 1px solid #d1d5db !important;
+    background: #f9fafb !important;
+    color: #374151 !important;
+}
+
+.expense-report-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+}
+
+.expense-report-card {
+    min-width: 0 !important;
+    border-radius: 1rem !important;
+    padding: 1.5rem !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.14) !important;
+}
+
+.expense-report-card-lkr {
+    background: linear-gradient(135deg, #059669 0%, #047857 55%, #065f46 100%) !important;
+}
+
+.expense-report-card-usd {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 55%, #1e3a8a 100%) !important;
+}
+
+.expense-report-label {
+    color: #d1fae5 !important;
+    font-size: 0.875rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+}
+
+.expense-report-card-usd .expense-report-label {
+    color: #dbeafe !important;
+}
+
+.expense-report-total {
+    margin-top: 0.75rem !important;
+    color: #ffffff !important;
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+}
+
+.expense-report-breakdown {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+    margin-top: 1rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+    padding-top: 0.75rem !important;
+    color: #ffffff !important;
+    font-size: 0.875rem !important;
+}
+
+@media (max-width: 640px) {
+    .expense-report-filter-fields,
+    .expense-report-grid,
+    .expense-report-breakdown {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* TV-friendly patient queue */
+.queue-screen {
+    --queue-radius: 1.5rem;
+}
+
+.queue-screen .fi-section-content-ctn {
+    max-width: 100%;
+}
+
+.queue-patient {
+    min-height: 15rem;
+}
+
+@media (min-width: 1536px) {
+    .queue-screen {
+        font-size: 1.05rem;
+    }
+
+    .queue-patient {
+        min-height: 17rem;
+    }
+}
+
+/* Patient profile */
+.patient-profile-section,
+.patient-contact-section,
+.patient-medical-section,
+.patient-documents-section,
+.patient-record-section {
+    min-width: 0 !important;
+    overflow: hidden !important;
+}
+
+.patient-profile-section .fi-in-entry,
+.patient-contact-section .fi-in-entry,
+.patient-medical-section .fi-in-entry,
+.patient-documents-section .fi-in-entry,
+.patient-record-section .fi-in-entry {
+    min-width: 0 !important;
+}
+
+.patient-profile-photo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    border-radius: 1rem !important;
+    background: #ecfdf5 !important;
+    padding: 0.4rem !important;
+}
+
+.patient-profile-photo img {
+    width: min(100%, 8rem) !important;
+    height: 10rem !important;
+    border-radius: 0.75rem !important;
+    object-fit: cover !important;
+}
+
+.patient-profile-section .fi-in-entry-label,
+.patient-contact-section .fi-in-entry-label,
+.patient-medical-section .fi-in-entry-label,
+.patient-documents-section .fi-in-entry-label,
+.patient-record-section .fi-in-entry-label {
+    color: #047857 !important;
+    font-weight: 700 !important;
+}
+
+@media (max-width: 640px) {
+    .patient-profile-section .fi-section-content,
+    .patient-contact-section .fi-section-content,
+    .patient-medical-section .fi-section-content,
+    .patient-documents-section .fi-section-content,
+    .patient-record-section .fi-section-content {
+        padding: 0.9rem !important;
+    }
+
+    .patient-profile-photo img {
+        width: 7rem !important;
+        height: 8rem !important;
+    }
+}
+
+.fi-fo-field-wrp-error, .fi-fo-field-wrp-error-message {
+    display: block !important;
+    color: #dc2626 !important;
+    font-weight: 700 !important;
+}
+
+.dashboard-hero { background: linear-gradient(135deg, #047857, #0f766e 52%, #155e75) !important; }
+.dashboard-hero-label, .dashboard-hero-title, .dashboard-hero-description { display: block !important; color: #fff !important; opacity: 1 !important; }
+.dashboard-hero-label { color: #a7f3d0 !important; font-size: .8rem !important; font-weight: 800 !important; letter-spacing: .05em !important; text-transform: uppercase !important; }
+.dashboard-hero-title { margin-top: .35rem !important; font-size: clamp(1.5rem, 3vw, 2.2rem) !important; font-weight: 800 !important; }
+.dashboard-hero-description { margin-top: .7rem !important; color: #d1fae5 !important; }
+.dashboard-stat { display: flex; min-height: 9.5rem; flex-direction: column; justify-content: center; border-radius: 1rem; padding: 1.35rem; color: #fff; box-shadow: 0 8px 20px rgba(15,23,42,.1); }
+.dashboard-stat span { font-size: .85rem; font-weight: 700; opacity: .9; }
+.dashboard-stat strong { margin-top: .45rem; font-size: 2rem; font-weight: 800; }
+.dashboard-stat small { margin-top: .3rem; font-size: .75rem; opacity: .85; }
+.dashboard-stat-blue { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+.dashboard-stat-purple { background: linear-gradient(135deg, #7c3aed, #4f46e5); }
+.dashboard-stat-green { background: linear-gradient(135deg, #059669, #0f766e); }
+.dashboard-stat-orange { background: linear-gradient(135deg, #f59e0b, #ea580c); }
+.dashboard-link-card { display: flex; align-items: center; gap: .9rem; border: 1px solid #e5e7eb; border-radius: 1rem; background: #fff; padding: 1rem; transition: transform .2s ease, box-shadow .2s ease; }
+.dashboard-link-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(15,23,42,.08); }
+.dashboard-link-card b, .dashboard-link-card small { display: block; }
+.dashboard-link-card b { color: #111827; font-size: .9rem; }
+.dashboard-link-card small { margin-top: .25rem; color: #6b7280; font-size: .75rem; }
+.dashboard-link-icon { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: .75rem; background: #ecfdf5; color: #047857; font-size: 1.3rem; font-weight: 800; }
+
+@media (max-width: 1023px) {
+    .stock-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 639px) {
+    .stock-summary-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .consultation-billing-summary {
+        position: sticky;
+        top: 5rem;
+        align-self: start;
+        z-index: 10;
+    }
+}
+
+/* Primary Action Buttons */
+.fi-btn-primary, button[type="submit"] {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: #ffffff !important;
+    border-radius: 0.75rem !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3) !important;
+    border: none !important;
+}
+
+.fi-btn-primary:hover, button[type="submit"]:hover {
+    filter: brightness(1.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+
+/* =========================================================
+   AYU PHARMACY POS
+   Professional compact POS interface
+   ========================================================= */
+
+.pharmacy-pos-form {
+    --pos-radius: 14px;
+}
+
+/* Header */
+
+.pharmacy-pos-header {
+    border-radius: var(--pos-radius);
+}
+
+/* Add Medicine */
+
+.pharmacy-pos-add-medicine {
+    border-radius: var(--pos-radius);
+}
+
+.pharmacy-pos-add-medicine .fi-section-content-ctn {
+    padding: 1rem !important;
+}
+
+/* Summary */
+
+.pharmacy-pos-summary {
+    border-radius: var(--pos-radius);
+}
+
+.pharmacy-pos-summary .fi-section-content-ctn {
+    padding: 1rem !important;
+}
+
+/* Grand Total */
+
+.pos-grand-total {
+    font-size: 1.45rem;
+    font-weight: 800;
+    line-height: 1.2;
+    padding: 0.7rem 0.8rem;
+    border-radius: 10px;
+    background: rgba(16, 185, 129, 0.10);
+}
+
+/* Balance */
+
+.pos-balance {
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    padding: 0.7rem 0.8rem;
+    border-radius: 10px;
+    background: rgba(245, 158, 11, 0.10);
+}
+
+/* Stock */
+
+.stock-ok {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: rgba(16, 185, 129, 0.12);
+}
+
+.stock-empty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: rgba(239, 68, 68, 0.12);
+}
+
+/* Medicine table */
+
+.pharmacy-pos-items {
+    border-radius: var(--pos-radius);
+}
+
+.pharmacy-pos-items .fi-section-content-ctn {
+    padding: 0.75rem !important;
+}
+
+/* Reduce excessive form spacing */
+
+.pharmacy-pos-form .fi-fo-component-ctn {
+    gap: 0.45rem;
+}
+
+/* POS search field */
+
+.pharmacy-pos-add-medicine
+.fi-fo-field-wrp {
+    margin-bottom: 0.15rem;
+}
+
+/* Add button */
+
+.pharmacy-pos-add-medicine
+.fi-ac-btn {
+    min-height: 48px;
+}
+
+/* Mobile */
+
+@media (max-width: 1024px) {
+
+    .pos-grand-total {
+        font-size: 1.25rem;
+    }
+
+    .pos-balance {
+        font-size: 1.1rem;
+    }
+}
+
+/* =========================================================
+   FILAMENT THEME SWITCHER SUPPORT
+   Enables Light, Dark, and System modes without the custom
+   light theme forcing every mode to stay light.
+   ========================================================= */
+
+html.dark,
+html.dark body,
+html.dark .fi-layout,
+html.dark .fi-simple-layout {
+    color-scheme: dark !important;
+    background-color: #0f172a !important;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 38%),
+        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.10) 0%, transparent 38%) !important;
+    color: #e5e7eb !important;
+}
+
+html.dark .fi-sidebar,
+html.dark .fi-topbar,
+html.dark .fi-dropdown-panel,
+html.dark .fi-wi-stats-overview-stat,
+html.dark .fi-wi-widget,
+html.dark .fi-section,
+html.dark .fi-simple-main,
+html.dark .fi-ta,
+html.dark .history-choice-card,
+html.dark .medical-record-card,
+html.dark .report-choice-card,
+html.dark .report-summary-panel,
+html.dark .report-filter-panel,
+html.dark .expense-report-filter,
+html.dark .dashboard-link-card {
+    background: #111827 !important;
+    border-color: #243244 !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24) !important;
+}
+
+html.dark .fi-sidebar-header {
+    background: #052e2b !important;
+    border-bottom-color: #134e4a !important;
+}
+
+html.dark .fi-sidebar-header span,
+html.dark .fi-sidebar-header a {
+    color: #a7f3d0 !important;
+}
+
+html.dark .fi-sidebar-item-button,
+html.dark .fi-dropdown-list-item {
+    color: #d1d5db !important;
+}
+
+html.dark .fi-sidebar-item-button:hover,
+html.dark .fi-dropdown-list-item:hover {
+    background: rgba(16, 185, 129, 0.12) !important;
+    color: #a7f3d0 !important;
+}
+
+html.dark .fi-sidebar-item-active .fi-sidebar-item-button {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 18px rgba(5, 150, 105, 0.34) !important;
+}
+
+html.dark .fi-sidebar-item-icon {
+    color: #34d399 !important;
+}
+
+html.dark .fi-sidebar-item-active .fi-sidebar-item-icon {
+    color: #ffffff !important;
+}
+
+html.dark .fi-topbar {
+    border-bottom-color: #243244 !important;
+}
+
+html.dark .fi-user-menu-trigger {
+    background: #172033 !important;
+    border-color: #2f3f56 !important;
+}
+
+html.dark .fi-user-menu-trigger:hover {
+    background: #1f2937 !important;
+}
+
+html.dark .fi-user-avatar {
+    border-color: #34d399 !important;
+}
+
+html.dark .fi-theme-switcher {
+    background: #0f172a !important;
+    border-color: #243244 !important;
+}
+
+html.dark .fi-theme-switcher-btn {
+    color: #d1d5db !important;
+}
+
+html.dark .fi-theme-switcher-btn:hover {
+    background: #1f2937 !important;
+    color: #ffffff !important;
+}
+
+html.dark .fi-theme-switcher-btn.fi-active {
+    background: #f59e0b !important;
+    color: #111827 !important;
+}
+
+html.dark .fi-wi-stats-overview-stat:hover,
+html.dark .fi-wi-widget:hover {
+    border-color: rgba(52, 211, 153, 0.45) !important;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.32) !important;
+}
+
+html.dark .fi-wi-stats-overview-stat-label,
+html.dark .history-choice-description,
+html.dark .report-choice-description,
+html.dark .medical-record-value,
+html.dark .expense-report-filter-description,
+html.dark .dashboard-link-card small {
+    color: #9ca3af !important;
+}
+
+html.dark .fi-wi-stats-overview-stat-value,
+html.dark .history-choice-title,
+html.dark .report-choice-title,
+html.dark .report-metric strong,
+html.dark .expense-report-filter-title,
+html.dark .dashboard-link-card b {
+    color: #f9fafb !important;
+}
+
+html.dark .fi-wi-stats-overview-stat-description,
+html.dark .medical-record-label,
+html.dark .dashboard-link-icon {
+    color: #6ee7b7 !important;
+}
+
+html.dark .fi-ta-header-cell {
+    background: #172033 !important;
+    color: #e5e7eb !important;
+}
+
+html.dark .fi-ta-record:hover {
+    background: rgba(16, 185, 129, 0.10) !important;
+}
+
+html.dark .fi-ta-cell,
+html.dark .fi-simple-main label,
+html.dark .fi-fo-field-wrp-label,
+html.dark .fi-fo-field-wrp-label span {
+    color: #e5e7eb !important;
+}
+
+html.dark .fi-input-wrp,
+html.dark .fi-fo-repeater-item,
+html.dark .report-filter-input,
+html.dark .expense-report-filter-field input {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+    color: #f9fafb !important;
+}
+
+html.dark .fi-input-wrp:focus-within,
+html.dark .expense-report-filter-field input:focus {
+    border-color: #34d399 !important;
+    box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.18) !important;
+}
+
+html.dark .fi-input-wrp input,
+html.dark .report-filter-input,
+html.dark .expense-report-filter-field input {
+    color: #f9fafb !important;
+    -webkit-text-fill-color: #f9fafb !important;
+}
+
+html.dark .fi-fo-repeater,
+html.dark .medical-record-field,
+html.dark .report-metric,
+html.dark .dashboard-link-icon {
+    background: #172033 !important;
+}
+
+html.dark .fi-fo-repeater,
+html.dark .fi-fo-repeater-item,
+html.dark .history-choice-card,
+html.dark .medical-record-field,
+html.dark .report-metric,
+html.dark .expense-report-filter-field input {
+    border-color: #334155 !important;
+}
+
+html.dark .history-count {
+    background: rgba(99, 102, 241, 0.18) !important;
+    color: #c7d2fe !important;
+}
+
+html.dark .report-section-heading {
+    border-bottom-color: #334155 !important;
+    color: #f9fafb !important;
+}
+
+html.dark .report-metric span,
+html.dark .report-filter-label,
+html.dark .expense-report-filter-field {
+    color: #cbd5e1 !important;
+}
+
+html.dark .report-metric-purple {
+    background: rgba(124, 58, 237, 0.18) !important;
+}
+
+html.dark .report-metric-blue {
+    background: rgba(37, 99, 235, 0.18) !important;
+}
+
+html.dark .expense-report-filter-button-secondary {
+    background: #172033 !important;
+    border-color: #334155 !important;
+    color: #e5e7eb !important;
+}
+
+html.dark .pos-grand-total {
+    background: rgba(16, 185, 129, 0.16) !important;
+}
+
+html.dark .pos-balance {
+    background: rgba(245, 158, 11, 0.16) !important;
+}
+
+/* Shared form and work surfaces for daily admin workflows. */
+.admin-form,
+.admin-workspace,
+.dashboard-page {
+    --admin-border: #e4e4e7;
+    --admin-surface: #ffffff;
+    --admin-text: #18181b;
+    --admin-muted: #71717a;
+    --admin-subtle: #f4f4f5;
+}
+
+.admin-form,
+.admin-workspace {
+    width: 100%;
+    min-width: 0;
+    background: var(--admin-surface);
+    color: var(--admin-text);
+}
+
+.admin-form {
+    padding: 1.5rem;
+    gap: 2rem;
+}
+
+html.dark .admin-form,
+html.dark .admin-workspace,
+html.dark .dashboard-page {
+    --admin-border: #3f3f46;
+    --admin-surface: #18181b;
+    --admin-text: #f4f4f5;
+    --admin-muted: #a1a1aa;
+    --admin-subtle: #27272a;
+}
+
+.admin-form .fi-section,
+html.dark .admin-form .fi-section {
+    min-width: 0;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.admin-form .fi-section-header {
+    padding: 0 0 0.75rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-form .fi-section-header-heading {
+    color: var(--admin-text);
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+.admin-form .fi-fo-field,
+.admin-form .fi-sc-component {
+    min-width: 0;
+}
+
+.admin-form .fi-fo-field-label {
+    flex-wrap: wrap;
+    overflow-wrap: anywhere;
+}
+
+.admin-form .fi-input-wrp,
+html.dark .admin-form .fi-input-wrp {
+    border-radius: 0.5rem !important;
+}
+
+.admin-form .fi-fo-repeater,
+html.dark .admin-form .fi-fo-repeater {
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+}
+
+.admin-form .fi-fo-repeater-item,
+html.dark .admin-form .fi-fo-repeater-item {
+    min-width: 0;
+    border-color: var(--admin-border) !important;
+    border-radius: 0.5rem !important;
+    box-shadow: none !important;
+}
+
+.admin-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--admin-border);
+}
+
+.admin-report-filters {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-filter-bar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) 2.75rem;
+    align-items: end;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-filter-field {
+    display: grid;
+    min-width: 0;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.admin-filter-input {
+    width: 100%;
+    min-width: 0;
+    height: 2.75rem;
+    border: 1px solid var(--admin-border);
+    border-radius: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    background: var(--admin-surface);
+    color: var(--admin-text);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.admin-filter-input::placeholder {
+    color: var(--admin-muted);
+}
+
+.admin-filter-input:focus {
+    border-color: #10b981;
+    outline: 2px solid rgba(16, 185, 129, 0.2);
+    outline-offset: 1px;
+}
+
+.admin-filter-input[type="date"] {
+    appearance: none;
+}
+
+html.dark .admin-filter-input {
+    color-scheme: dark;
+}
+
+.admin-filter-clear.fi-icon-btn,
+.admin-table-actions .fi-icon-btn,
+.admin-record-action.fi-icon-btn,
+.admin-modal-close.fi-icon-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    border: 1px solid var(--admin-border);
+    border-radius: 0.5rem;
+}
+
+.admin-records-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+}
+
+.admin-records-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.admin-records-header p,
+.admin-record-count {
+    color: var(--admin-muted);
+    font-size: 0.875rem;
+}
+
+.admin-records-body {
+    overflow-x: auto;
+}
+
+.admin-responsive-table {
+    width: 100%;
+    font-size: 0.875rem;
+    text-align: left;
+}
+
+.admin-responsive-table th,
+.admin-responsive-table td {
+    padding: 0.75rem 1rem;
+    overflow-wrap: anywhere;
+}
+
+.admin-responsive-table thead {
+    background: var(--admin-subtle);
+    color: var(--admin-muted);
+}
+
+.admin-responsive-table th {
+    font-weight: 600;
+}
+
+.admin-responsive-table tbody tr {
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-table-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    min-width: 6rem;
+}
+
+.admin-pagination {
+    padding: 1rem 1.5rem;
+}
+
+.dashboard-doctor-header {
+    padding: 0 0 1rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.dashboard-stat {
+    min-width: 0;
+    padding: 1.25rem;
+    border: 1px solid var(--admin-border);
+    border-radius: 0.5rem;
+    background: var(--admin-surface);
+}
+
+.dashboard-stat p {
+    color: var(--admin-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    letter-spacing: 0;
+}
+
+.dashboard-stat p + p {
+    color: var(--admin-text);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.dashboard-stat > .flex > div:first-child {
+    min-width: 0;
+}
+
+.dashboard-stat > .flex > div:last-child {
+    flex-shrink: 0;
+}
+
+.dashboard-stat-compact {
+    padding: 1rem;
+}
+
+.dashboard-light-panel {
+    background: var(--admin-subtle);
+}
+
+.dashboard-calendar {
+    border-top: 1px solid var(--admin-border);
+    border-bottom: 1px solid var(--admin-border);
+}
+
+html.dark .dashboard-page .bg-white {
+    background-color: var(--admin-surface) !important;
+}
+
+html.dark .dashboard-page .bg-gray-50 {
+    background-color: var(--admin-subtle) !important;
+}
+
+html.dark .dashboard-page .text-gray-900,
+html.dark .dashboard-page .text-gray-800,
+html.dark .dashboard-page .text-gray-700 {
+    color: var(--admin-text) !important;
+}
+
+html.dark .dashboard-page .text-gray-500,
+html.dark .dashboard-page .text-gray-600,
+html.dark .medical-history-dialog .text-gray-500 {
+    color: var(--admin-muted) !important;
+}
+
+html.dark .dashboard-page .border-gray-200,
+html.dark .dashboard-page .border-gray-300 {
+    border-color: var(--admin-border) !important;
+}
+
+html.dark .dashboard-page .bg-emerald-50,
+html.dark .dashboard-page .bg-emerald-100,
+html.dark .dashboard-page [class~="hover:bg-emerald-50"]:hover {
+    background-color: #064e3b !important;
+}
+
+html.dark .dashboard-page .text-emerald-700,
+html.dark .dashboard-page .text-emerald-800 {
+    color: #6ee7b7 !important;
+}
+
+.medical-history-dialog {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100dvh - 3rem);
+    overflow: hidden;
+}
+
+.medical-history-dialog > * {
+    flex-shrink: 0;
+}
+
+.medical-history-header {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.medical-history-header h2,
+.medical-history-summary > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.medical-history-summary > div {
+    padding: 1rem;
+}
+
+.medical-history-content {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 1.5rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+html.dark .medical-history-dialog .text-emerald-600 {
+    color: #34d399;
+}
+
+html.dark .medical-history-dialog .text-blue-600 {
+    color: #60a5fa;
+}
+
+html.dark .medical-history-dialog .text-purple-600 {
+    color: #c4b5fd;
+}
+
+html.dark .medical-history-dialog .text-amber-600 {
+    color: #fbbf24;
+}
+
+@media (max-width: 1023px) {
+    .admin-filter-bar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-filter-clear {
+        justify-self: end;
+    }
+}
+
+/* The same table content becomes labelled records on small screens. */
+@media (max-width: 767px) {
+    .admin-form {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .admin-form-actions,
+    .admin-report-filters,
+    .admin-filter-bar,
+    .admin-records-header,
+    .admin-pagination {
+        padding: 1rem;
+    }
+
+    .admin-filter-bar {
+        grid-template-columns: minmax(0, 1fr) 2.75rem;
+    }
+
+    .admin-filter-field {
+        grid-column: 1 / -1;
+    }
+
+    .admin-filter-field:last-of-type {
+        grid-column: 1;
+    }
+
+    .admin-records-body {
+        overflow: visible;
+        padding: 0 1rem 1rem;
+    }
+
+    .admin-responsive-table,
+    .admin-responsive-table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .admin-responsive-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .admin-responsive-table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        padding: 0.5rem 0;
+        border: 1px solid var(--admin-border);
+        border-radius: 0.5rem;
+    }
+
+    .admin-responsive-table tbody tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .admin-responsive-table td {
+        display: flow-root;
+        padding: 0.5rem 0.75rem 0.5rem 8rem;
+        text-align: left;
+        white-space: normal;
+    }
+
+    .admin-responsive-table td::before {
+        content: attr(data-label);
+        float: left;
+        width: 6.5rem;
+        margin-left: -7.25rem;
+        color: var(--admin-muted);
+        font-size: 0.8125rem;
+        font-weight: 500;
+    }
+
+    .admin-responsive-table td > * {
+        min-width: 0;
+    }
+
+    .admin-responsive-table td[colspan] {
+        display: block;
+        padding: 1.5rem 0.75rem;
+        text-align: center;
+    }
+
+    .admin-responsive-table td[colspan]::before {
+        content: none;
+    }
+
+    .admin-table-actions {
+        justify-content: flex-start;
+        min-width: 0;
+    }
+
+    .medical-history-dialog {
+        max-height: calc(100dvh - 1.5rem);
+    }
+
+    .medical-history-content {
+        padding: 1rem;
+    }
+
+    .medical-history-content .admin-records-body {
+        padding: 0;
+    }
+}

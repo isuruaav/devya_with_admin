@@ -1,0 +1,10 @@
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Only the public application and the login entrance may be served.
+    RewriteRule ^(?:public(?:/|$)|index\.php$) - [L]
+    RewriteRule ^$ - [L]
+    RewriteRule . - [F,L]
+</IfModule>

@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('staff_salary_histories', function (Blueprint $table) {
+            $table->id();
+
+            $table->foreignId('staff_id')
+                ->constrained('staff')
+                ->cascadeOnDelete();
+
+            $table->decimal('basic_salary', 12, 2);
+
+            $table->decimal('allowance', 12, 2)
+                ->default(0);
+
+            $table->date('effective_date');
+
+            $table->string('reason')->nullable();
+
+            $table->foreignId('changed_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
+
+            $table->timestamps();
+
+            $table->index([
+                'staff_id',
+                'effective_date',
+            ]);
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('staff_salary_histories');
+    }
+};
