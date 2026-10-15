@@ -19,8 +19,8 @@
 </head>
 <body>
     <div class="header">
-        <h1>Ayurvedic Hospital</h1>
-        <div class="muted">Medicine Prescription</div>
+        <h1>{{ config('branding.company_name') }}</h1>
+        <div class="muted">{{ config('branding.system_name') }} · Medicine Prescription</div>
     </div>
     <table class="details">
         <tr>
@@ -36,7 +36,7 @@
         @forelse ($consultation->medicines as $item)
             <tr>
                 <td>{{ $item->medicine?->name ?? 'Medicine' }}</td>
-                <td>{{ $item->dosage ?: 'As directed by doctor' }}</td>
+                <td>{{ $item->prescription_instructions }}</td>
                 <td>{{ $item->quantity }}</td>
                 <td>{{ $item->medicine?->unit ?? 'pcs' }}</td>
             </tr>

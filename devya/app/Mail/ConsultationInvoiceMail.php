@@ -29,7 +29,7 @@ class ConsultationInvoiceMail extends Mailable
                 config('mail.from.address'),
                 config('mail.from.name')
             ),
-            subject: 'Invoice '.$this->bill->bill_number.' - ISD Tech Hub (Pvt) Ltd',
+            subject: 'Invoice '.$this->bill->bill_number.' - '.config('branding.company_name'),
         );
     }
 

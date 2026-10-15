@@ -130,7 +130,7 @@ class Billing extends Page
             : 'Patient';
 
         $message = implode("\n", [
-            'ISD Tech Hub (Pvt) Ltd consultation bill',
+            config('branding.company_name').' consultation bill',
             'Bill No: '.$bill->bill_number,
             'Patient: '.$patientName,
             'Total: '.$bill->currency.' '.number_format((float) $bill->grand_total, 2),

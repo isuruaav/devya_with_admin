@@ -24,10 +24,16 @@ class DoctorInfolist
                 */
                 Section::make('Doctor Profile')
                     ->schema([
-                        ImageEntry::make('doctor_photo')
-                            ->label('Photo')
-                            ->disk('public')
-                            ->circular(),
+                ImageEntry::make('doctor_photo')
+    ->label('Photo')
+    ->getStateUsing(
+        fn ($record): ?string => $record?->doctor_photo
+            ? route('doctors.photo', [
+                'doctor' => $record->getKey(),
+            ])
+            : null
+    )
+    ->circular(),
 
                         TextEntry::make('name')
                             ->label('Doctor Name'),

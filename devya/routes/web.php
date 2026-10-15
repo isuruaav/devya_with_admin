@@ -273,4 +273,56 @@ Route::middleware(['auth'])->group(function () {
         [ReceptionBillPrintController::class, 'print']
     )->name('reception-bills.print');
 
+
+    // Secure Doctor Profile Photo Route
+Route::get('/admin/doctor-photos/{doctor}', function (
+    \App\Models\Doctor $doctor
+) {
+    abort_unless(
+        auth()->user()?->canAccessModule('doctors') ?? false,
+        403
+    );
+
+    $path = (string) $doctor->doctor_photo;
+
+    // Only doctor profile images are allowed.
+    abort_unless(
+        preg_match(
+            '~\Adoctors/photos/[A-Za-z0-9][A-Za-z0-9._-]*\.(?:jpe?g|png|webp|gif)\z~i',
+            $path
+        ) === 1,
+        404
+    );
+
+    $disk = \Illuminate\Support\Facades\Storage::disk('public');
+
+    abort_unless($disk->exists($path), 404);
+
+    $mime = $disk->mimeType($path);
+
+    abort_unless(
+        in_array($mime, [
+            'image/jpeg',
+            'image/png',
+            'image/webp',
+            'image/gif',
+        ], true),
+        404
+    );
+
+    return $disk->response($path, basename($path), [
+        'Content-Type' => $mime,
+        'X-Content-Type-Options' => 'nosniff',
+        'Cache-Control' => 'private, max-age=3600',
+    ]);
+})
+    ->middleware('auth')
+    ->name('doctors.photo');
+
+
+    // Secure Patient Profile Photo
+Route::get(
+    '/secure/patient-photos/{patient}',
+    \App\Http\Controllers\PatientPhotoController::class
+)->middleware('auth')->name('patients.photo');
 });

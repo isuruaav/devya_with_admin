@@ -3,52 +3,28 @@
 namespace App\Filament\Resources\Consultations\ConsultationResource\Pages;
 
 use App\Filament\Resources\Consultations\ConsultationResource;
-use App\Models\Doctor;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
 class ListConsultations extends ListRecords
 {
-    protected static string $resource =
-        ConsultationResource::class;
+    protected static string $resource = ConsultationResource::class;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Doctor Check
-    |--------------------------------------------------------------------------
-    */
-
-    protected static function isDoctorUser(): bool
+    /**
+     * Check actual roles and module permissions rather than comparing email
+     * addresses with doctors. A non-doctor admin may share a doctor's email.
+     * Doctor accounts continue to use their dedicated dashboard workflow.
+     *
+     * @param array<string, mixed> $parameters
+     */
+    public static function canAccess(array $parameters = []): bool
     {
         $user = auth()->user();
 
-        if (! $user || blank($user->email)) {
-            return false;
-        }
-
-        return Doctor::query()
-            ->where('is_active', true)
-            ->where('email', $user->email)
-            ->exists();
+        return $user !== null
+            && ConsultationResource::canViewAny()
+            && ! $user->hasRole('doctor');
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Page Access
-    |--------------------------------------------------------------------------
-    */
-
-    public static function canAccess(
-        array $parameters = []
-    ): bool {
-        return ! static::isDoctorUser();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Header Actions
-    |--------------------------------------------------------------------------
-    */
 
     protected function getHeaderActions(): array
     {

@@ -58,7 +58,7 @@ class ConsultationsRelationManager extends RelationManager
                             ->map(
                                 fn ($item): string => sprintf(
                                     '%s × %s',
-                                    $item->medicine->name
+                                    $item->medicine?->name
                                         ?? 'Unknown medicine',
                                     $item->quantity,
                                 )

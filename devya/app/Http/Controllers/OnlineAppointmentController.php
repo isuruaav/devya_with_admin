@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendWebsiteAppointmentNotification;
 use App\Models\Doctor;
 use App\Models\OnlineAppointment;
+use App\Support\AppointmentWhatsApp;
 use Illuminate\Contracts\Cache\LockTimeoutException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -351,7 +353,7 @@ class OnlineAppointmentController extends Controller
             'Requested service: '.$data['service'],
             'Preferred time: '.$preferredTime,
             'Preferred response: '.($data['contactMethod'] ?? 'WhatsApp'),
-            'Submitted from: DEVYA CEYLON website',
+            'Submitted from: '.config('branding.website_label'),
         ];
 
         if (filled($data['notes'] ?? null)) {
@@ -403,12 +405,23 @@ class OnlineAppointmentController extends Controller
             throw ValidationException::withMessages(['form' => 'This request is being processed. Please try again shortly.']);
         }
 
+        if ($onlineAppointment->wasRecentlyCreated) {
+            SendWebsiteAppointmentNotification::dispatchAfterResponse($onlineAppointment->getKey());
+        }
+
+        $whatsAppUrl = AppointmentWhatsApp::requestUrl($onlineAppointment);
+
         if ($request->expectsJson()) {
             return response()->json([
                 'message' => 'Appointment request saved.',
                 'booking_number' => $onlineAppointment->booking_number,
                 'appointment_id' => $onlineAppointment->id,
+                'whatsapp_url' => $whatsAppUrl,
             ], 201);
+        }
+
+        if ($whatsAppUrl !== null) {
+            return redirect()->away($whatsAppUrl);
         }
 
         return redirect()

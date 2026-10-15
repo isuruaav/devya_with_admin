@@ -72,7 +72,7 @@ class ConsultationBillInfolist
                                 return $medicines
                                     ->map(function ($item) {
                                         $medicineName =
-                                            $item->medicine->name
+                                            $item->medicine?->name
                                             ?? 'Unknown Medicine';
 
                                         $quantity =

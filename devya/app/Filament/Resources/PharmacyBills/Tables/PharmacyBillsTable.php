@@ -51,7 +51,7 @@ class PharmacyBillsTable
 
         $message = implode("\n", [
 
-            'ISD Tech Hub (Pvt) Ltd pharmacy bill',
+            config('branding.company_name').' pharmacy bill',
 
             'Bill No: '.$bill->bill_number,
 

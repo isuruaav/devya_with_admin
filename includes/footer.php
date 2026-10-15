@@ -76,6 +76,7 @@
       <p>Share your preferred service and date. A staff member can confirm the next available consultation.</p>
       <a class="button button-gold" href="<?= e(site_url('appointments.php')) ?>"><i class="fa-solid fa-calendar-check"></i> Request Appointment</a>
       <a class="footer-phone" href="tel:<?= e($site['phone_href']) ?>"><i class="fa-solid fa-phone-volume"></i><?= e($site['phone_display']) ?></a>
+      <a class="footer-email" href="mailto:<?= e($site['email']) ?>"><i class="fa-solid fa-envelope"></i><?= e($site['email']) ?></a>
       <a class="footer-location" href="<?= e($site['maps_url']) ?>" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot"></i><?= e($site['location']) ?></a>
     </div>
   </div>

@@ -50,6 +50,10 @@ class AdminPanelProvider extends PanelProvider
 
             ->id('admin')
             ->path('admin')
+            ->brandName(config('branding.company_short_name'))
+            ->brandLogo(fn () => view('filament.components.brand'))
+            ->brandLogoHeight('3rem')
+            ->favicon(asset(config('branding.favicon_path')))
 
             /*
             |--------------------------------------------------------------------------
@@ -75,7 +79,7 @@ class AdminPanelProvider extends PanelProvider
             */
 
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::hex('#235b3d'),
             ])
 
             ->darkMode()

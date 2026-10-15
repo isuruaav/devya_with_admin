@@ -164,8 +164,8 @@
     <main class="invoice">
         <header class="header">
             <div>
-                <div class="business-name">ISD Tech Hub (Pvt) Ltd</div>
-                <div class="muted">Ayurveda &amp; Wellness Center</div>
+                <div class="business-name">{{ config('branding.company_name') }}</div>
+                <div class="muted">{{ config('branding.system_name') }}</div>
             </div>
             <div class="document-title">RECEPTION BILL</div>
         </header>

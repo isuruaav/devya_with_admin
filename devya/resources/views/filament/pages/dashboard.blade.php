@@ -1283,11 +1283,11 @@
             <div class="rounded-3xl bg-gradient-to-r from-emerald-700 to-teal-600 p-6 shadow-xl">
 
                 <h1 class="text-3xl font-bold text-white">
-                    AYU SYSTEM Dashboard
+                    {{ config('branding.company_short_name') }} Dashboard
                 </h1>
 
                 <p class="mt-2 text-emerald-100">
-                    Welcome to the Ayu System Management Dashboard
+                    {{ config('branding.system_name') }} Management Dashboard
                 </p>
 
             </div>

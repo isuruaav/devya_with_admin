@@ -75,11 +75,11 @@
         <div class="text-center">
 
             <div class="text-[17px] font-bold leading-tight">
-                ISD Tech Hub (Pvt) Ltd
+                {{ config('branding.company_name') }}
             </div>
 
             <div class="mt-1 text-[11px]">
-                Ayurveda & Wellness Center
+                {{ config('branding.system_name') }}
             </div>
 
             <div class="my-2 border-y border-dashed border-black py-1.5 text-[15px] font-bold">

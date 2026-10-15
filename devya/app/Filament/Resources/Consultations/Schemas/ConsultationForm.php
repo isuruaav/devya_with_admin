@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Consultations\Schemas;
 
+use App\Models\ConsultationMedicine;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Treatment;
@@ -19,6 +20,27 @@ use Filament\Schemas\Schema;
 
 class ConsultationForm
 {
+    private static function hasMedicineSchedule(Get $get): bool
+    {
+        return ((int) ($get('breakfast_dose') ?? 0)
+            + (int) ($get('lunch_dose') ?? 0)
+            + (int) ($get('dinner_dose') ?? 0)) > 0;
+    }
+
+    private static function updateMedicineQuantity(Set $set, Get $get): void
+    {
+        if (! self::hasMedicineSchedule($get)) {
+            return; // Keep manual quantities on legacy prescriptions.
+        }
+
+        $set('quantity', ConsultationMedicine::calculateQuantity(
+            (int) ($get('breakfast_dose') ?? 0),
+            (int) ($get('lunch_dose') ?? 0),
+            (int) ($get('dinner_dose') ?? 0),
+            (int) ($get('duration_days') ?? 1),
+        ));
+    }
+
     public static function configure(
 
         Schema $schema
@@ -808,71 +830,83 @@ class ConsultationForm
                             ->schema([
 
                                 Select::make('medicine_id')
-
                                     ->label('Medicine')
-
                                     ->placeholder('Search medicine...')
-
-                                    ->relationship(
-
-                                        'medicine',
-
-                                        'name'
-
-                                    )
-
+                                    ->relationship('medicine', 'name')
                                     ->searchable()
-
                                     ->preload()
-
                                     ->required()
-
                                     ->native(false)
+                                    ->columnSpanFull(),
 
-                                    ->columnSpan([
+                                TextInput::make('breakfast_dose')
+                                    ->label('Breakfast Dose')
+                                    ->numeric()->integer()->minValue(0)->default(0)->required()->live()
+                                    ->afterStateUpdated(fn (Get $get, Set $set) => self::updateMedicineQuantity($set, $get))
+                                    ->columnSpan(['default' => 12, 'md' => 6]),
 
-                                        'default' => 12,
+                                Select::make('breakfast_timing')
+                                    ->label('Breakfast Timing')
+                                    ->options(['before' => 'Before meal', 'after' => 'After meal'])
+                                    ->required(fn (Get $get): bool => (int) ($get('breakfast_dose') ?? 0) > 0)
+                                    ->native(false)
+                                    ->columnSpan(['default' => 12, 'md' => 6]),
 
-                                        'md' => 9,
+                                TextInput::make('lunch_dose')
+                                    ->label('Lunch Dose')
+                                    ->numeric()->integer()->minValue(0)->default(0)->required()->live()
+                                    ->afterStateUpdated(fn (Get $get, Set $set) => self::updateMedicineQuantity($set, $get))
+                                    ->columnSpan(['default' => 12, 'md' => 6]),
 
-                                    ]),
+                                Select::make('lunch_timing')
+                                    ->label('Lunch Timing')
+                                    ->options(['before' => 'Before meal', 'after' => 'After meal'])
+                                    ->required(fn (Get $get): bool => (int) ($get('lunch_dose') ?? 0) > 0)
+                                    ->native(false)
+                                    ->columnSpan(['default' => 12, 'md' => 6]),
+
+                                TextInput::make('dinner_dose')
+                                    ->label('Dinner Dose')
+                                    ->numeric()->integer()->minValue(0)->default(0)->required()->live()
+                                    ->afterStateUpdated(fn (Get $get, Set $set) => self::updateMedicineQuantity($set, $get))
+                                    ->columnSpan(['default' => 12, 'md' => 6]),
+
+                                Select::make('dinner_timing')
+                                    ->label('Dinner Timing')
+                                    ->options(['before' => 'Before meal', 'after' => 'After meal'])
+                                    ->required(fn (Get $get): bool => (int) ($get('dinner_dose') ?? 0) > 0)
+                                    ->native(false)
+                                    ->columnSpan(['default' => 12, 'md' => 6]),
+
+                                TextInput::make('duration_days')
+                                    ->label('Duration (Days)')
+                                    ->numeric()->integer()->minValue(1)->default(1)->required()->live()
+                                    ->afterStateUpdated(fn (Get $get, Set $set) => self::updateMedicineQuantity($set, $get))
+                                    ->columnSpan(['default' => 12, 'md' => 6]),
 
                                 TextInput::make('quantity')
-
-                                    ->label('Quantity')
-
-                                    ->numeric()
-
-                                    ->default(1)
-
-                                    ->minValue(1)
-
-                                    ->required()
-
+                                    ->label('Total Quantity')
+                                    ->numeric()->integer()->default(1)->minValue(1)->required()
+                                    ->readOnly(fn (Get $get): bool => self::hasMedicineSchedule($get))
                                     ->dehydrateStateUsing(
-
-                                        fn ($state) => blank($state)
-
-                                                ? 1
-
-                                                : (int) $state
-
+                                        fn ($state, Get $get): int => self::hasMedicineSchedule($get)
+                                            ? ConsultationMedicine::calculateQuantity(
+                                                (int) ($get('breakfast_dose') ?? 0),
+                                                (int) ($get('lunch_dose') ?? 0),
+                                                (int) ($get('dinner_dose') ?? 0),
+                                                (int) ($get('duration_days') ?? 1),
+                                            )
+                                            : max(1, (int) ($state ?: 1))
                                     )
+                                    ->helperText('Automatically calculated for meal schedules; manually editable for older prescriptions.')
+                                    ->extraInputAttributes(['class' => 'text-center font-bold'])
+                                    ->columnSpan(['default' => 12, 'md' => 6]),
 
-                                    ->extraInputAttributes([
-
-                                        'class' => 'text-center font-bold',
-
-                                    ])
-
-                                    ->columnSpan([
-
-                                        'default' => 12,
-
-                                        'md' => 3,
-
-                                    ]),
-
+                                TextInput::make('dosage')
+                                    ->label('Additional Directions (Optional)')
+                                    ->maxLength(255)
+                                    ->helperText('Preserves existing free-text directions for earlier prescriptions.')
+                                    ->columnSpanFull(),
                             ])
 
                             ->columns(12)
@@ -903,7 +937,7 @@ class ConsultationForm
 
                 */
 
-                Section::make('Doctor Notes')
+                Section::make('Clinical Notes')
 
                     ->description(
 
@@ -917,7 +951,7 @@ class ConsultationForm
 
                         Textarea::make('notes')
 
-                            ->label('Consultation Notes')
+                            ->label('Clinical Notes')
 
                             ->placeholder(
 

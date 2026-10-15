@@ -159,11 +159,11 @@
     <div class="center">
 
         <div class="clinic-name">
-            AYU SYSTEM
+            {{ config('branding.company_short_name') }}
         </div>
 
         <div class="subtitle">
-            Ayurveda Wellness & Healthcare
+            {{ config('branding.system_name') }}
         </div>
 
         <div class="title">
@@ -303,7 +303,7 @@
 
     <div class="footer">
         Payment received successfully.<br>
-        Thank you for choosing AYU SYSTEM.
+        Thank you for choosing {{ config('branding.company_short_name') }}.
     </div>
 
 </div>

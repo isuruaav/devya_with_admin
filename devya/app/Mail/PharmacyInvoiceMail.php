@@ -25,7 +25,7 @@ class PharmacyInvoiceMail extends Mailable
     {
         return new Envelope(
             from: new Address(config('mail.from.address'), config('mail.from.name')),
-            subject: 'Pharmacy Invoice '.$this->bill->bill_number.' - ISD Tech Hub (Pvt) Ltd',
+            subject: 'Pharmacy Invoice '.$this->bill->bill_number.' - '.config('branding.company_name'),
         );
     }
 

@@ -8,7 +8,7 @@
 <body style="margin:0;background:#f3f4f6;font-family:Arial,sans-serif;color:#1f2937;">
     <div style="max-width:620px;margin:32px auto;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e5e7eb;">
         <div style="background:#047857;padding:28px 32px;color:#ffffff;">
-            <div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#a7f3d0;">ISD Tech Hub (Pvt) Ltd</div>
+            <div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#a7f3d0;">{{ config('branding.company_name') }}</div>
             <h1 style="margin:8px 0 0;font-size:24px;">Your pharmacy invoice</h1>
         </div>
         <div style="padding:32px;">
@@ -28,7 +28,7 @@
                 </a>
             </p>
             <p style="font-size:14px;color:#6b7280;">The secure print link expires in 30 days. This invoice covers pharmacy medicines only; consultation and treatment charges are billed separately.</p>
-            <p style="margin-top:28px;">Warm regards,<br><strong>ISD Tech Hub (Pvt) Ltd</strong></p>
+            <p style="margin-top:28px;">Warm regards,<br><strong>{{ config('branding.company_name') }}</strong></p>
         </div>
     </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Book an Appointment | Ayu System</title>
+    <title>Book an Appointment | {{ config('branding.company_short_name') }}</title>
     <style>
         body{margin:0;background:#f1f8f5;color:#16332d;font-family:Arial,sans-serif}.wrap{max-width:760px;margin:40px auto;padding:24px}.card{background:#fff;border-radius:20px;padding:32px;box-shadow:0 16px 45px #17463f18}h1{margin:0 0 8px;font-size:32px}p{color:#58746d}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:grid;gap:7px}.full{grid-column:1/-1}label{font-weight:700;font-size:14px}input,select,textarea{width:100%;padding:12px;border:1px solid #c9ddd7;border-radius:10px;font:inherit;box-sizing:border-box}textarea{min-height:100px;resize:vertical}.button{border:0;border-radius:10px;padding:14px 20px;background:#087f5b;color:#fff;font-weight:800;cursor:pointer}.errors{padding:14px;background:#fff0f0;color:#a12828;border-radius:10px;margin-bottom:18px}@media(max-width:640px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
     </style>

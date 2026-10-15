@@ -117,8 +117,8 @@
 <body>
     <main class="receipt">
         <header class="center">
-            <div class="bold" style="font-size:17px;">ISD Tech Hub (Pvt) Ltd</div>
-            <div style="margin-top:3px;">Ayurveda &amp; Wellness Center</div>
+            <div class="bold" style="font-size:17px;">{{ config('branding.company_name') }}</div>
+            <div style="margin-top:3px;">{{ config('branding.system_name') }}</div>
             <div class="divider"></div>
             <div class="bold" style="font-size:14px;">RECEPTION BILL</div>
         </header>

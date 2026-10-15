@@ -47,7 +47,7 @@ return [
             'port' => env('MAIL_PORT', 2525),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
+            'timeout' => env('MAIL_TIMEOUT', 15),
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
 
@@ -113,8 +113,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@wedagedarafitness.com'),
-        'name' => env('MAIL_FROM_NAME', 'ISD Tech Hub (Pvt) Ltd'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@devyaceylon.lk'),
+        'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'DEVYA CEYLON')),
     ],
 
 ];

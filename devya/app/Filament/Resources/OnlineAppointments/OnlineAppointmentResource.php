@@ -35,6 +35,25 @@ class OnlineAppointmentResource extends Resource
         return auth()->user()?->canAccessModule('consultations') ?? false;
     }
 
+    public static function getNavigationBadge(): ?string
+    {
+        if (! static::canAccess() || static::getLoggedInDoctor() !== null) {
+            return null;
+        }
+
+        $pendingRequests = static::getEloquentQuery()
+            ->where('source', 'Website')
+            ->where('status', 'pending')
+            ->count();
+
+        return $pendingRequests > 0 ? (string) $pendingRequests : null;
+    }
+
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Pending website appointment requests';
+    }
+
     public static function table(Table $table): Table
     {
         return OnlineAppointmentsTable::configure($table);

@@ -45,7 +45,7 @@ class AdvertisementResource extends Resource
 
                         TextInput::make('title')
                             ->label('Advertisement Title')
-                            ->placeholder('Example: AYU Health & Wellness')
+                            ->placeholder('Example: DEVYA CEYLON')
                             ->maxLength(255),
 
                         FileUpload::make('media_path')

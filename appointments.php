@@ -133,9 +133,14 @@ require __DIR__ . '/includes/header.php';
 
         <input type="text" name="website" tabindex="-1" autocomplete="off" class="honeypot-field" aria-hidden="true">
 
+        <p class="form-help">After your request is saved, WhatsApp opens with a message to the Centre. Press Send to share your booking number.</p>
+
         <div class="form-actions">
           <button class="button button-primary" type="submit"><i class="fa-solid fa-calendar-check"></i> Submit Request</button>
           <a class="button button-secondary" href="tel:<?= e($site['phone_href']) ?>"><i class="fa-solid fa-phone"></i> Call Centre</a>
+        </div>
+        <div id="appointmentFollowUp" hidden>
+          <a class="button button-whatsapp" id="appointmentWhatsAppLink" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Send request to the Centre on WhatsApp</a>
         </div>
         <div class="form-status" id="appointmentStatus" role="status">Your request is being sent to the Devya system.</div>
       </form>

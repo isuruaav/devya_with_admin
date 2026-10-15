@@ -79,11 +79,11 @@
     <div class="text-center">
 
         <div class="text-[18px] font-extrabold leading-tight tracking-tight">
-            ISD Tech Hub (Pvt) Ltd
+            {{ config('branding.company_name') }}
         </div>
 
         <div class="mt-0.5 text-[11px] font-semibold">
-            Ayurveda &amp; Wellness Center
+            {{ config('branding.system_name') }}
         </div>
 
         <div class="text-[10px] text-gray-700">
@@ -654,7 +654,7 @@
         </div>
 
         <div class="mt-1 text-[9px] text-gray-700">
-            Thank you for choosing ISD Tech Hub (Pvt) Ltd.
+            Thank you for choosing {{ config('branding.company_name') }}.
         </div>
 
         <div class="mt-0.5 text-[9px] text-gray-700">
@@ -662,7 +662,7 @@
         </div>
 
         <div class="mt-1 text-[9px] font-semibold">
-            Ayurveda &amp; Wellness • Pharmacy
+            {{ config('branding.system_name') }} • Pharmacy
         </div>
 
     </div>

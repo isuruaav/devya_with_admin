@@ -11,25 +11,29 @@
                 {{-- Logo --}}
                 <div class="ayu-logo-wrapper">
                     <img
-                            src="{{ asset('images/logo.png') }}"
-                            alt="DEVYA System"
+                        src="{{ asset(config('branding.logo_path')) }}"
+                        alt="{{ config('branding.company_name') }} logo"
                         class="ayu-logo"
+                        width="88"
+                        height="88"
+                        fetchpriority="high"
                     >
                 </div>
 
                 {{-- Brand --}}
                 <div class="ayu-brand">
-                    <h1>DEVYA System</h1>
+                    <h1>{{ config('branding.company_name') }}</h1>
 
                     <p>
-                        Ayurveda Hospital &amp; Wellness
-                        Management System
+                        {{ config('branding.hospital_label') }}
                     </p>
+                    <span class="ayu-tagline">{{ config('branding.tagline') }}</span>
                 </div>
 
                 {{-- Heading --}}
                 <div class="ayu-heading">
-                    <h2>Ayurvedic Hospital</h2>
+                    <h2>Staff sign in</h2>
+                    <p>Manage appointments and patient care.</p>
                 </div>
 
                 {{-- Login Form --}}
@@ -132,8 +136,13 @@
                     </div>
 
                     <p>
-                        &copy; {{ date('Y') }} ISD Tech Hub (Pvt) Ltd
+                        &copy; {{ date('Y') }} {{ config('branding.company_name') }}
                     </p>
+
+                    <a class="ayu-website-link" href="{{ config('branding.website_url') }}">
+                        Visit {{ config('branding.website_label') }}
+                        <span aria-hidden="true">&nearr;</span>
+                    </a>
 
                 </div>
 
@@ -208,12 +217,13 @@
         ========================================================== */
 
         .ayu-login-page {
-            --ayu-page-background: #eef2ef;
+            --ayu-page-background: #fdfcf8;
             --ayu-card-background: #ffffff;
-            --ayu-card-border: #d8e0da;
-            --ayu-text: #18231c;
-            --ayu-brand: #065f46;
-            --ayu-muted: #647168;
+            --ayu-card-border: #dce7d7;
+            --ayu-text: #1b2a22;
+            --ayu-brand: #173f2b;
+            --ayu-gold: #a96f20;
+            --ayu-muted: #68746d;
             --ayu-input-background: #ffffff;
             --ayu-input-border: #cbd5ce;
 
@@ -225,17 +235,21 @@
             min-height: 100vh;
             overflow: hidden;
 
-            background: var(--ayu-page-background);
+            background:
+                radial-gradient(ellipse at 10% 15%, rgba(123, 157, 114, 0.18), transparent 50%),
+                radial-gradient(ellipse at 90% 85%, rgba(221, 180, 96, 0.20), transparent 50%),
+                var(--ayu-page-background);
             color: var(--ayu-text);
             color-scheme: light;
         }
 
         html.dark .ayu-login-page {
-            --ayu-page-background: #141a17;
-            --ayu-card-background: #222b26;
+            --ayu-page-background: #0a2117;
+            --ayu-card-background: #152c20;
             --ayu-card-border: #3c4b42;
             --ayu-text: #edf4ef;
-            --ayu-brand: #8ee1ba;
+            --ayu-brand: #dce7d7;
+            --ayu-gold: #f4d58d;
             --ayu-muted: #b1c0b7;
             --ayu-input-background: #18201b;
             --ayu-input-border: #53645a;
@@ -252,7 +266,7 @@
             position: relative;
             z-index: 5;
             width: 100%;
-            max-width: 470px;
+            max-width: 490px;
             padding: 28px 18px;
         }
 
@@ -269,11 +283,12 @@
             background: var(--ayu-card-background);
 
             border: 1px solid var(--ayu-card-border);
+            border-top: 3px solid #c9933a;
             border-radius: 28px;
 
             box-shadow:
-                0 35px 80px rgba(0, 0, 0, 0.22),
-                0 12px 30px rgba(0, 0, 0, 0.10);
+                0 28px 70px rgba(13, 56, 37, 0.12),
+                0 8px 24px rgba(13, 56, 37, 0.05);
 
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
@@ -285,8 +300,8 @@
         ========================================================== */
 
         .ayu-logo-wrapper {
-            width: 100px;
-            height: 100px;
+            width: 112px;
+            height: 112px;
             margin: 0 auto;
 
             display: flex;
@@ -295,18 +310,19 @@
 
             background: white;
 
-            border-radius: 26px;
+            border-radius: 28px;
 
             box-shadow:
-                0 10px 30px rgba(6, 78, 59, 0.15);
+                0 10px 30px rgba(169, 111, 32, 0.12);
 
-            border: 1px solid #e5e7eb;
+            border: 1px solid #ddb460;
         }
 
         .ayu-logo {
-            width: 76px;
-            height: 76px;
+            width: 88px;
+            height: 88px;
             object-fit: contain;
+            border-radius: 12px;
         }
 
 
@@ -322,11 +338,12 @@
         .ayu-brand h1 {
             margin: 0;
 
-            font-size: 29px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 30px;
             line-height: 1.2;
             font-weight: 800;
 
-            letter-spacing: 0;
+            letter-spacing: 0.06em;
 
             color: var(--ayu-brand);
         }
@@ -341,6 +358,15 @@
             color: var(--ayu-muted);
         }
 
+        .ayu-tagline {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--ayu-gold);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
 
         /* =========================================================
            HEADING
@@ -354,7 +380,7 @@
         .ayu-heading h2 {
             margin: 0;
 
-            font-size: 22px;
+            font-size: 20px;
             line-height: 1.3;
             font-weight: 700;
 
@@ -438,9 +464,9 @@
             background:
                 linear-gradient(
                     135deg,
-                    #047857 0%,
-                    #059669 55%,
-                    #0f766e 100%
+                    #235b3d 0%,
+                    #173f2b 55%,
+                    #0d3825 100%
                 );
 
             color: white;
@@ -451,7 +477,7 @@
             cursor: pointer;
 
             box-shadow:
-                0 10px 24px rgba(4, 120, 87, 0.28);
+                0 10px 24px rgba(13, 56, 37, 0.20);
 
             transition:
                 transform 0.18s ease,
@@ -463,9 +489,14 @@
             transform: translateY(-1px);
 
             box-shadow:
-                0 14px 28px rgba(4, 120, 87, 0.34);
+                0 14px 28px rgba(13, 56, 37, 0.28);
         }
 
+        .ayu-login-button:focus-visible,
+        .ayu-website-link:focus-visible {
+            outline: 3px solid #ddb460;
+            outline-offset: 4px;
+        }
         .ayu-login-button:active {
             transform: translateY(0);
         }
@@ -533,6 +564,25 @@
             color: var(--ayu-muted);
         }
 
+        .ayu-website-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 16px;
+            color: var(--ayu-brand);
+            font-size: 12px;
+            text-underline-offset: 4px;
+        }
+
+        .ayu-website-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ayu-login-button {
+                transition: none;
+            }
+        }
 
         /* =========================================================
            MOBILE

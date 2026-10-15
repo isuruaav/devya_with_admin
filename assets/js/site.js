@@ -153,6 +153,8 @@
   const preferredDate = document.getElementById("preferredDate");
   const serviceSelect = document.getElementById("service");
   const appointmentStatus = document.getElementById("appointmentStatus");
+  const appointmentFollowUp = document.getElementById("appointmentFollowUp");
+  const appointmentWhatsAppLink = document.getElementById("appointmentWhatsAppLink");
   const appointmentSubmit = appointmentForm?.querySelector('button[type="submit"]');
 
   if (preferredDate) {
@@ -193,6 +195,7 @@
     }
 
     appointmentSubmit?.setAttribute("disabled", "disabled");
+    if (appointmentFollowUp) appointmentFollowUp.hidden = true;
     showAppointmentStatus("Submitting your appointment request...", "info");
 
     try {
@@ -217,6 +220,13 @@
 
       showAppointmentStatus(`Your appointment request has been received. Booking number: ${payload.booking_number}. Staff will contact you to confirm availability.`, "success");
       appointmentForm.reset();
+
+      if (typeof payload.whatsapp_url === "string" && /^https:\/\/wa\.me\/\d{8,15}\?text=/.test(payload.whatsapp_url)) {
+        if (appointmentWhatsAppLink) appointmentWhatsAppLink.href = payload.whatsapp_url;
+        if (appointmentFollowUp) appointmentFollowUp.hidden = false;
+        showAppointmentStatus(`Your request is saved. Booking number: ${payload.booking_number}. Opening WhatsApp — press Send to notify the Centre.`, "success");
+        window.location.assign(payload.whatsapp_url);
+      }
     } catch (error) {
       showAppointmentStatus(error.message || "Unable to submit the appointment request. Please call the Centre.", "error");
     } finally {

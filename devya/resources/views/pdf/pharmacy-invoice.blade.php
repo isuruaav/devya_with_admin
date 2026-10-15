@@ -84,8 +84,8 @@
 </head>
 <body>
     <div class="center">
-        <div class="bold" style="font-size:15px;">ISD Tech Hub (Pvt) Ltd</div>
-        <div>Ayurveda &amp; Wellness Center</div>
+        <div class="bold" style="font-size:15px;">{{ config('branding.company_name') }}</div>
+        <div>{{ config('branding.system_name') }}</div>
         <div class="rule"></div>
         <div class="bold" style="font-size:12px;">PHARMACY BILL</div>
     </div>

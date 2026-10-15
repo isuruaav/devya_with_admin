@@ -1,5 +1,54 @@
 @import '../../../../vendor/filament/filament/resources/css/theme.css';
 
+.devya-panel-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    height: 100%;
+    text-align: left;
+}
+
+.devya-panel-brand img {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    padding: 3px;
+    object-fit: contain;
+    background: #fffaf0;
+    border: 1px solid #ddb460;
+    border-radius: 12px;
+}
+
+.devya-panel-brand-copy {
+    display: grid;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.devya-panel-brand-copy strong {
+    color: #173f2b;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.devya-panel-brand-copy small {
+    color: #68746d;
+    font-size: 0.6rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+html.dark .devya-panel-brand-copy strong {
+    color: #edf4e9;
+}
+
+html.dark .devya-panel-brand-copy small {
+    color: #dce7d7;
+}
+
 /* Filament PHP classes */
 @source '../../../../app/Filament/**/*.php';
 

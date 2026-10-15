@@ -41,17 +41,17 @@
                     <div class="flex items-center gap-3">
 
                         <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-xl font-black text-white shadow-lg">
-                            A
+                            {{ substr(config('branding.queue_short_name'), 0, 1) }}
                         </div>
 
                         <div class="min-w-0">
 
                             <h1 class="truncate text-xl font-black tracking-tight text-white sm:text-2xl">
-                                AYU
+                                {{ config('branding.queue_short_name') }}
                             </h1>
 
                             <p class="truncate text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-400 sm:text-xs">
-                                Ayurvedic Health & Wellness
+                                {{ config('branding.queue_tagline') }}
                             </p>
 
                         </div>
@@ -321,11 +321,11 @@
                         <div>
 
                             <p class="text-xs font-black uppercase tracking-[0.2em] text-emerald-400">
-                                AYU
+                                {{ config('branding.queue_short_name') }}
                             </p>
 
                             <h2 class="mt-1 text-lg font-black text-white sm:text-xl">
-                                Health & Wellness
+                                {{ config('branding.queue_secondary_name') }}
                             </h2>
 
                         </div>
@@ -353,11 +353,11 @@
                             <div class="text-center">
 
                                 <div class="text-7xl font-black tracking-tight text-slate-700 sm:text-8xl">
-                                    AYU
+                                    {{ config('branding.queue_short_name') }}
                                 </div>
 
                                 <div class="mt-3 text-xs font-black uppercase tracking-[0.3em] text-slate-600">
-                                    Health & Wellness
+                                    {{ config('branding.queue_secondary_name') }}
                                 </div>
 
                             </div>
@@ -1287,11 +1287,11 @@
                         <div class="text-center">
 
                             <div class="text-7xl font-black tracking-tight text-slate-700 sm:text-8xl">
-                                AYU
+                                {{ config('branding.queue_short_name') }}
                             </div>
 
                             <div class="mt-3 text-xs font-black uppercase tracking-[0.3em] text-slate-600">
-                                Health & Wellness
+                                {{ config('branding.queue_secondary_name') }}
                             </div>
 
                         </div>

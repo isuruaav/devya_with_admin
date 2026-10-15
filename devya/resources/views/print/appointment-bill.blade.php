@@ -242,11 +242,11 @@
     <div class="center">
 
         <div class="clinic-name">
-            AYU SYSTEM
+            {{ config('branding.company_short_name') }}
         </div>
 
         <div class="clinic-subtitle">
-            Ayurveda Wellness & Healthcare
+            {{ config('branding.system_name') }}
         </div>
 
         <div class="title">

@@ -63,7 +63,7 @@
 
 <div class="header">
     <h1>PAYMENT RECEIPT</h1>
-    <p>Ayu System</p>
+    <p>{{ config('branding.company_short_name') }}</p>
 </div>
 
 <div class="paid">

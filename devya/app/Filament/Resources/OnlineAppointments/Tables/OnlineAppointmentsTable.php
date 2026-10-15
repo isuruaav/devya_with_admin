@@ -5,6 +5,7 @@ namespace App\Filament\Resources\OnlineAppointments\Tables;
 use App\Filament\Resources\Consultations\ConsultationResource;
 use App\Models\Doctor;
 use App\Models\OnlineAppointment;
+use App\Support\AppointmentWhatsApp;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\Select;
@@ -435,7 +436,7 @@ class OnlineAppointmentsTable
 
                                     $record->ensureInvoice();
 
-                                    Notification::make()
+                                    $notification = Notification::make()
                                         ->title(
                                             'Appointment confirmed'
                                         )
@@ -443,8 +444,22 @@ class OnlineAppointmentsTable
                                             'Invoice created: '
                                             .$record->invoice_number
                                         )
-                                        ->success()
-                                        ->send();
+                                        ->success();
+
+                                    if ($whatsAppUrl = AppointmentWhatsApp::confirmationUrl($record)) {
+                                        $notification
+                                            ->body('Invoice created: '.$record->invoice_number.'. Open WhatsApp and press Send to notify the patient.')
+                                            ->persistent()
+                                            ->actions([
+                                                Action::make('sendWhatsAppConfirmation')
+                                                    ->label('Send WhatsApp Confirmation')
+                                                    ->button()
+                                                    ->url($whatsAppUrl)
+                                                    ->openUrlInNewTab(),
+                                            ]);
+                                    }
+
+                                    $notification->send();
 
                                 } catch (Throwable $e) {
 
@@ -459,6 +474,18 @@ class OnlineAppointmentsTable
                                 }
                             }
                         ),
+
+                    Action::make('whatsAppConfirmation')
+                        ->label('Send WhatsApp Confirmation')
+                        ->icon('heroicon-o-chat-bubble-left-right')
+                        ->color('success')
+                        ->visible(
+                            fn (OnlineAppointment $record): bool => ! static::isDoctor()
+                                && AppointmentWhatsApp::confirmationUrl($record) !== null
+                        )
+                        ->url(fn (OnlineAppointment $record): ?string => AppointmentWhatsApp::confirmationUrl($record))
+                        ->openUrlInNewTab()
+                        ->tooltip('Open the confirmation message in WhatsApp, then press Send.'),
 
                     /*
                     |--------------------------------------------------------------------------

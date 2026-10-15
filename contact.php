@@ -111,9 +111,9 @@ require __DIR__ . '/includes/header.php';
 
   <section class="section intro-section">
     <div class="container">
-      <div class="section-head center reveal"><span class="eyebrow"><i class="fa-solid fa-address-card"></i> Contact options</span><h2>Reach the Centre in the way that suits you.</h2><p>Use phone or WhatsApp for appointment support. The Centre operates through confirmed appointments.</p></div>
+      <div class="section-head center reveal"><span class="eyebrow"><i class="fa-solid fa-address-card"></i> Contact options</span><h2>Reach the Centre in the way that suits you.</h2><p>Use phone, WhatsApp or email for appointment support. The Centre operates through confirmed appointments.</p></div>
       <div class="contact-grid">
-        <article class="contact-card reveal"><i class="fa-solid fa-phone-volume"></i><h3>Call the Centre</h3><p>Speak with the team about services, availability and appointment coordination.</p><a href="tel:<?= e($site['phone_href']) ?>"><?= e($site['phone_display']) ?></a></article>
+        <article class="contact-card reveal"><i class="fa-solid fa-phone-volume"></i><h3>Call or Email the Centre</h3><p>Contact the team about services, availability and appointment coordination.</p><a href="tel:<?= e($site['phone_href']) ?>"><?= e($site['phone_display']) ?></a><a class="contact-email" href="mailto:<?= e($site['email']) ?>"><?= e($site['email']) ?></a></article>
         <article class="contact-card reveal"><i class="fa-brands fa-whatsapp"></i><h3>WhatsApp Support</h3><p>Send a structured appointment request or a short service enquiry.</p><a href="https://wa.me/<?= e($site['whatsapp']) ?>" target="_blank" rel="noopener">Start WhatsApp chat</a></article>
         <article class="contact-card reveal"><i class="fa-solid fa-calendar-check"></i><h3>Online Request</h3><p>Select your preferred service, date and response method through the booking page.</p><a href="<?= e(site_url('appointments.php')) ?>">Open appointment form</a></article>
         <article class="contact-card reveal"><i class="fa-solid fa-location-dot"></i><h3>Centre Location</h3><p>DEVYA CEYLON Ayurveda Channelling Centre is located in Kandy, Sri Lanka.</p><a href="<?= e($site['maps_url']) ?>" target="_blank" rel="noopener">View Kandy on Google Maps</a></article>

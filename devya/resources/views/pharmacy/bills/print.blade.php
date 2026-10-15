@@ -52,7 +52,7 @@
         <div class="text-center">
 
             <div class="text-2xl font-black tracking-wider text-emerald-800">
-                AYU SYSTEM
+                {{ config('branding.company_short_name') }}
             </div>
 
             <div class="mt-1 text-xs font-bold uppercase tracking-wide text-gray-700">
@@ -60,7 +60,7 @@
             </div>
 
             <div class="mt-1 text-[9px] text-gray-500">
-                Ayurveda & Wellness Centre
+                {{ config('branding.system_name') }}
             </div>
 
         </div>

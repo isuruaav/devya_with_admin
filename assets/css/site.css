@@ -403,6 +403,7 @@ textarea.form-control { min-height: 130px; resize: vertical; }
 .contact-card h3 { margin: 18px 0 0; font-family: "Playfair Display",Georgia,serif; color: var(--forest-900); font-size: 1.3rem; }
 .contact-card p { margin: 9px 0 0; color: var(--muted); line-height: 1.65; }
 .contact-card a { display: inline-flex; margin-top: 14px; color: var(--forest-700); font-weight: 700; }
+.contact-card .contact-email { display: flex; overflow-wrap: anywhere; }
 .faq-list { display: grid; gap: 12px; max-width: 880px; margin: 0 auto; }
 .faq-item { overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: white; }
 .faq-question { width: 100%; display: flex; justify-content: space-between; gap: 20px; align-items: center; border: 0; background: transparent; padding: 20px; color: var(--forest-900); text-align: left; font-weight: 700; }
@@ -430,7 +431,7 @@ textarea.form-control { min-height: 130px; resize: vertical; }
 .footer-contact-card { border: 1px solid rgba(255,255,255,.12); border-radius: 24px; background: rgba(255,255,255,.06); padding: 25px; backdrop-filter: blur(8px); }
 .footer-contact-card h2 { margin: 11px 0 0; font-family: "Playfair Display",Georgia,serif; font-size: 1.75rem; }
 .footer-contact-card p { color: rgba(255,255,255,.62); font-size: .86rem; line-height: 1.7; }
-.footer-phone { display: flex; align-items: center; gap: 9px; margin-top: 16px; color: var(--gold-300); font-weight: 700; }
+.footer-phone, .footer-email { display: flex; align-items: center; gap: 9px; margin-top: 16px; color: var(--gold-300); font-weight: 700; overflow-wrap: anywhere; }
 .footer-bottom { position: relative; z-index: 1; min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 58px; border-top: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.52); font-size: .8rem; }
 .floating-whatsapp { position: fixed; right: 18px; bottom: 18px; z-index: 800; display: inline-flex; align-items: center; gap: 9px; border-radius: 999px; background: #1fa855; color: white; padding: 13px 17px; box-shadow: 0 18px 45px rgba(31,168,85,.32); font-size: .8rem; font-weight: 700; }
 .floating-whatsapp i { font-size: 1.2rem; }
@@ -468,7 +469,7 @@ textarea.form-control { min-height: 130px; resize: vertical; }
   .footer-contact-card { grid-column: 1 / -1; display: grid; grid-template-columns: 1.1fr 1fr auto; gap: 18px; align-items: center; }
   .footer-contact-card p { margin: 0; }
   .footer-contact-card .button { justify-self: end; }
-  .footer-phone { grid-column: 3; margin-top: -5px; justify-self: end; }
+  .footer-phone, .footer-email { grid-column: 3; margin-top: -5px; justify-self: end; }
 }
 
 @media (max-width: 960px) {
@@ -491,7 +492,7 @@ textarea.form-control { min-height: 130px; resize: vertical; }
   .footer-brand-card { grid-column: 1 / -1; }
   .footer-contact-card { grid-column: 1 / -1; display: block; }
   .footer-contact-card .button { margin-top: 12px; }
-  .footer-phone { margin-top: 16px; }
+  .footer-phone, .footer-email { margin-top: 16px; }
 }
 
 @media (max-width: 680px) {

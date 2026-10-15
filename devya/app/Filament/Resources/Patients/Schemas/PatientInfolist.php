@@ -7,7 +7,6 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Illuminate\Support\Facades\Storage;
 
 class PatientInfolist
 {
@@ -41,9 +40,14 @@ class PatientInfolist
                                         // Patient Photo
                                         ImageEntry::make('patient_photo')
                                             ->label('Photo')
-                                            ->disk('public')
+                                            ->getStateUsing(fn (\App\Models\Patient $record): ?string =>
+                                                filled($record->patient_photo)
+                                                    ? route('patients.photo', ['patient' => $record->getKey()])
+                                                    : null
+                                            )
                                             ->height(160)
                                             ->width(130)
+                                            ->alt('Patient profile photo')
                                             ->extraAttributes(['class' => 'patient-profile-photo'])
                                             ->columnSpan(1),
 
@@ -192,7 +196,7 @@ class PatientInfolist
                                         : 'No document uploaded'
                                     )
                                     ->url(fn ($state) => $state
-                                        ? Storage::disk('confidential')->temporaryUrl($state, now()->addMinutes(30))
+                                        ? asset('storage/'.$state)
                                         : null
                                     )
                                     ->openUrlInNewTab()

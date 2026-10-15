@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="10">
-    <title>Patient Queue | Ayu System</title>
+    <title>Patient Queue | {{ config('branding.company_short_name') }}</title>
     <style>
         :root { color-scheme: dark; font-family: Arial, sans-serif; }
         * { box-sizing: border-box; }
