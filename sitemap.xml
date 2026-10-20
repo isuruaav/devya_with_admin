@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+ <url>
+  <loc>https://devyaceylon.lk/?lang=en</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/?lang=si</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/about-us.php?lang=en</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/about-us.php?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/about-us.php?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/about-us.php?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/about-us.php?lang=si</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/about-us.php?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/about-us.php?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/about-us.php?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/services.php?lang=en</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/services.php?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/services.php?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/services.php?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/services.php?lang=si</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/services.php?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/services.php?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/services.php?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/facilities.php?lang=en</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/facilities.php?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/facilities.php?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/facilities.php?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/facilities.php?lang=si</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/facilities.php?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/facilities.php?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/facilities.php?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/appointments.php?lang=en</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/appointments.php?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/appointments.php?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/appointments.php?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/appointments.php?lang=si</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/appointments.php?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/appointments.php?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/appointments.php?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/contact.php?lang=en</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/contact.php?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/contact.php?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/contact.php?lang=en"/>
+ </url>
+ <url>
+  <loc>https://devyaceylon.lk/contact.php?lang=si</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://devyaceylon.lk/contact.php?lang=en"/>
+  <xhtml:link rel="alternate" hreflang="si" href="https://devyaceylon.lk/contact.php?lang=si"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://devyaceylon.lk/contact.php?lang=en"/>
+ </url>
+</urlset>

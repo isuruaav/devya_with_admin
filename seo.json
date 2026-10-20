@@ -1,0 +1,62 @@
+{
+  "home": {
+    "en": {
+      "title": "Ayurveda Centre in Kandy | Devya Ceylon",
+      "description": "Explore Ayurveda consultations, weekly doctor clinics and wellness services at Devya Ceylon in Kandy. Request an appointment or call 072 200 0008."
+    },
+    "si": {
+      "title": "මහනුවර ආයුර්වේද වෛද්‍ය මධ්‍යස්ථානය | Devya Ceylon",
+      "description": "මහනුවර Devya Ceylon වෙතින් ආයුර්වේද වෛද්‍ය උපදේශන, සතිපතා විශේෂ සායන සහ සුවතා සේවා පිළිබඳ දැනගන්න. හමුවක් ඉල්ලන්න හෝ 072 200 0008 අමතන්න."
+    }
+  },
+  "about": {
+    "en": {
+      "title": "About Our Ayurveda Centre in Kandy | Devya Ceylon",
+      "description": "Learn about Devya Ceylon Ayurveda Centre in Kandy, our vision, mission and approach to traditional Sri Lankan Ayurveda and patient-centred care."
+    },
+    "si": {
+      "title": "අපගේ ආයුර්වේද මධ්‍යස්ථානය ගැන | Devya Ceylon",
+      "description": "මහනුවර Devya Ceylon ආයුර්වේද මධ්‍යස්ථානයේ පසුබිම, දැක්ම, මෙහෙවර සහ රෝගීන්ගේ අවශ්‍යතාවලට මුල්තැන දෙන සත්කාර ක්‍රමය පිළිබඳ දැනගන්න."
+    }
+  },
+  "services": {
+    "en": {
+      "title": "Ayurveda Consultations & Clinics in Kandy | Devya Ceylon",
+      "description": "Explore Ayurveda consultations, specialist clinics and wellness programmes in Kandy. Contact Devya Ceylon to confirm suitability and availability."
+    },
+    "si": {
+      "title": "මහනුවර ආයුර්වේද සේවා හා විශේෂ සායන | Devya Ceylon",
+      "description": "මහනුවර ආයුර්වේද වෛද්‍ය උපදේශන, විශේෂඥ සායන සහ සුවතා වැඩසටහන් දැනගන්න. සේවා ලබාගත හැකිද සහ ඔබට සුදුසුද යන්න Devya Ceylon වෙතින් විමසන්න."
+    }
+  },
+  "facilities": {
+    "en": {
+      "title": "Ayurveda Facilities & Team in Kandy | Devya Ceylon",
+      "description": "Discover the consultation spaces, proposed Panchakarma facilities, pharmacy support and professional team roles at Devya Ceylon Ayurveda Centre in Kandy."
+    },
+    "si": {
+      "title": "ආයුර්වේද පහසුකම් හා කාර්ය මණ්ඩලය | Devya Ceylon",
+      "description": "මහනුවර Devya Ceylon හි වෛද්‍ය උපදේශන ස්ථාන, යෝජිත පංචකර්ම පහසුකම්, ඖෂධාල සේවා සහ වෘත්තීය කාර්ය මණ්ඩලයේ වගකීම් පිළිබඳ දැනගන්න."
+    }
+  },
+  "appointments": {
+    "en": {
+      "title": "Request an Ayurveda Appointment in Kandy | Devya Ceylon",
+      "description": "Request an Ayurveda appointment at Devya Ceylon in Kandy. Consultations: Mon-Sat 4:30 PM-9 PM; Sunday 9 AM-5 PM. Staff confirmation is required."
+    },
+    "si": {
+      "title": "මහනුවර ආයුර්වේද වෛද්‍ය හමුවක් ඉල්ලන්න | Devya Ceylon",
+      "description": "Devya Ceylon වෛද්‍ය හමුවක් ඉල්ලන්න. සඳුදා-සෙනසුරාදා ප.ව. 4:30-9:00 සහ ඉරිදා පෙ.ව. 9:00-ප.ව. 5:00. අවසන් හමුව කාර්ය මණ්ඩලය තහවුරු කළ යුතුය."
+    }
+  },
+  "contact": {
+    "en": {
+      "title": "Contact & Consultation Hours in Kandy | Devya Ceylon",
+      "description": "Visit Devya Ceylon at 853/1/A, Old Peradeniya Road, Kandy. Call Dr. Varuni on 072 200 0008 or Ms. Chathurika on 076 766 7644 for appointment support."
+    },
+    "si": {
+      "title": "මහනුවර ලිපිනය හා වෛද්‍ය හමුවීම් වේලාවන් | Devya Ceylon",
+      "description": "Devya Ceylon: 853/1/A, පැරණි පේරාදෙණිය පාර, මහනුවර. හමුවීම් සඳහා වෛද්‍ය වරුණි 072 200 0008 හෝ චතුරිකා මහත්මිය 076 766 7644 අමතන්න."
+    }
+  }
+}

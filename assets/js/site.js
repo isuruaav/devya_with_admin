@@ -1,6 +1,29 @@
 (() => {
   "use strict";
 
+  let translations = {};
+  try {
+    translations = JSON.parse(document.getElementById("siteTranslations")?.textContent || "{}");
+  } catch (error) {
+    console.error("Unable to read website translations.", error);
+  }
+
+  function t(message, replacements = {}) {
+    const translated = translations[message] || message;
+    return translated.replace(/\{([a-z_]+)\}/g, (token, name) => String(replacements[name] ?? token));
+  }
+
+  // Keep the same section when switching language on a page with an anchor.
+  function syncLanguageLinks() {
+    document.querySelectorAll("[data-language-link]").forEach((link) => {
+      const url = new URL(link.href);
+      url.hash = window.location.hash;
+      link.href = url.href;
+    });
+  }
+  syncLanguageLinks();
+  window.addEventListener("hashchange", syncLanguageLinks);
+
   const body = document.body;
   const header = document.getElementById("siteHeader");
   const menuToggle = document.getElementById("menuToggle");
@@ -11,7 +34,7 @@
     if (!menuToggle) return;
     body.classList.toggle("nav-open", open);
     menuToggle.setAttribute("aria-expanded", String(open));
-    menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    menuToggle.setAttribute("aria-label", t(open ? "Close menu" : "Open menu"));
   }
 
   menuToggle?.addEventListener("click", () => {
@@ -41,7 +64,7 @@
 
   window.addEventListener("scroll", syncScrollUI, { passive: true });
   window.addEventListener("resize", () => {
-    if (window.innerWidth >= 1180) setMenu(false);
+    if (window.innerWidth > 1280) setMenu(false);
     syncScrollUI();
   });
   syncScrollUI();
@@ -83,17 +106,14 @@
     if (!content) return;
 
     if (heroEyebrow) heroEyebrow.textContent = content.eyebrow || "";
-    if (heroTitle) heroTitle.innerHTML = formatHeroTitle(content.title || "");
+    if (heroTitle) heroTitle.innerHTML = formatHeroTitle(content.title || "", content.emphasis || "");
     if (heroText) heroText.textContent = content.text || "";
   }
 
-  function formatHeroTitle(title) {
-    const phrases = ["thoughtfully connected.", "specialist Ayurveda care.", "your wellness journey."];
-    let formatted = escapeHtml(title);
-    phrases.forEach((phrase) => {
-      formatted = formatted.replace(phrase, `<em>${phrase}</em>`);
-    });
-    return formatted;
+  function formatHeroTitle(title, emphasis) {
+    const formatted = escapeHtml(title);
+    const phrase = escapeHtml(emphasis);
+    return phrase ? formatted.replace(phrase, `<em>${phrase}</em>`) : formatted;
   }
 
   function escapeHtml(value) {
@@ -151,11 +171,17 @@
   // Appointment form to Devya system
   const appointmentForm = document.getElementById("appointmentForm");
   const preferredDate = document.getElementById("preferredDate");
+  const preferredTime = document.getElementById("preferredTime");
+  const preferredTimeHelp = document.getElementById("preferredTimeHelp");
   const serviceSelect = document.getElementById("service");
   const appointmentStatus = document.getElementById("appointmentStatus");
   const appointmentFollowUp = document.getElementById("appointmentFollowUp");
   const appointmentWhatsAppLink = document.getElementById("appointmentWhatsAppLink");
   const appointmentSubmit = appointmentForm?.querySelector('button[type="submit"]');
+
+  appointmentForm?.addEventListener("input", (event) => {
+    event.target.removeAttribute("aria-invalid");
+  });
 
   if (preferredDate) {
     const today = new Date();
@@ -164,6 +190,31 @@
     const day = String(today.getDate()).padStart(2, "0");
     preferredDate.min = `${year}-${month}-${day}`;
   }
+
+  function syncConsultationTimes() {
+    if (!preferredDate || !preferredTime) return;
+
+    const hasDate = Boolean(preferredDate.value);
+    const isSunday = hasDate && new Date(`${preferredDate.value}T12:00:00`).getDay() === 0;
+    const consultationDay = isSunday ? "sunday" : "weekday";
+
+    preferredTime.querySelectorAll("[data-consultation-day]").forEach((option) => {
+      const unavailable = hasDate && option.dataset.consultationDay !== consultationDay;
+      option.disabled = unavailable;
+      option.hidden = unavailable;
+    });
+
+    if (preferredTime.selectedOptions[0]?.disabled) preferredTime.selectedIndex = 0;
+    if (preferredTimeHelp) {
+      preferredTimeHelp.textContent = hasDate
+        ? t("Consultation time: {time}. Final time requires staff confirmation.", { time: isSunday ? preferredTime.dataset.sundayHours : preferredTime.dataset.weekdayHours })
+        : t("Choose a date to see the available consultation period.");
+    }
+  }
+
+  preferredDate?.addEventListener("change", syncConsultationTimes);
+  appointmentForm?.addEventListener("reset", () => window.requestAnimationFrame(syncConsultationTimes));
+  syncConsultationTimes();
 
   if (serviceSelect) {
     const requestedService = new URLSearchParams(window.location.search).get("service");
@@ -196,39 +247,50 @@
 
     appointmentSubmit?.setAttribute("disabled", "disabled");
     if (appointmentFollowUp) appointmentFollowUp.hidden = true;
-    showAppointmentStatus("Submitting your appointment request...", "info");
+    showAppointmentStatus(t("Submitting your appointment request..."), "info");
 
     try {
       const response = await fetch(endpoint, {
         method: "POST",
         body: formData,
         headers: {
-          Accept: "application/json"
+          Accept: "application/json",
+          "Accept-Language": document.documentElement.lang
         }
       });
 
       const payload = await response.json().catch(() => null);
 
       if (!response.ok) {
-        const validationErrors = payload?.errors ? Object.values(payload.errors).flat().join(" ") : "";
-        throw new Error(validationErrors || payload?.message || "Unable to submit the appointment request.");
+        // Keep backend validation keys and stored values in their existing format.
+        // The public form explains failures in the visitor's selected language.
+        let message = t("Unable to submit the appointment request.");
+        if (response.status === 422 && payload?.errors) {
+          message = t("Please check the highlighted fields and try again.");
+          appointmentForm.querySelectorAll('[aria-invalid="true"]').forEach((field) => field.removeAttribute("aria-invalid"));
+          Object.keys(payload.errors).forEach((name) => appointmentForm.elements.namedItem(name)?.setAttribute("aria-invalid", "true"));
+          appointmentForm.querySelector('[aria-invalid="true"]')?.focus();
+        } else if (response.status >= 500 || response.status === 429) {
+          message = t("The service is temporarily unavailable. Please try again shortly or call the Centre.");
+        }
+        throw new Error(message);
       }
 
       if (!payload?.booking_number) {
-        throw new Error("Unable to confirm your booking. Please call the Centre before submitting again.");
+        throw new Error(t("Unable to confirm your booking. Please call the Centre before submitting again."));
       }
 
-      showAppointmentStatus(`Your appointment request has been received. Booking number: ${payload.booking_number}. Staff will contact you to confirm availability.`, "success");
+      showAppointmentStatus(t("Your appointment request has been received. Booking number: {booking_number}. Staff will contact you to confirm availability.", { booking_number: payload.booking_number }), "success");
       appointmentForm.reset();
 
       if (typeof payload.whatsapp_url === "string" && /^https:\/\/wa\.me\/\d{8,15}\?text=/.test(payload.whatsapp_url)) {
         if (appointmentWhatsAppLink) appointmentWhatsAppLink.href = payload.whatsapp_url;
         if (appointmentFollowUp) appointmentFollowUp.hidden = false;
-        showAppointmentStatus(`Your request is saved. Booking number: ${payload.booking_number}. Opening WhatsApp — press Send to notify the Centre.`, "success");
+        showAppointmentStatus(t("Your request is saved. Booking number: {booking_number}. Opening WhatsApp — press Send to notify the Centre.", { booking_number: payload.booking_number }), "success");
         window.location.assign(payload.whatsapp_url);
       }
     } catch (error) {
-      showAppointmentStatus(error.message || "Unable to submit the appointment request. Please call the Centre.", "error");
+      showAppointmentStatus(error instanceof TypeError ? t("Unable to submit the appointment request. Please call the Centre.") : (error.message || t("Unable to submit the appointment request. Please call the Centre.")), "error");
     } finally {
       appointmentSubmit?.removeAttribute("disabled");
     }

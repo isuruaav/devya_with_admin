@@ -212,6 +212,92 @@ button { cursor: pointer; }
 .trust-item:last-child { border-right: 0; }
 .trust-item i { color: var(--gold-700); }
 
+/* Weekly attending doctors and shared visiting information */
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.hero-schedule-link { flex-basis: 100%; width: fit-content; margin-top: 8px; font-size: .9rem; }
+.doctor-schedule-section { scroll-margin-top: 100px; background: linear-gradient(135deg, var(--sage-100), var(--cream-100)); }
+.schedule-heading { max-width: 780px; }
+.schedule-heading h2 { font-size: clamp(2.2rem, 4.3vw, 3.7rem); line-height: 1.1; }
+.schedule-heading h2 span { display: block; color: var(--gold-700); }
+.schedule-panel { overflow: hidden; border: 1px solid var(--line-strong); border-radius: 26px; background: white; box-shadow: var(--shadow-sm); }
+.schedule-hours { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 26px 30px; background: var(--forest-900); color: white; }
+.schedule-hours h3 { margin: 0; font-family: "Playfair Display", Georgia, serif; font-size: 1.45rem; }
+.consultation-hours { display: grid; gap: 16px; }
+.consultation-hours-item { display: flex; align-items: flex-start; gap: 12px; }
+.consultation-hours-item > i { margin-top: 3px; color: var(--gold-700); }
+.consultation-hours-item strong, .consultation-hours-item span { display: block; }
+.consultation-hours-item strong { font-size: .86rem; }
+.consultation-hours-item span { margin-top: 5px; font-size: .95rem; line-height: 1.5; }
+.schedule-hours .consultation-hours { grid-template-columns: 1fr 1fr; gap: 36px; }
+.schedule-hours .consultation-hours-item > i { color: var(--gold-300); }
+.schedule-hours .consultation-hours-item strong { color: var(--gold-300); }
+.doctor-schedule-table { width: 100%; border-collapse: collapse; text-align: left; font-size: .9rem; line-height: 1.6; }
+.doctor-schedule-table th, .doctor-schedule-table td { padding: 20px 24px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.doctor-schedule-table thead th { padding-block: 14px; background: var(--sage-100); color: var(--forest-900); font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; }
+.doctor-schedule-table thead th:nth-child(1) { width: 13%; }
+.doctor-schedule-table thead th:nth-child(2) { width: 25%; }
+.doctor-schedule-table thead th:nth-child(3) { width: 26%; }
+.doctor-schedule-table tbody tr:nth-child(even) { background: #f7faf6; }
+.doctor-schedule-table tbody tr.schedule-sunday { background: var(--cream-100); }
+.schedule-day, .schedule-doctor { color: var(--forest-900); }
+.schedule-clinic-link { display: inline; color: var(--forest-700); }
+.schedule-clinic-link i { margin-left: 8px; color: var(--gold-700); font-size: .7rem; }
+.schedule-clinic-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.schedule-clinic-link:focus-visible { outline: 2px solid var(--gold-700); outline-offset: 4px; }
+.schedule-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 30px; }
+.schedule-footer p { display: flex; align-items: center; gap: 10px; margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.6; }
+.schedule-footer p i { color: var(--gold-700); }
+.schedule-footer .button { flex-shrink: 0; }
+.consultation-card { margin-bottom: 20px; padding: 26px; border: 1px solid var(--line-strong); border-radius: 24px; background: var(--cream-100); color: var(--forest-900); }
+.consultation-card h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; font-family: "Playfair Display", Georgia, serif; font-size: 1.5rem; }
+.consultation-card h2 > i { color: var(--gold-700); font-size: 1.2rem; }
+.consultation-card p { margin: 20px 0 14px; color: var(--muted); font-size: .9rem; line-height: 1.7; }
+.consultation-card .text-link { font-size: .88rem; line-height: 1.6; }
+.contact-consultation-card { margin: 24px 0 0; }
+.contact-consultation-card .consultation-hours { grid-template-columns: 1fr 1fr; max-width: 680px; }
+.contact-card a.contact-phone { display: flex; flex-direction: column; gap: 4px; }
+.contact-phone span { color: var(--muted); font-size: .8rem; font-weight: 500; }
+.footer-hours { margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.15); }
+.footer-hours h3 { margin: 0 0 16px; color: var(--gold-300); font-size: .86rem; }
+.footer-hours .consultation-hours-item > i { color: var(--gold-300); }
+.footer-hours .consultation-hours-item strong { color: rgba(255,255,255,.8); font-size: .78rem; }
+.footer-hours .consultation-hours-item span { color: white; font-size: .85rem; }
+
+@media (min-width: 1181px) {
+  .header-inner { gap: 18px; }
+  .nav-link { padding-inline: .6rem; }
+}
+@media (min-width: 1181px) and (max-width: 1280px) {
+  .desktop-nav, .header-book { display: none; }
+  .menu-toggle { display: grid; }
+  .mobile-menu { display: block; }
+}
+@media (max-width: 1280px) {
+  .header-actions { margin-left: auto; }
+}
+@media (max-width: 960px) {
+  .schedule-hours { align-items: flex-start; flex-direction: column; }
+  .schedule-hours .consultation-hours { width: 100%; }
+  .doctor-schedule-table th, .doctor-schedule-table td { padding: 16px; }
+}
+@media (max-width: 680px) {
+  .doctor-schedule-section { scroll-margin-top: 88px; }
+  .schedule-panel { padding: 12px; border-radius: 22px; }
+  .schedule-hours { padding: 22px 18px; border-radius: 14px; }
+  .schedule-hours .consultation-hours, .contact-consultation-card .consultation-hours { grid-template-columns: 1fr; gap: 18px; }
+  .doctor-schedule-table, .doctor-schedule-table tbody { display: block; }
+  .doctor-schedule-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .doctor-schedule-table tbody { display: grid; gap: 14px; padding-top: 14px; }
+  .doctor-schedule-table tbody tr { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: white; }
+  .doctor-schedule-table th, .doctor-schedule-table td { display: block; padding: 12px 18px; border: 0; }
+  .doctor-schedule-table tbody th { padding-block: 13px; background: var(--sage-100); }
+  .doctor-schedule-table .schedule-sunday th { background: var(--cream-200); }
+  .doctor-schedule-table td::before { content: attr(data-label); display: block; margin-bottom: 4px; color: var(--muted); font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .doctor-schedule-table td:last-child { padding-bottom: 20px; }
+  .schedule-doctor { font-size: 1rem; }
+  .schedule-footer { align-items: stretch; flex-direction: column; gap: 18px; padding: 24px 6px 6px; }
+}
+
 .intro-section { background: white; }
 .intro-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 76px; align-items: center; }
 .image-stack { position: relative; min-height: 560px; }
@@ -466,10 +552,8 @@ textarea.form-control { min-height: 130px; resize: vertical; }
   .header-book { display: none; }
   .reason-grid, .audience-grid { grid-template-columns: repeat(3,1fr); }
   .footer-grid { grid-template-columns: 1.2fr .8fr .9fr; }
-  .footer-contact-card { grid-column: 1 / -1; display: grid; grid-template-columns: 1.1fr 1fr auto; gap: 18px; align-items: center; }
-  .footer-contact-card p { margin: 0; }
-  .footer-contact-card .button { justify-self: end; }
-  .footer-phone, .footer-email { grid-column: 3; margin-top: -5px; justify-self: end; }
+  .footer-contact-card { grid-column: 1 / -1; }
+  .footer-phone, .footer-email { margin-top: 16px; }
 }
 
 @media (max-width: 960px) {
@@ -558,6 +642,52 @@ textarea.form-control { min-height: 130px; resize: vertical; }
 .about-location-badge span { color: var(--muted); font-size: .78rem; line-height: 1.25; }
 .footer-location { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; color: rgba(255,255,255,.82); font-weight: 700; }
 .footer-location:hover { color: var(--gold-300); }
+
+/* Language selection and Sinhala typography */
+.announcement-inner { min-height: 46px; }
+.announcement-inner p { flex: 1; min-width: 0; font-size: .74rem; line-height: 1.6; }
+.announcement-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 18px; }
+.language-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; border: 1px solid rgba(255,255,255,.24); border-radius: 999px; }
+.announcement-bar .language-switch a { display: inline-flex; align-items: center; justify-content: center; min-height: 30px; padding: 4px 12px; border-radius: 999px; color: white; font-size: .76rem; font-weight: 600; line-height: 1.5; }
+.announcement-bar .language-switch a[lang="si"] { font-family: "Noto Sans Sinhala", "Iskoola Pota", sans-serif; }
+.announcement-bar .language-switch a[aria-current="true"] { background: var(--gold-300); color: var(--forest-950); }
+.language-switch a:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+.form-control[aria-invalid="true"] { border-color: #b42318; box-shadow: 0 0 0 2px rgba(180,35,24,.12); }
+html[lang="si"] body { font-family: "Noto Sans Sinhala", "Iskoola Pota", sans-serif; line-height: 1.8; }
+html[lang="si"] :is(h1, h2, h3, h4, .card-title, .proof-card strong) { font-family: "Noto Sans Sinhala", "Iskoola Pota", sans-serif; line-height: 1.5; letter-spacing: -.015em; }
+html[lang="si"] .display-title { font-size: clamp(2.5rem, 4.7vw, 4.5rem); line-height: 1.5; }
+html[lang="si"] .page-title { font-size: clamp(2.4rem, 4.5vw, 4.2rem); line-height: 1.5; }
+html[lang="si"] .section-head h2 { font-size: clamp(2rem, 3.8vw, 3.5rem); line-height: 1.5; }
+html[lang="si"] .schedule-heading h2 { font-size: clamp(1.9rem, 3.2vw, 3rem); }
+html[lang="si"] :is(.eyebrow, .button, .hero-kicker, .service-category, .facility-label, .journey-step-label, .doctor-schedule-table thead th) { letter-spacing: 0; text-transform: none; line-height: 1.8; }
+html[lang="si"] .brand-copy small { font-size: .58rem; line-height: 1.6; letter-spacing: 0; }
+html[lang="si"] .nav-link { gap: .35rem; padding-inline: .5rem; font-size: .68rem; }
+html[lang="si"] .doctor-schedule-table { line-height: 1.9; }
+html[lang="si"] .consultation-hours-item strong { line-height: 1.8; }
+html[lang="si"] .service-card { min-height: 440px; }
+html[lang="si"] :is(.phone-appointment h3, .phone-screen-header small) { line-height: 1.8; }
+html[lang="si"] .cta-panel h2 { font-size: clamp(2rem, 3.6vw, 3.3rem); }
+html[lang="si"] .patient-journey-copy h2 { font-size: clamp(2rem, 3.6vw, 3.3rem); }
+html[lang="si"] .contact-location-overlay h2 { font-size: clamp(2rem, 3.6vw, 3.5rem); }
+html[lang="si"] .appointment-hero-overlay h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+
+@media (min-width: 1281px) {
+  html[lang="si"] .header-inner { width: min(calc(100% - 32px), 1400px); gap: 14px; }
+  html[lang="si"] .header-book { display: none; }
+}
+@media (max-width: 960px) {
+  .announcement-actions .announcement-book { display: none; }
+}
+@media (max-width: 680px) {
+  .announcement-inner { justify-content: space-between; min-height: 44px; }
+  .announcement-inner p { display: none; }
+  .announcement-actions { margin-left: auto; }
+  html[lang="si"] .brand-copy small { font-size: .49rem; }
+  html[lang="si"] :is(.display-title, .page-title) { font-size: clamp(2rem, 9vw, 3rem); }
+  html[lang="si"] .section-head h2 { font-size: clamp(1.75rem, 7.5vw, 2.5rem); }
+  html[lang="si"] .schedule-heading h2 { font-size: clamp(1.55rem, 6.5vw, 2rem); }
+  html[lang="si"] .doctor-schedule-table td::before { letter-spacing: 0; }
+}
 
 @media (max-width: 1180px) {
   .contact-grid { grid-template-columns: repeat(2,1fr); }

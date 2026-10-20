@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /devya/
+Disallow: /includes/
+Disallow: /languages/
+Disallow: /tools/
+Disallow: /seo.json
+Disallow: /SEO-DEPLOY.md
+Disallow: /*.zip$
+
+Sitemap: https://devyaceylon.lk/sitemap.xml
