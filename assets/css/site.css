@@ -101,6 +101,7 @@ button { cursor: pointer; }
   transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
 }
 .button:hover { transform: translateY(-2px); }
+.button:disabled, .button[disabled] { opacity: .6; cursor: not-allowed; pointer-events: none; transform: none !important; box-shadow: none !important; }
 .button-primary { background: linear-gradient(135deg, var(--forest-700), var(--forest-900)); color: white; box-shadow: 0 16px 34px rgba(13,56,37,.18); }
 .button-primary:hover { box-shadow: 0 20px 44px rgba(13,56,37,.24); }
 .button-secondary { background: rgba(255,255,255,.82); border-color: var(--line-strong); color: var(--forest-900); }
@@ -483,19 +484,23 @@ button { cursor: pointer; }
 .form-group { display: grid; gap: 8px; }
 .form-group.full { grid-column: 1 / -1; }
 .form-group label { color: var(--forest-900); font-size: .82rem; font-weight: 700; }
-.form-control { width: 100%; min-height: 52px; border: 1px solid var(--line-strong); border-radius: 15px; background: #fffefb; color: var(--ink); padding: .85rem .95rem; outline: none; transition: border-color .2s ease, box-shadow .2s ease; }
+.form-control { width: 100%; min-height: 52px; border: 1px solid var(--line-strong); border-radius: 15px; background: #fffefb; color: var(--ink); padding: .85rem .95rem; outline: none; font-size: 1rem; transition: border-color .2s ease, box-shadow .2s ease; }
 textarea.form-control { min-height: 130px; resize: vertical; }
 .form-control:focus { border-color: var(--gold-600); box-shadow: 0 0 0 4px rgba(201,147,58,.13); }
 .form-help { color: var(--muted); font-size: .75rem; line-height: 1.5; }
 .honeypot-field { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .form-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
-.form-status { display: none; margin-top: 16px; border-radius: 14px; background: var(--sage-100); color: var(--forest-800); padding: 13px; font-size: .85rem; }
+.form-status { display: none; margin-top: 16px; border-radius: 14px; background: var(--sage-100); color: var(--forest-800); padding: 14px 18px; font-size: .88rem; line-height: 1.6; border: 1px solid transparent; }
 .form-status.is-visible { display: block; }
-.form-status[data-state="success"] { background: #eaf8ef; color: #11633a; }
-.form-status[data-state="error"] { background: #fff0ed; color: #9d2a1f; }
+.form-status[data-state="success"] { background: #eaf8ef; color: #11633a; border-color: #b7e8c7; }
+.form-status[data-state="error"] { background: #fff0ed; color: #9d2a1f; border-color: #fbcac5; }
+#appointmentFollowUp { margin-top: 18px; padding: 16px; border-radius: 18px; background: #eaf8ef; border: 1px solid #b7e8c7; box-shadow: 0 8px 20px rgba(31,168,85,.12); }
+#appointmentFollowUp[hidden] { display: none !important; }
+#appointmentFollowUp .button-whatsapp { width: 100%; justify-content: center; font-size: .95rem; padding: 13px 20px; box-shadow: 0 10px 24px rgba(31,168,85,.25); }
 
 .contact-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
-.contact-card { border: 1px solid var(--line); border-radius: 24px; background: white; padding: 26px; box-shadow: var(--shadow-sm); }
+.contact-card { border: 1px solid var(--line); border-radius: 24px; background: white; padding: 26px; box-shadow: var(--shadow-sm); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(200,148,66,.45); }
 .contact-card i { width: 50px; height: 50px; display: grid; place-items: center; border-radius: 16px; background: var(--cream-200); color: var(--gold-700); }
 .contact-card h3 { margin: 18px 0 0; font-family: "Playfair Display",Georgia,serif; color: var(--forest-900); font-size: 1.3rem; }
 .contact-card p { margin: 9px 0 0; color: var(--muted); line-height: 1.65; }
