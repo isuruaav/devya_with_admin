@@ -69,38 +69,46 @@ $navigation = [
     ['key' => 'contact', 'label' => 'Contact', 'href' => 'contact.php', 'icon' => 'fa-phone-volume'],
 ];
 
-require __DIR__ . '/i18n.php';
+require_once __DIR__ . '/i18n.php';
 
-function e(string $value): string
-{
-    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-}
-
-function active_nav(string $key, string $currentPage): string
-{
-    return $key === $currentPage ? ' is-active' : '';
-}
-
-function site_url(string $path = ''): string
-{
-    global $site;
-
-    if (str_starts_with($path, '#') || preg_match('~^(?:[a-z][a-z0-9+.-]*:|//)~i', $path)) {
-        return $path;
+if (!function_exists('e')) {
+    function e(string $value): string
+    {
+        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
     }
-
-    return $site['base_path'] . '/' . ltrim(localized_page_path($path), '/');
 }
 
-function asset_url(string $path, bool $versioned = false): string
-{
-    $relativePath = 'assets/' . ltrim($path, '/');
-    $url = site_url($relativePath);
-    $file = dirname(__DIR__) . '/' . $relativePath;
-
-    if ($versioned && is_file($file)) {
-        $url .= '?v=' . filemtime($file);
+if (!function_exists('active_nav')) {
+    function active_nav(string $key, string $currentPage): string
+    {
+        return $key === $currentPage ? ' is-active' : '';
     }
+}
 
-    return $url;
+if (!function_exists('site_url')) {
+    function site_url(string $path = ''): string
+    {
+        global $site;
+
+        if (str_starts_with($path, '#') || preg_match('~^(?:[a-z][a-z0-9+.-]*:|//)~i', $path)) {
+            return $path;
+        }
+
+        return $site['base_path'] . '/' . ltrim(localized_page_path($path), '/');
+    }
+}
+
+if (!function_exists('asset_url')) {
+    function asset_url(string $path, bool $versioned = false): string
+    {
+        $relativePath = 'assets/' . ltrim($path, '/');
+        $url = site_url($relativePath);
+        $file = dirname(__DIR__) . '/' . $relativePath;
+
+        if ($versioned && is_file($file)) {
+            $url .= '?v=' . filemtime($file);
+        }
+
+        return $url;
+    }
 }

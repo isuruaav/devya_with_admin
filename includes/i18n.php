@@ -11,6 +11,7 @@ $language = is_string($requestedLanguage) && in_array($requestedLanguage, $suppo
     ? $requestedLanguage
     : (is_string($rememberedLanguage) && in_array($rememberedLanguage, $supportedLanguages, true) ? $rememberedLanguage : 'en');
 
+if (!function_exists('load_translations')) {
 function load_translations(string $locale): array
 {
     $file = dirname(__DIR__) . '/languages/' . $locale . '.json';
@@ -30,6 +31,7 @@ function load_translations(string $locale): array
         return [];
     }
 }
+}
 
 $englishTranslations = load_translations('en');
 $translations = $language === 'en' ? $englishTranslations : load_translations($language);
@@ -48,6 +50,7 @@ if (!headers_sent()) {
     }
 }
 
+if (!function_exists('t')) {
 function t(string $message, array $replacements = []): string
 {
     global $translations, $englishTranslations;
@@ -65,7 +68,9 @@ function t(string $message, array $replacements = []): string
 
     return strtr($value, $tokens);
 }
+}
 
+if (!function_exists('localized_page_path')) {
 function localized_page_path(string $path): string
 {
     global $language;
@@ -84,7 +89,9 @@ function localized_page_path(string $path): string
     return ($parts['path'] ?? '') . '?' . http_build_query($query, '', '&', PHP_QUERY_RFC3986)
         . (isset($parts['fragment']) ? '#' . $parts['fragment'] : '');
 }
+}
 
+if (!function_exists('language_url')) {
 function language_url(string $locale): string
 {
     $publicPages = ['index.php', 'about.php', 'about-us.php', 'vision-mission.php', 'services.php', 'facilities.php', 'appointments.php', 'contact.php', 'privacy-policy.php', 'refund-policy.php', 'terms-and-conditions.php'];
@@ -97,7 +104,9 @@ function language_url(string $locale): string
     $query['lang'] = in_array($locale, ['en', 'si'], true) ? $locale : 'en';
     return site_url($page . '?' . http_build_query($query, '', '&', PHP_QUERY_RFC3986));
 }
+}
 
+if (!function_exists('browser_translations')) {
 function browser_translations(): array
 {
     $messages = [
@@ -115,4 +124,5 @@ function browser_translations(): array
     ];
 
     return array_combine($messages, array_map(static fn (string $message): string => t($message), $messages));
+}
 }
