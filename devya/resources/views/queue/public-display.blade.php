@@ -14,7 +14,7 @@
         content="{{ csrf_token() }}"
     >
 
-    <title>Ayu Queue Display</title>
+    <title>{{ config('branding.company_short_name') }} Queue Display</title>
 
     @vite([
         'resources/css/filament/admin/theme.css',
