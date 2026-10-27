@@ -1482,15 +1482,135 @@ html.dark .dashboard-page .border-gray-300 {
     border-color: var(--admin-border) !important;
 }
 
+html.dark .dashboard-page .ring-gray-200,
+html.dark .dashboard-page .ring-gray-300 {
+    --tw-ring-color: var(--admin-border) !important;
+}
+
+/* Emerald - Income LKR & Appointment stats */
 html.dark .dashboard-page .bg-emerald-50,
 html.dark .dashboard-page .bg-emerald-100,
 html.dark .dashboard-page [class~="hover:bg-emerald-50"]:hover {
-    background-color: #064e3b !important;
+    background-color: rgba(6, 78, 59, 0.45) !important;
+    border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
 html.dark .dashboard-page .text-emerald-700,
 html.dark .dashboard-page .text-emerald-800 {
     color: #6ee7b7 !important;
+}
+
+html.dark .dashboard-page .text-emerald-900 {
+    color: #ecfdf5 !important;
+}
+
+html.dark .dashboard-page .text-emerald-600 {
+    color: #34d399 !important;
+}
+
+/* Amber - Pending Balance LKR & Queue stats */
+html.dark .dashboard-page .bg-amber-50,
+html.dark .dashboard-page .bg-amber-100,
+html.dark .dashboard-page [class~="hover:bg-amber-50"]:hover {
+    background-color: rgba(120, 53, 15, 0.35) !important;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+html.dark .dashboard-page .text-amber-700,
+html.dark .dashboard-page .text-amber-800 {
+    color: #fcd34d !important;
+}
+
+html.dark .dashboard-page .text-amber-900 {
+    color: #fffbeb !important;
+}
+
+html.dark .dashboard-page .text-amber-600 {
+    color: #fbbf24 !important;
+}
+
+/* Blue - Today's Income USD */
+html.dark .dashboard-page .bg-blue-50,
+html.dark .dashboard-page .bg-blue-100,
+html.dark .dashboard-page [class~="hover:bg-blue-50"]:hover {
+    background-color: rgba(30, 58, 138, 0.35) !important;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+html.dark .dashboard-page .text-blue-700,
+html.dark .dashboard-page .text-blue-800 {
+    color: #93c5fd !important;
+}
+
+html.dark .dashboard-page .text-blue-900 {
+    color: #eff6ff !important;
+}
+
+html.dark .dashboard-page .text-blue-600 {
+    color: #60a5fa !important;
+}
+
+/* Red - Pending Balance USD */
+html.dark .dashboard-page .bg-red-50,
+html.dark .dashboard-page .bg-red-100,
+html.dark .dashboard-page [class~="hover:bg-red-50"]:hover {
+    background-color: rgba(127, 29, 29, 0.35) !important;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+html.dark .dashboard-page .text-red-700,
+html.dark .dashboard-page .text-red-800 {
+    color: #fca5a5 !important;
+}
+
+html.dark .dashboard-page .text-red-900 {
+    color: #fef2f2 !important;
+}
+
+html.dark .dashboard-page .text-red-600 {
+    color: #f87171 !important;
+}
+
+/* Violet - Consultations & Seen stats */
+html.dark .dashboard-page .bg-violet-50,
+html.dark .dashboard-page .bg-violet-100,
+html.dark .dashboard-page [class~="hover:bg-violet-50"]:hover {
+    background-color: rgba(76, 29, 149, 0.35) !important;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+html.dark .dashboard-page .text-violet-700,
+html.dark .dashboard-page .text-violet-800 {
+    color: #c4b5fd !important;
+}
+
+html.dark .dashboard-page .text-violet-900 {
+    color: #f5f3ff !important;
+}
+
+html.dark .dashboard-page .text-violet-600 {
+    color: #a78bfa !important;
+}
+
+/* Sky - Patient stats */
+html.dark .dashboard-page .bg-sky-50,
+html.dark .dashboard-page .bg-sky-100,
+html.dark .dashboard-page [class~="hover:bg-sky-50"]:hover {
+    background-color: rgba(12, 74, 110, 0.35) !important;
+    border: 1px solid rgba(14, 165, 233, 0.25);
+}
+
+html.dark .dashboard-page .text-sky-700,
+html.dark .dashboard-page .text-sky-800 {
+    color: #7dd3fc !important;
+}
+
+html.dark .dashboard-page .text-sky-900 {
+    color: #f0f9ff !important;
+}
+
+html.dark .dashboard-page .text-sky-600 {
+    color: #38bdf8 !important;
 }
 
 .medical-history-dialog {

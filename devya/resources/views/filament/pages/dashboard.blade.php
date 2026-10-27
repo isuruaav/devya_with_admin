@@ -1234,26 +1234,26 @@
 
                 <div class="flex flex-wrap gap-3">
 
-                    <div class="rounded-xl bg-white px-4 py-3 shadow-sm">
+                    <div class="rounded-xl bg-white px-4 py-3 shadow-sm dark:bg-gray-900 dark:ring-1 dark:ring-gray-800">
 
-                        <span class="text-xs text-gray-500">
+                        <span class="text-xs text-gray-500 dark:text-gray-400">
                             Today
                         </span>
 
-                        <span class="ml-2 font-bold text-emerald-700">
+                        <span class="ml-2 font-bold text-emerald-700 dark:text-emerald-400">
                             {{ $this->getTodayAppointmentCount() }}
                         </span>
 
                     </div>
 
 
-                    <div class="rounded-xl bg-white px-4 py-3 shadow-sm">
+                    <div class="rounded-xl bg-white px-4 py-3 shadow-sm dark:bg-gray-900 dark:ring-1 dark:ring-gray-800">
 
-                        <span class="text-xs text-gray-500">
+                        <span class="text-xs text-gray-500 dark:text-gray-400">
                             Seen
                         </span>
 
-                        <span class="ml-2 font-bold text-violet-700">
+                        <span class="ml-2 font-bold text-violet-700 dark:text-violet-400">
                             {{ $this->getSeenAppointmentCount() }}
                         </span>
 
@@ -1295,52 +1295,52 @@
 
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
 
-                <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200">
+                <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <p class="text-sm text-gray-500">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
                         Total Patients
                     </p>
 
-                    <p class="mt-2 text-3xl font-bold text-gray-900">
+                    <p class="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
                         {{ $stats['patients'] }}
                     </p>
 
                 </div>
 
 
-                <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200">
+                <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <p class="text-sm text-gray-500">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
                         Today's Appointments
                     </p>
 
-                    <p class="mt-2 text-3xl font-bold text-emerald-700">
+                    <p class="mt-2 text-3xl font-bold text-emerald-700 dark:text-emerald-400">
                         {{ $stats['today_appointments'] }}
                     </p>
 
                 </div>
 
 
-                <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200">
+                <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <p class="text-sm text-gray-500">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
                         Today's Consultations
                     </p>
 
-                    <p class="mt-2 text-3xl font-bold text-violet-700">
+                    <p class="mt-2 text-3xl font-bold text-violet-700 dark:text-violet-400">
                         {{ $stats['today_consultations'] }}
                     </p>
 
                 </div>
 
 
-                <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200">
+                <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <p class="text-sm text-gray-500">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
                         Waiting Queue
                     </p>
 
-                    <p class="mt-2 text-3xl font-bold text-amber-700">
+                    <p class="mt-2 text-3xl font-bold text-amber-700 dark:text-amber-400">
                         {{ $stats['waiting_queue'] }}
                     </p>
 
@@ -1351,21 +1351,21 @@
 
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 
-                <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+                <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <h2 class="text-lg font-bold text-gray-900">
+                    <h2 class="text-lg font-bold text-gray-900 dark:text-white">
                         Today's Income
                     </h2>
 
                     <div class="mt-4 grid grid-cols-2 gap-4">
 
-                        <div class="rounded-xl bg-emerald-50 p-4">
+                        <div class="rounded-xl bg-emerald-50 p-4 dark:bg-emerald-950/50 dark:border dark:border-emerald-800/50">
 
-                            <p class="text-xs text-emerald-700">
+                            <p class="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
                                 LKR
                             </p>
 
-                            <p class="mt-1 text-2xl font-bold text-emerald-900">
+                            <p class="mt-1 text-2xl font-bold text-emerald-900 dark:text-emerald-100">
 
                                 {{ number_format($stats['today_income']['LKR'], 2) }}
 
@@ -1374,13 +1374,13 @@
                         </div>
 
 
-                        <div class="rounded-xl bg-blue-50 p-4">
+                        <div class="rounded-xl bg-blue-50 p-4 dark:bg-blue-950/50 dark:border dark:border-blue-800/50">
 
-                            <p class="text-xs text-blue-700">
+                            <p class="text-xs font-semibold text-blue-700 dark:text-blue-300">
                                 USD
                             </p>
 
-                            <p class="mt-1 text-2xl font-bold text-blue-900">
+                            <p class="mt-1 text-2xl font-bold text-blue-900 dark:text-blue-100">
 
                                 {{ number_format($stats['today_income']['USD'], 2) }}
 
@@ -1393,21 +1393,21 @@
                 </div>
 
 
-                <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+                <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <h2 class="text-lg font-bold text-gray-900">
+                    <h2 class="text-lg font-bold text-gray-900 dark:text-white">
                         Pending Balance
                     </h2>
 
                     <div class="mt-4 grid grid-cols-2 gap-4">
 
-                        <div class="rounded-xl bg-amber-50 p-4">
+                        <div class="rounded-xl bg-amber-50 p-4 dark:bg-amber-950/50 dark:border dark:border-amber-800/50">
 
-                            <p class="text-xs text-amber-700">
+                            <p class="text-xs font-semibold text-amber-700 dark:text-amber-300">
                                 LKR
                             </p>
 
-                            <p class="mt-1 text-2xl font-bold text-amber-900">
+                            <p class="mt-1 text-2xl font-bold text-amber-900 dark:text-amber-100">
 
                                 {{ number_format($stats['pending_balance']['LKR'], 2) }}
 
@@ -1416,13 +1416,13 @@
                         </div>
 
 
-                        <div class="rounded-xl bg-red-50 p-4">
+                        <div class="rounded-xl bg-red-50 p-4 dark:bg-red-950/50 dark:border dark:border-red-800/50">
 
-                            <p class="text-xs text-red-700">
+                            <p class="text-xs font-semibold text-red-700 dark:text-red-300">
                                 USD
                             </p>
 
-                            <p class="mt-1 text-2xl font-bold text-red-900">
+                            <p class="mt-1 text-2xl font-bold text-red-900 dark:text-red-100">
 
                                 {{ number_format($stats['pending_balance']['USD'], 2) }}
 
