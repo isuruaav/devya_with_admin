@@ -40,13 +40,13 @@
             <table class="admin-responsive-table" role="table" aria-label="Consultation bills">
                 <thead>
                     <tr>
-                        <th scope="col">Bill No.</th>
-                        <th scope="col">Patient</th>
-                        <th scope="col">Doctor</th>
-                        <th scope="col">Bill Date</th>
-                        <th scope="col" class="text-right">Total</th>
-                        <th scope="col">Payment</th>
-                        <th scope="col" class="text-right">Actions</th>
+                        <th scope="col"><i class="fa-solid fa-file-invoice mr-1 text-emerald-600"></i> Bill No.</th>
+                        <th scope="col"><i class="fa-solid fa-user mr-1 text-emerald-600"></i> Patient</th>
+                        <th scope="col"><i class="fa-solid fa-user-doctor mr-1 text-emerald-600"></i> Doctor</th>
+                        <th scope="col"><i class="fa-regular fa-calendar-days mr-1 text-emerald-600"></i> Bill Date</th>
+                        <th scope="col" class="text-right"><i class="fa-solid fa-money-bill-wave mr-1 text-emerald-600"></i> Total</th>
+                        <th scope="col"><i class="fa-solid fa-receipt mr-1 text-emerald-600"></i> Payment</th>
+                        <th scope="col" class="text-right"><i class="fa-solid fa-bolt mr-1 text-emerald-600"></i> Actions</th>
                     </tr>
                 </thead>
                 <tbody>

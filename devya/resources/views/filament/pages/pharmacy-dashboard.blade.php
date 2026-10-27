@@ -60,38 +60,17 @@
                 <div class="flex flex-wrap gap-3">
 
                     <a href="{{ route('filament.admin.resources.pharmacy-bills.create') }}"
-                       class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-emerald-700 shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-xl">
-
-                        <svg class="h-5 w-5"
-                             fill="none"
-                             stroke="currentColor"
-                             viewBox="0 0 24 24">
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M12 4v16m8-8H4"/>
-                        </svg>
-
+                       class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-emerald-700 shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-xl"
+                       data-tooltip="Create a new pharmacy bill and dispense medicines">
+                        <i class="fa-solid fa-plus text-base"></i>
                         New Sale
-
                     </a>
 
-
                     <a href="{{ route('filament.admin.resources.pharmacy-bills.index') }}"
-                       class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-semibold text-white shadow-sm backdrop-blur transition duration-200 hover:bg-white/20">
-
-                        <svg class="h-5 w-5"
-                             fill="none"
-                             stroke="currentColor"
-                             viewBox="0 0 24 24">
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h6l5 5v11a2 2 0 01-2 2z"/>
-                        </svg>
-
+                       class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-semibold text-white shadow-sm backdrop-blur transition duration-200 hover:bg-white/20"
+                       data-tooltip="View and search all pharmacy invoices">
+                        <i class="fa-solid fa-file-invoice text-base"></i>
                         All Bills
-
                     </a>
 
                 </div>

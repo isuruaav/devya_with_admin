@@ -266,6 +266,66 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Dark Theme Support */
+        .dark .doctor-stat {
+            background: #111827;
+            border-color: #243244;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark .doctor-stat-label {
+            color: #94a3b8;
+        }
+
+        .dark .doctor-stat-value {
+            color: #f8fafc;
+        }
+
+        .dark .doctor-table-card {
+            background: #111827;
+            border-color: #243244;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark .doctor-table-header {
+            border-bottom-color: #243244;
+        }
+
+        .dark .doctor-table-title {
+            color: #f8fafc;
+        }
+
+        .dark .doctor-table-subtitle {
+            color: #94a3b8;
+        }
+
+        .dark .doctor-table th {
+            background: #1f2937;
+            color: #94a3b8;
+        }
+
+        .dark .doctor-table td {
+            border-top-color: #1f2937;
+            color: #e2e8f0;
+        }
+
+        .dark .doctor-time,
+        .dark .doctor-patient {
+            color: #f8fafc;
+        }
+
+        .dark .doctor-small {
+            color: #94a3b8;
+        }
+
+        .dark .doctor-empty-title {
+            color: #f8fafc;
+        }
+
+        .dark .doctor-empty-text {
+            color: #94a3b8;
+        }
     </style>
 
     <div class="doctor-page">
@@ -288,7 +348,7 @@
 
                 <div>
                     <div class="doctor-header-title">
-                        My Appointments
+                        <i class="fa-solid fa-user-doctor" style="margin-right: 8px;"></i> My Appointments
                     </div>
 
                     <div class="doctor-header-subtitle">
@@ -296,7 +356,8 @@
                     </div>
                 </div>
 
-                <div class="doctor-room">
+                <div class="doctor-room" data-tooltip="Assigned consultation room">
+                    <i class="fa-solid fa-door-open" style="margin-right: 6px;"></i>
                     @if ($doctor->room_number)
                         Consulting Room {{ $doctor->room_number }}
                     @else
@@ -308,9 +369,9 @@
 
             <div class="doctor-stats">
 
-                <div class="doctor-stat">
+                <div class="doctor-stat" data-tooltip="Total confirmed appointments for today">
                     <div class="doctor-stat-label">
-                        Today's Patients
+                        <i class="fa-solid fa-calendar-day" style="color: #d97706; margin-right: 5px;"></i> Today's Patients
                     </div>
 
                     <div class="doctor-stat-value">
@@ -318,9 +379,9 @@
                     </div>
                 </div>
 
-                <div class="doctor-stat">
+                <div class="doctor-stat" data-tooltip="Patients waiting for consultation">
                     <div class="doctor-stat-label">
-                        Waiting
+                        <i class="fa-solid fa-clock" style="color: #2563eb; margin-right: 5px;"></i> Waiting
                     </div>
 
                     <div class="doctor-stat-value">
@@ -328,9 +389,9 @@
                     </div>
                 </div>
 
-                <div class="doctor-stat">
+                <div class="doctor-stat" data-tooltip="Appointments with confirmed registration payment">
                     <div class="doctor-stat-label">
-                        Paid
+                        <i class="fa-solid fa-circle-check" style="color: #059669; margin-right: 5px;"></i> Paid
                     </div>
 
                     <div class="doctor-stat-value">
@@ -338,9 +399,9 @@
                     </div>
                 </div>
 
-                <div class="doctor-stat">
+                <div class="doctor-stat" data-tooltip="Consultation record created or in-progress">
                     <div class="doctor-stat-label">
-                        Consultation Created
+                        <i class="fa-solid fa-clipboard-check" style="color: #7c3aed; margin-right: 5px;"></i> Consultation Created
                     </div>
 
                     <div class="doctor-stat-value">
@@ -356,7 +417,7 @@
 
                     <div>
                         <div class="doctor-table-title">
-                            Today's Appointments
+                            <i class="fa-solid fa-list-check" style="color: #d97706; margin-right: 8px;"></i> Today's Appointments
                         </div>
 
                         <div class="doctor-table-subtitle">
@@ -371,6 +432,7 @@
                     <div class="doctor-empty">
 
                         <div class="doctor-empty-title">
+                            <i class="fa-solid fa-calendar-xmark" style="font-size: 28px; color: #94a3b8; display: block; margin-bottom: 10px;"></i>
                             No appointments for today
                         </div>
 
@@ -388,14 +450,14 @@
 
                             <thead>
                                 <tr>
-                                    <th>Time</th>
-                                    <th>Patient</th>
-                                    <th>Type</th>
-                                    <th>Room</th>
-                                    <th>Source</th>
-                                    <th>Payment</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th><i class="fa-regular fa-clock" style="margin-right: 4px;"></i> Time</th>
+                                    <th><i class="fa-solid fa-user" style="margin-right: 4px;"></i> Patient</th>
+                                    <th><i class="fa-solid fa-passport" style="margin-right: 4px;"></i> Type</th>
+                                    <th><i class="fa-solid fa-door-open" style="margin-right: 4px;"></i> Room</th>
+                                    <th><i class="fa-solid fa-share-nodes" style="margin-right: 4px;"></i> Source</th>
+                                    <th><i class="fa-solid fa-receipt" style="margin-right: 4px;"></i> Payment</th>
+                                    <th><i class="fa-solid fa-signal" style="margin-right: 4px;"></i> Status</th>
+                                    <th><i class="fa-solid fa-bolt" style="margin-right: 4px;"></i> Action</th>
                                 </tr>
                             </thead>
 
@@ -516,8 +578,9 @@
                                                     type="button"
                                                     wire:click="viewConsultation({{ $appointment->id }})"
                                                     class="doctor-action doctor-view"
+                                                    data-tooltip="View or edit this patient's consultation"
                                                 >
-                                                    View Consultation
+                                                    <i class="fa-solid fa-file-medical" style="margin-right: 5px;"></i> View Consultation
                                                 </button>
 
                                             @elseif ($isPaid)
@@ -526,14 +589,15 @@
                                                     type="button"
                                                     wire:click="startConsultation({{ $appointment->id }})"
                                                     class="doctor-action doctor-start"
+                                                    data-tooltip="Open medical form and start consultation"
                                                 >
-                                                    Start Consultation
+                                                    <i class="fa-solid fa-stethoscope" style="margin-right: 5px;"></i> Start Consultation
                                                 </button>
 
                                             @else
 
-                                                <span class="doctor-disabled">
-                                                    Waiting for Payment
+                                                <span class="doctor-disabled" data-tooltip="Payment at reception is required before starting consultation">
+                                                    <i class="fa-regular fa-clock" style="margin-right: 4px;"></i> Waiting for Payment
                                                 </span>
 
                                             @endif

@@ -22,10 +22,10 @@
 
             <div class="expense-report-filter-actions">
                 <button type="button" wire:click="applyDateRange" class="expense-report-filter-button expense-report-filter-button-primary">
-                    Search Report
+                    <i class="fa-solid fa-magnifying-glass mr-1.5"></i> Search Report
                 </button>
                 <button type="button" wire:click="resetDateRange" class="expense-report-filter-button expense-report-filter-button-secondary">
-                    Reset
+                    <i class="fa-solid fa-rotate-left mr-1.5"></i> Reset
                 </button>
             </div>
         </div>
@@ -33,7 +33,7 @@
 
     <div class="expense-report-grid">
         <div class="expense-report-card expense-report-card-lkr">
-            <p class="expense-report-label">LKR Net Profit (Selected Period)</p>
+            <p class="expense-report-label flex items-center justify-between"><span>LKR Net Profit</span><i class="fa-solid fa-money-bill-wave text-base opacity-75"></i></p>
             <p class="expense-report-total">Rs. {{ number_format($summary['local_income'] - $summary['local_expenses'], 2) }}</p>
             <div class="expense-report-breakdown">
                 <span>Income: Rs. {{ number_format($summary['local_income'], 2) }}</span>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="expense-report-card expense-report-card-usd">
-            <p class="expense-report-label">USD Net Profit (Selected Period)</p>
+            <p class="expense-report-label flex items-center justify-between"><span>USD Net Profit</span><i class="fa-solid fa-globe text-base opacity-75"></i></p>
             <p class="expense-report-total">$ {{ number_format($summary['foreign_income'] - $summary['foreign_expenses'], 2) }}</p>
             <div class="expense-report-breakdown">
                 <span>Income: $ {{ number_format($summary['foreign_income'], 2) }}</span>

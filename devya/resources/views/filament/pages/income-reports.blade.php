@@ -27,14 +27,14 @@
                             $data = $period['data'][$currencyKey];
                         @endphp
                         <div class="income-card income-card-{{ $currency['color'] }}">
-                            <div class="flex items-center justify-between"><h3>{{ $currency['label'] }}</h3><span>{{ $data['consultations'] }} consultations</span></div>
+                            <div class="flex items-center justify-between"><h3><i class="fa-solid fa-{{ $currencyKey === 'local' ? 'money-bill-wave' : 'globe' }} mr-1.5 opacity-90"></i>{{ $currency['label'] }}</h3><span data-tooltip="Total patient consultations"><i class="fa-solid fa-user-doctor mr-1"></i>{{ $data['consultations'] }} consultations</span></div>
                             <strong>{{ $currency['prefix'] }} {{ number_format($data['total'], 2) }}</strong>
                             <div class="income-breakdown">
-                                <span>Doctor Fees <b>{{ number_format($data['doctor'], 2) }}</b></span>
-                                <span>Treatments <b>{{ number_format($data['treatments'], 2) }}</b></span>
-                                <span>Medicines <b>{{ number_format($data['medicines'], 2) }}</b></span>
-                                <span>Facilities / Service Fees <b>{{ number_format($data['facility_service_fees'], 2) }}</b></span>
-                                <span>Reception Bills ({{ $data['reception_bills_count'] }}) <b>{{ number_format($data['reception_bills'], 2) }}</b></span>
+                                <span><i class="fa-solid fa-user-doctor mr-1 opacity-70"></i> Doctor Fees <b>{{ number_format($data['doctor'], 2) }}</b></span>
+                                <span><i class="fa-solid fa-spa mr-1 opacity-70"></i> Treatments <b>{{ number_format($data['treatments'], 2) }}</b></span>
+                                <span><i class="fa-solid fa-pills mr-1 opacity-70"></i> Medicines <b>{{ number_format($data['medicines'], 2) }}</b></span>
+                                <span><i class="fa-solid fa-hospital mr-1 opacity-70"></i> Facilities / Service Fees <b>{{ number_format($data['facility_service_fees'], 2) }}</b></span>
+                                <span><i class="fa-solid fa-receipt mr-1 opacity-70"></i> Reception Bills ({{ $data['reception_bills_count'] }}) <b>{{ number_format($data['reception_bills'], 2) }}</b></span>
                             </div>
                         </div>
                     @endforeach

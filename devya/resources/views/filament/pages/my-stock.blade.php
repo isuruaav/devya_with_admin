@@ -1,25 +1,25 @@
 <x-filament-panels::page>
     <div class="stock-summary-grid grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
         <div class="stock-card stock-card-blue overflow-hidden rounded-2xl p-5 text-white shadow-lg">
-            <p class="text-sm font-medium text-blue-100">Medicine Types</p>
+            <p class="text-sm font-medium text-blue-100 flex items-center justify-between"><span>Medicine Types</span><i class="fa-solid fa-pills text-base opacity-80"></i></p>
             <p class="mt-3 text-3xl font-bold">{{ number_format($this->getTotalMedicines()) }}</p>
             <p class="mt-1 text-xs text-blue-100">Active medicine records</p>
         </div>
 
         <div class="stock-card stock-card-orange overflow-hidden rounded-2xl p-5 text-white shadow-lg">
-            <p class="text-sm font-medium text-orange-100">Total Used</p>
+            <p class="text-sm font-medium text-orange-100 flex items-center justify-between"><span>Total Used</span><i class="fa-solid fa-prescription-bottle-medical text-base opacity-80"></i></p>
             <p class="mt-3 text-3xl font-bold">{{ number_format($this->getTotalUsed()) }}</p>
             <p class="mt-1 text-xs text-orange-100">Issued through consultations</p>
         </div>
 
         <div class="stock-card stock-card-green overflow-hidden rounded-2xl p-5 text-white shadow-lg">
-            <p class="text-sm font-medium text-emerald-100">Total Remaining</p>
+            <p class="text-sm font-medium text-emerald-100 flex items-center justify-between"><span>Total Remaining</span><i class="fa-solid fa-boxes-stacked text-base opacity-80"></i></p>
             <p class="mt-3 text-3xl font-bold">{{ number_format($this->getTotalRemaining()) }}</p>
             <p class="mt-1 text-xs text-emerald-100">Available stock quantity</p>
         </div>
 
         <div class="stock-card stock-card-red overflow-hidden rounded-2xl p-5 text-white shadow-lg">
-            <p class="text-sm font-medium text-rose-100">Reorder Alerts</p>
+            <p class="text-sm font-medium text-rose-100 flex items-center justify-between"><span>Reorder Alerts</span><i class="fa-solid fa-triangle-exclamation text-base opacity-80"></i></p>
             <p class="mt-3 text-3xl font-bold">{{ number_format($this->getLowStockCount()) }}</p>
             <p class="mt-1 text-xs text-rose-100">Medicines need attention</p>
         </div>
@@ -38,13 +38,13 @@
             <table class="w-full min-w-[820px] text-left text-sm">
                 <thead class="bg-gray-50 text-xs uppercase tracking-wide text-gray-500 dark:bg-gray-800/60 dark:text-gray-400">
                     <tr>
-                        <th class="px-5 py-4">Medicine</th>
-                        <th class="px-5 py-4">Category</th>
-                        <th class="px-5 py-4 text-right">Total Stocked</th>
-                        <th class="px-5 py-4 text-right">Used</th>
-                        <th class="px-5 py-4 text-right">Remaining</th>
-                        <th class="px-5 py-4 text-right">Reorder Level</th>
-                        <th class="px-5 py-4">Status</th>
+                        <th class="px-5 py-4"><i class="fa-solid fa-pills mr-1 text-emerald-600"></i> Medicine</th>
+                        <th class="px-5 py-4"><i class="fa-solid fa-tags mr-1 text-emerald-600"></i> Category</th>
+                        <th class="px-5 py-4 text-right"><i class="fa-solid fa-boxes-packing mr-1 text-emerald-600"></i> Total Stocked</th>
+                        <th class="px-5 py-4 text-right"><i class="fa-solid fa-circle-minus mr-1 text-emerald-600"></i> Used</th>
+                        <th class="px-5 py-4 text-right"><i class="fa-solid fa-warehouse mr-1 text-emerald-600"></i> Remaining</th>
+                        <th class="px-5 py-4 text-right"><i class="fa-solid fa-bell mr-1 text-emerald-600"></i> Reorder Level</th>
+                        <th class="px-5 py-4"><i class="fa-solid fa-signal mr-1 text-emerald-600"></i> Status</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 dark:divide-gray-800">

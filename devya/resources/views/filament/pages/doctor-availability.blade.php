@@ -43,13 +43,13 @@
             <table class="admin-responsive-table" role="table" aria-label="Available doctors">
                 <thead>
                     <tr>
-                        <th scope="col">Doctor</th>
-                        <th scope="col">Specialization</th>
-                        <th scope="col">Visiting Hours</th>
-                        <th scope="col">Room</th>
-                        <th scope="col">Booked</th>
-                        <th scope="col">Remaining</th>
-                        <th scope="col">Contact</th>
+                        <th scope="col"><i class="fa-solid fa-user-doctor mr-1 text-emerald-600"></i> Doctor</th>
+                        <th scope="col"><i class="fa-solid fa-stethoscope mr-1 text-emerald-600"></i> Specialization</th>
+                        <th scope="col"><i class="fa-regular fa-clock mr-1 text-emerald-600"></i> Visiting Hours</th>
+                        <th scope="col"><i class="fa-solid fa-door-open mr-1 text-emerald-600"></i> Room</th>
+                        <th scope="col"><i class="fa-solid fa-user-check mr-1 text-emerald-600"></i> Booked</th>
+                        <th scope="col"><i class="fa-solid fa-chair mr-1 text-emerald-600"></i> Remaining</th>
+                        <th scope="col"><i class="fa-solid fa-address-book mr-1 text-emerald-600"></i> Contact</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,9 +88,13 @@
                             </td>
                             <td data-label="Contact">
                                 <div class="text-xs">
-                                    <div>{{ $doctor->phone_number ?: 'N/A' }}</div>
+                                    @if ($doctor->phone_number)
+                                        <div><a href="tel:{{ $doctor->phone_number }}" class="inline-flex items-center gap-1 text-emerald-700 hover:underline dark:text-emerald-400" data-tooltip="Call doctor"><i class="fa-solid fa-phone text-[10px]"></i> {{ $doctor->phone_number }}</a></div>
+                                    @else
+                                        <div class="text-gray-400">N/A</div>
+                                    @endif
                                     @if ($doctor->email)
-                                        <div class="mt-1">{{ $doctor->email }}</div>
+                                        <div class="mt-1"><a href="mailto:{{ $doctor->email }}" class="inline-flex items-center gap-1 text-blue-600 hover:underline dark:text-blue-400" data-tooltip="Email doctor"><i class="fa-solid fa-envelope text-[10px]"></i> {{ $doctor->email }}</a></div>
                                     @endif
                                 </div>
                             </td>

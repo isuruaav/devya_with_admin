@@ -7,19 +7,7 @@
 
         {{-- Doctor Icon --}}
         <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/20">
-            <svg
-                class="h-8 w-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5.121 17.804A13.937 13.937 0 0112 15c2.686 0 5.17.755 7.121 2.05M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-            </svg>
+            <i class="fa-solid fa-user-doctor text-2xl text-white"></i>
         </div>
 
         <div class="min-w-0">
@@ -29,14 +17,18 @@
 
             <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-emerald-50">
                 @if($doctor->specialization)
-                    <span>
+                    <span class="inline-flex items-center gap-1.5">
+                        <i class="fa-solid fa-stethoscope text-xs"></i>
                         {{ $doctor->specialization }}
                     </span>
                 @endif
 
                 @if($doctor->room_number)
                     <span>•</span>
-                    <span>{{ $doctor->room_number }}</span>
+                    <span class="inline-flex items-center gap-1.5" data-tooltip="Consulting room">
+                        <i class="fa-solid fa-door-open text-xs"></i>
+                        {{ $doctor->room_number }}
+                    </span>
                 @endif
             </div>
         </div>
@@ -47,37 +39,23 @@
     {{-- =========================================================
         WEEKLY SCHEDULE
     ========================================================== --}}
-    <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+    <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
 
         {{-- Section Header --}}
-        <div class="border-b border-gray-200 bg-gray-50 px-5 py-4">
+        <div class="border-b border-gray-200 bg-gray-50 px-5 py-4 dark:border-gray-800 dark:bg-gray-800/50">
 
             <div class="flex items-center gap-3">
 
-                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
-
-                    <svg
-                        class="h-5 w-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                    </svg>
-
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400">
+                    <i class="fa-regular fa-calendar-days text-base"></i>
                 </div>
 
                 <div>
-                    <h3 class="font-semibold text-gray-900">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">
                         Weekly Schedule
                     </h3>
 
-                    <p class="text-xs text-gray-500">
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
                         Regular working days and consultation times
                     </p>
                 </div>
@@ -100,7 +78,7 @@
         @endphp
 
 
-        <div class="divide-y divide-gray-100">
+        <div class="divide-y divide-gray-100 dark:divide-gray-800">
 
             @foreach($days as $dayKey => $dayName)
 
@@ -117,53 +95,25 @@
 
                         @if($schedule && $schedule->is_available)
 
-                            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-
-                                <svg
-                                    class="h-4 w-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"
-                                    />
-                                </svg>
-
+                            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400" data-tooltip="Doctor available">
+                                <i class="fa-solid fa-check text-xs"></i>
                             </div>
 
                         @else
 
-                            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-400">
-
-                                <svg
-                                    class="h-4 w-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-
+                            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500" data-tooltip="Doctor not available">
+                                <i class="fa-solid fa-xmark text-xs"></i>
                             </div>
 
                         @endif
 
 
                         <div>
-                            <div class="font-medium text-gray-900">
+                            <div class="font-medium text-gray-900 dark:text-white">
                                 {{ $dayName }}
                             </div>
 
-                            <div class="text-xs text-gray-500">
+                            <div class="text-xs text-gray-500 dark:text-gray-400">
                                 {{ ucfirst($dayKey) }}
                             </div>
                         </div>
@@ -176,8 +126,8 @@
 
                         @if($schedule && $schedule->is_available)
 
-                            <div class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700">
-
+                            <div class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300" data-tooltip="Consultation hours">
+                                <i class="fa-regular fa-clock text-xs mr-1.5 opacity-75"></i>
                                 {{ \Illuminate\Support\Str::of($schedule->start_time)->substr(0, 5) }}
 
                                 <span class="mx-1 text-emerald-400">
@@ -188,17 +138,17 @@
 
                             </div>
 
-                            <div class="mt-1 text-xs font-medium text-emerald-600">
+                            <div class="mt-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
                                 Available
                             </div>
 
                         @else
 
-                            <span class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-500">
+                            <span class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-500 dark:bg-gray-800 dark:text-gray-400">
                                 Closed
                             </span>
 
-                            <div class="mt-1 text-xs text-gray-400">
+                            <div class="mt-1 text-xs text-gray-400 dark:text-gray-500">
                                 Not Available
                             </div>
 
@@ -218,37 +168,23 @@
     {{-- =========================================================
         DATE SPECIFIC SCHEDULES
     ========================================================== --}}
-    <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+    <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
 
         {{-- Section Header --}}
-        <div class="border-b border-gray-200 bg-gray-50 px-5 py-4">
+        <div class="border-b border-gray-200 bg-gray-50 px-5 py-4 dark:border-gray-800 dark:bg-gray-800/50">
 
             <div class="flex items-center gap-3">
 
-                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
-
-                    <svg
-                        class="h-5 w-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                    </svg>
-
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400">
+                    <i class="fa-solid fa-clock-rotate-left text-base"></i>
                 </div>
 
                 <div>
-                    <h3 class="font-semibold text-gray-900">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">
                         Date-specific Schedule
                     </h3>
 
-                    <p class="text-xs text-gray-500">
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
                         Leave, temporary changes and special working times
                     </p>
                 </div>
@@ -275,29 +211,15 @@
             {{-- Empty State --}}
             <div class="px-5 py-8 text-center">
 
-                <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-400">
-
-                    <svg
-                        class="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                    </svg>
-
+                <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500">
+                    <i class="fa-regular fa-calendar-check text-lg"></i>
                 </div>
 
-                <p class="mt-3 text-sm font-medium text-gray-700">
+                <p class="mt-3 text-sm font-medium text-gray-700 dark:text-gray-300">
                     No special schedules
                 </p>
 
-                <p class="mt-1 text-xs text-gray-500">
+                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
                     No upcoming leave or date-specific changes have been added.
                 </p>
 
@@ -305,16 +227,16 @@
 
         @else
 
-            <div class="divide-y divide-gray-100">
+            <div class="divide-y divide-gray-100 dark:divide-gray-800">
 
                 @foreach($specialSchedules as $special)
 
                     @php
                         $statusClasses = match($special->status) {
-                            'available' => 'bg-emerald-50 text-emerald-700',
-                            'on_leave' => 'bg-red-50 text-red-700',
-                            'temporarily_unavailable' => 'bg-amber-50 text-amber-700',
-                            default => 'bg-gray-100 text-gray-600',
+                            'available' => 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
+                            'on_leave' => 'bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-300',
+                            'temporarily_unavailable' => 'bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+                            default => 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300',
                         };
 
                         $statusLabel = match($special->status) {
@@ -333,32 +255,18 @@
                             {{-- Date --}}
                             <div class="flex items-center gap-3">
 
-                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-
-                                    <svg
-                                        class="h-5 w-5"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                        />
-                                    </svg>
-
+                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+                                    <i class="fa-solid fa-calendar-day text-base"></i>
                                 </div>
 
 
                                 <div>
 
-                                    <div class="font-semibold text-gray-900">
+                                    <div class="font-semibold text-gray-900 dark:text-white">
                                         {{ $special->schedule_date->format('d M Y') }}
                                     </div>
 
-                                    <div class="text-xs text-gray-500">
+                                    <div class="text-xs text-gray-500 dark:text-gray-400">
                                         {{ $special->schedule_date->format('l') }}
                                     </div>
 
@@ -381,8 +289,8 @@
                                     ($special->start_time || $special->end_time)
                                 )
 
-                                    <span class="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-
+                                    <span class="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" data-tooltip="Special scheduled hours">
+                                        <i class="fa-regular fa-clock text-xs mr-1 opacity-75"></i>
                                         {{ $special->start_time
                                             ? \Illuminate\Support\Str::of($special->start_time)->substr(0, 5)
                                             : '--'
@@ -409,13 +317,13 @@
                         {{-- Note --}}
                         @if($special->note)
 
-                            <div class="mt-3 rounded-xl bg-gray-50 px-4 py-3">
+                            <div class="mt-3 rounded-xl bg-gray-50 px-4 py-3 dark:bg-gray-800/60">
 
-                                <div class="text-xs font-semibold uppercase tracking-wide text-gray-400">
+                                <div class="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
                                     Note
                                 </div>
 
-                                <div class="mt-1 text-sm text-gray-700">
+                                <div class="mt-1 text-sm text-gray-700 dark:text-gray-300">
                                     {{ $special->note }}
                                 </div>
 
@@ -440,30 +348,30 @@
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
 
         {{-- Status --}}
-        <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+        <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900" data-tooltip="Current operational availability">
 
-            <div class="text-xs font-medium uppercase tracking-wide text-gray-400">
-                Doctor Status
+            <div class="text-xs font-medium uppercase tracking-wide text-gray-400 dark:text-gray-500">
+                <i class="fa-solid fa-signal mr-1"></i> Doctor Status
             </div>
 
             <div class="mt-2">
 
                 @if($doctor->is_active && $doctor->availability_status === 'available')
 
-                    <span class="inline-flex rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700">
-                        Active & Available
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+                        <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Active & Available
                     </span>
 
                 @elseif(!$doctor->is_active)
 
-                    <span class="inline-flex rounded-full bg-red-50 px-3 py-1 text-sm font-semibold text-red-700">
-                        Inactive
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-3 py-1 text-sm font-semibold text-red-700 dark:bg-red-900/30 dark:text-red-300">
+                        <span class="h-2 w-2 rounded-full bg-red-500"></span> Inactive
                     </span>
 
                 @else
 
-                    <span class="inline-flex rounded-full bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">
-                        {{ ucfirst(str_replace('_', ' ', $doctor->availability_status)) }}
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
+                        <span class="h-2 w-2 rounded-full bg-amber-500"></span> {{ ucfirst(str_replace('_', ' ', $doctor->availability_status)) }}
                     </span>
 
                 @endif
@@ -474,13 +382,13 @@
 
 
         {{-- Room --}}
-        <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+        <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900" data-tooltip="Designated consulting room">
 
-            <div class="text-xs font-medium uppercase tracking-wide text-gray-400">
-                Consulting Room
+            <div class="text-xs font-medium uppercase tracking-wide text-gray-400 dark:text-gray-500">
+                <i class="fa-solid fa-door-open mr-1"></i> Consulting Room
             </div>
 
-            <div class="mt-2 text-lg font-bold text-gray-900">
+            <div class="mt-2 text-lg font-bold text-gray-900 dark:text-white">
                 {{ $doctor->room_number ?: 'Not Assigned' }}
             </div>
 
@@ -488,13 +396,13 @@
 
 
         {{-- Daily Capacity --}}
-        <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+        <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900" data-tooltip="Maximum patients per consultation session">
 
-            <div class="text-xs font-medium uppercase tracking-wide text-gray-400">
-                Daily Patient Limit
+            <div class="text-xs font-medium uppercase tracking-wide text-gray-400 dark:text-gray-500">
+                <i class="fa-solid fa-users mr-1"></i> Daily Patient Limit
             </div>
 
-            <div class="mt-2 text-lg font-bold text-gray-900">
+            <div class="mt-2 text-lg font-bold text-gray-900 dark:text-white">
                 {{ $doctor->max_patients_per_day ?: 'Unlimited' }}
             </div>
 
