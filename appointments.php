@@ -109,12 +109,12 @@ require __DIR__ . '/includes/header.php';
         </div>
 
         <div class="form-grid">
-          <div class="form-group"><label for="fullName"><?= e(t('Full name *')) ?></label><input class="form-control" id="fullName" name="fullName" type="text" autocomplete="name" required></div>
-          <div class="form-group"><label for="phone"><?= e(t('Phone / WhatsApp number *')) ?></label><input class="form-control" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="<?= e(t('07X XXX XXXX')) ?>" required></div>
-          <div class="form-group"><label for="email"><?= e(t('Email address *')) ?></label><input class="form-control" id="email" name="email" type="email" autocomplete="email" required></div>
-          <div class="form-group"><label for="address"><?= e(t('Address *')) ?></label><input class="form-control" id="address" name="address" type="text" autocomplete="street-address" required></div>
-          <div class="form-group"><label for="city"><?= e(t('City *')) ?></label><input class="form-control" id="city" name="city" type="text" autocomplete="address-level2" required></div>
-          <div class="form-group"><label for="service"><?= e(t('Preferred service *')) ?></label><select class="form-control" id="service" name="service" required>
+          <div class="form-group"><label for="fullName"><i class="fa-solid fa-user" data-tooltip="Enter full legal name" style="color: var(--gold-600); margin-right: 6px;"></i><?= e(t('Full name *')) ?></label><input class="form-control" id="fullName" name="fullName" type="text" autocomplete="name" required></div>
+          <div class="form-group"><label for="phone"><i class="fa-solid fa-phone" data-tooltip="Active phone or WhatsApp number" style="color: var(--gold-600); margin-right: 6px;"></i><?= e(t('Phone / WhatsApp number *')) ?></label><input class="form-control" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="<?= e(t('07X XXX XXXX')) ?>" required></div>
+          <div class="form-group"><label for="email"><i class="fa-solid fa-envelope" data-tooltip="Email address for digital confirmation" style="color: var(--gold-600); margin-right: 6px;"></i><?= e(t('Email address *')) ?></label><input class="form-control" id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="form-group"><label for="address"><i class="fa-solid fa-location-dot" data-tooltip="Residential or street address" style="color: var(--gold-600); margin-right: 6px;"></i><?= e(t('Address *')) ?></label><input class="form-control" id="address" name="address" type="text" autocomplete="street-address" required></div>
+          <div class="form-group"><label for="city"><i class="fa-solid fa-city" data-tooltip="Nearest town or city" style="color: var(--gold-600); margin-right: 6px;"></i><?= e(t('City *')) ?></label><input class="form-control" id="city" name="city" type="text" autocomplete="address-level2" required></div>
+          <div class="form-group"><label for="service"><i class="fa-solid fa-stethoscope" data-tooltip="Select consultation clinic or wellness package" style="color: var(--gold-600); margin-right: 6px;"></i><?= e(t('Preferred service *')) ?></label><select class="form-control" id="service" name="service" required>
               <option value=""><?= e(t('Select a service')) ?></option>
               <optgroup label="<?= e(t('Weekly special clinics')) ?>">
                 <?php foreach ($doctorSchedule as $entry): ?>
@@ -138,19 +138,19 @@ require __DIR__ . '/includes/header.php';
               <option value="Other / Need guidance"><?= e(t('Other / Need guidance')) ?></option>
               </optgroup>
             </select></div>
-          <div class="form-group"><label for="preferredDate"><?= e(t('Preferred date *')) ?></label><input class="form-control" id="preferredDate" name="preferredDate" type="date" required><span class="form-help"><?= e(t('The final date and time require staff confirmation.')) ?></span></div>
-          <div class="form-group"><label for="preferredTime"><?= e(t('Preferred time')) ?></label><select class="form-control" id="preferredTime" name="preferredTime" aria-describedby="preferredTimeHelp" data-weekday-hours="<?= e(t($consultationHours[0]['time'])) ?>" data-sunday-hours="<?= e(t($consultationHours[1]['time'])) ?>">
+          <div class="form-group"><label for="preferredDate"><i class="fa-regular fa-calendar-days" data-tooltip="Select consultation date" style="color: var(--gold-600); margin-right: 6px;"></i><?= e(t('Preferred date *')) ?></label><input class="form-control" id="preferredDate" name="preferredDate" type="date" required><span class="form-help"><?= e(t('The final date and time require staff confirmation.')) ?></span></div>
+          <div class="form-group"><label for="preferredTime"><i class="fa-regular fa-clock" data-tooltip="Select preferred consultation time" style="color: var(--gold-600); margin-right: 6px;"></i><?= e(t('Preferred time')) ?></label><select class="form-control" id="preferredTime" name="preferredTime" aria-describedby="preferredTimeHelp" data-weekday-hours="<?= e(t($consultationHours[0]['time'])) ?>" data-sunday-hours="<?= e(t($consultationHours[1]['time'])) ?>">
               <option value="Any available time"><?= e(t('Any available time')) ?></option>
               <option value="Morning" data-consultation-day="sunday"><?= e(t('Morning (Sunday only)')) ?></option>
               <option value="Afternoon" data-consultation-day="sunday"><?= e(t('Afternoon (Sunday only)')) ?></option>
               <option value="Evening" data-consultation-day="weekday"><?= e(t('Evening (Monday to Saturday)')) ?></option>
             </select><span class="form-help" id="preferredTimeHelp"><?= e(t('Choose a date to see the available consultation period.')) ?></span></div>
-          <div class="form-group"><label for="contactMethod"><?= e(t('Preferred response method')) ?></label><select class="form-control" id="contactMethod" name="contactMethod">
+          <div class="form-group"><label for="contactMethod"><i class="fa-solid fa-comments" data-tooltip="Preferred response communication channel" style="color: var(--gold-600); margin-right: 6px;"></i><?= e(t('Preferred response method')) ?></label><select class="form-control" id="contactMethod" name="contactMethod">
               <option value="WhatsApp"><?= e(t('WhatsApp')) ?></option>
               <option value="Phone call"><?= e(t('Phone call')) ?></option>
               <option value="SMS"><?= e(t('SMS')) ?></option>
             </select></div>
-          <div class="form-group full"><label for="notes"><?= e(t('Reason for consultation / notes')) ?></label><textarea class="form-control" id="notes" name="notes" maxlength="1500" placeholder="<?= e(t('Briefly describe your wellness goal, consultation need or any useful details.')) ?>"></textarea></div>
+          <div class="form-group full"><label for="notes"><i class="fa-solid fa-notes-medical" data-tooltip="Describe symptoms or wellness requirements" style="color: var(--gold-600); margin-right: 6px;"></i><?= e(t('Reason for consultation / notes')) ?></label><textarea class="form-control" id="notes" name="notes" maxlength="1500" placeholder="<?= e(t('Briefly describe your wellness goal, consultation need or any useful details.')) ?>"></textarea></div>
         </div>
 
         <input type="text" name="website" tabindex="-1" autocomplete="off" class="honeypot-field" aria-hidden="true">
@@ -158,11 +158,11 @@ require __DIR__ . '/includes/header.php';
         <p class="form-help"><?= e(t('After your request is saved, WhatsApp opens with a message to the Centre. Press Send to share your booking number.')) ?></p>
 
         <div class="form-actions">
-          <button class="button button-primary" type="submit"><i class="fa-solid fa-calendar-check"></i> <?= e(t('Submit Request')) ?></button>
-          <a class="button button-secondary" href="tel:<?= e($site['phone_href']) ?>"><i class="fa-solid fa-phone"></i> <?= e(t('Call Centre')) ?></a>
+          <button class="button button-primary" type="submit" data-tooltip="Submit your consultation appointment request"><i class="fa-solid fa-calendar-check"></i> <?= e(t('Submit Request')) ?></button>
+          <a class="button button-secondary" href="tel:<?= e($site['phone_href']) ?>" data-tooltip="Direct phone call to reception"><i class="fa-solid fa-phone"></i> <?= e(t('Call Centre')) ?></a>
         </div>
         <div id="appointmentFollowUp" hidden>
-          <a class="button button-whatsapp" id="appointmentWhatsAppLink" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> <?= e(t('Send request to the Centre on WhatsApp')) ?></a>
+          <a class="button button-whatsapp" id="appointmentWhatsAppLink" href="#" target="_blank" rel="noopener" data-tooltip="Direct WhatsApp chat with reception"><i class="fa-brands fa-whatsapp"></i> <?= e(t('Send request to the Centre on WhatsApp')) ?></a>
         </div>
         <div class="form-status" id="appointmentStatus" role="status"><?= e(t('Your request is being sent to the Devya system.')) ?></div>
       </form>

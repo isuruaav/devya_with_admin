@@ -93,7 +93,7 @@ if (!seo_is_production() && !headers_sent()) {
     </nav>
 
     <div class="header-actions">
-      <a class="icon-button phone-button" href="tel:<?= e($site['phone_href']) ?>" aria-label="<?= e(t('Call {phone}', ['phone' => $site['phone_display']])) ?>">
+      <a class="icon-button phone-button" href="tel:<?= e($site['phone_href']) ?>" aria-label="<?= e(t('Call {phone}', ['phone' => $site['phone_display']])) ?>" data-tooltip="<?= e(t('Call {phone}', ['phone' => $site['phone_display']])) ?>" data-tooltip-pos="bottom">
         <i class="fa-solid fa-phone" aria-hidden="true"></i>
       </a>
       <a class="button button-primary header-book" href="<?= e(site_url('appointments.php')) ?>">

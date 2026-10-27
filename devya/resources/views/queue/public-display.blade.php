@@ -16,6 +16,8 @@
 
     <title>{{ config('branding.company_short_name') }} Queue Display</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     @vite([
         'resources/css/filament/admin/theme.css',
         'resources/js/app.js',
@@ -40,8 +42,8 @@
                 <div class="min-w-0">
                     <div class="flex items-center gap-3">
 
-                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-xl font-black text-white shadow-lg">
-                            {{ substr(config('branding.queue_short_name'), 0, 1) }}
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-xl font-black text-white shadow-lg" data-tooltip="{{ config('branding.company_name') }} Clinic Queue">
+                            <i class="fa-solid fa-hospital text-lg" aria-hidden="true"></i>
                         </div>
 
                         <div class="min-w-0">
@@ -63,10 +65,11 @@
                 <div class="shrink-0 text-right">
 
                     <div
-                        id="live-clock"
-                        class="text-lg font-black tabular-nums text-white sm:text-2xl"
+                        class="flex items-center justify-end gap-2 text-lg font-black tabular-nums text-white sm:text-2xl"
+                        data-tooltip="Live System Clock"
                     >
-                        --:--:--
+                        <i class="fa-regular fa-clock text-base text-emerald-400" aria-hidden="true"></i>
+                        <span id="live-clock">--:--:--</span>
                     </div>
 
                     <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400">
@@ -99,8 +102,8 @@
 
                         <div class="flex items-center gap-4">
 
-                            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-100 text-2xl">
-                                👨‍⚕️
+                            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-100 text-2xl text-emerald-800" data-tooltip="Consulting Ayurveda Physician">
+                                <i class="fa-solid fa-user-doctor" aria-hidden="true"></i>
                             </div>
 
                             <div class="min-w-0 flex-1">
@@ -116,8 +119,9 @@
                                     Doctor
                                 </h2>
 
-                                <p class="mt-2 text-xs font-black uppercase tracking-[0.16em] text-emerald-700">
-                                    Specialization
+                                <p class="mt-2 text-xs font-black uppercase tracking-[0.16em] text-emerald-700 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-certificate text-emerald-600" data-tooltip="Doctor Medical Specialization" aria-hidden="true"></i>
+                                    <span>Specialization</span>
                                 </p>
 
                                 <p
@@ -142,8 +146,8 @@
 
                         <div class="max-w-md text-center">
 
-                            <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-emerald-100 text-5xl">
-                                🕐
+                            <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-emerald-100 text-4xl text-emerald-700 shadow-inner" data-tooltip="Queue Waiting To Start">
+                                <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
                             </div>
 
                             <h2 class="mt-6 text-3xl font-black text-slate-900 sm:text-4xl">
@@ -176,12 +180,14 @@
 
                                     <div class="flex items-center justify-between gap-3">
 
-                                        <span class="text-xs font-black uppercase tracking-[0.2em] text-emerald-100 sm:text-sm">
-                                            Now Serving
+                                        <span class="text-xs font-black uppercase tracking-[0.2em] text-emerald-100 sm:text-sm flex items-center gap-2">
+                                            <i class="fa-solid fa-bullhorn text-emerald-200" data-tooltip="Token currently called into room" aria-hidden="true"></i>
+                                            <span>Now Serving</span>
                                         </span>
 
-                                        <span class="rounded-full bg-white/20 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white">
-                                            Current
+                                        <span class="rounded-full bg-white/20 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white flex items-center gap-1.5" data-tooltip="In consultation room">
+                                            <i class="fa-solid fa-door-open" aria-hidden="true"></i>
+                                            <span>Current</span>
                                         </span>
 
                                     </div>
@@ -222,12 +228,14 @@
 
                                     <div class="flex items-center justify-between gap-3">
 
-                                        <span class="text-xs font-black uppercase tracking-[0.2em] text-blue-100 sm:text-sm">
-                                            Next Queue
+                                        <span class="text-xs font-black uppercase tracking-[0.2em] text-blue-100 sm:text-sm flex items-center gap-2">
+                                            <i class="fa-solid fa-angles-right text-blue-200" data-tooltip="Next token in line" aria-hidden="true"></i>
+                                            <span>Next Queue</span>
                                         </span>
 
-                                        <span class="rounded-full bg-white/20 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white">
-                                            Next
+                                        <span class="rounded-full bg-white/20 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white flex items-center gap-1.5" data-tooltip="Please be ready near consulting room">
+                                            <i class="fa-solid fa-user-clock" aria-hidden="true"></i>
+                                            <span>Next</span>
                                         </span>
 
                                     </div>
@@ -270,18 +278,20 @@
 
                                 <div>
 
-                                    <p class="text-xs font-black uppercase tracking-[0.2em] text-amber-50">
-                                        Waiting Queue
+                                    <p class="text-xs font-black uppercase tracking-[0.2em] text-amber-50 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-users" data-tooltip="Patients waiting in lounge" aria-hidden="true"></i>
+                                        <span>Waiting Queue</span>
                                     </p>
 
-                                    <h3 class="mt-1 text-lg font-black text-white sm:text-xl">
-                                        Patients Waiting
+                                    <h3 class="mt-1 text-lg font-black text-white sm:text-xl flex items-center gap-2">
+                                        <i class="fa-solid fa-hourglass-half text-amber-100" data-tooltip="Active queue" aria-hidden="true"></i>
+                                        <span>Patients Waiting</span>
                                     </h3>
 
                                 </div>
 
 
-                                <div class="flex h-12 min-w-12 items-center justify-center rounded-2xl bg-white px-4 text-2xl font-black text-amber-600 shadow-lg">
+                                <div class="flex h-12 min-w-12 items-center justify-center rounded-2xl bg-white px-4 text-2xl font-black text-amber-600 shadow-lg" data-tooltip="Total patients waiting in queue">
 
                                     <span id="waiting-count">
                                         0
@@ -297,8 +307,9 @@
                                 class="min-h-0 flex-1 overflow-y-auto bg-slate-50 p-4 sm:p-5"
                             >
 
-                                <div class="flex min-h-[120px] items-center justify-center rounded-2xl border border-dashed border-amber-200 bg-white text-sm font-bold text-slate-500">
-                                    No waiting patients
+                                <div class="flex min-h-[120px] items-center justify-center gap-2 rounded-2xl border border-dashed border-amber-200 bg-white text-sm font-bold text-slate-500">
+                                    <i class="fa-solid fa-circle-check text-emerald-500" data-tooltip="All queue tokens served" aria-hidden="true"></i>
+                                    <span>No waiting patients</span>
                                 </div>
 
                             </div>
@@ -320,8 +331,9 @@
 
                         <div>
 
-                            <p class="text-xs font-black uppercase tracking-[0.2em] text-emerald-400">
-                                {{ config('branding.queue_short_name') }}
+                            <p class="text-xs font-black uppercase tracking-[0.2em] text-emerald-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-bullseye" data-tooltip="Healthcare Centre Notices" aria-hidden="true"></i>
+                                <span>{{ config('branding.queue_short_name') }}</span>
                             </p>
 
                             <h2 class="mt-1 text-lg font-black text-white sm:text-xl">
@@ -333,8 +345,9 @@
 
                         <div class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5">
 
-                            <span class="text-[10px] font-black uppercase tracking-widest text-emerald-400">
-                                Advertisement
+                            <span class="text-[10px] font-black uppercase tracking-widest text-emerald-400 flex items-center gap-1.5" data-tooltip="Public Announcements">
+                                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                                <span>Advertisement</span>
                             </span>
 
                         </div>
@@ -370,8 +383,9 @@
                     {{-- AD FOOTER --}}
                     <div class="shrink-0 border-t border-white/10 bg-slate-900 px-5 py-3 text-center">
 
-                        <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-500">
-                            Your Health • Our Care
+                        <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-500 flex items-center justify-center gap-2" data-tooltip="Ayurveda Healing Tradition">
+                            <i class="fa-solid fa-heart-pulse text-emerald-500" aria-hidden="true"></i>
+                            <span>Your Health • Our Care</span>
                         </p>
 
                     </div>

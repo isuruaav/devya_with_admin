@@ -202,6 +202,64 @@
             color: var(--muted);
         }
         .footer-note a { color: var(--forest-700); text-decoration: underline; }
+
+        /* Universal FontAwesome Tooltip */
+        [data-tooltip] {
+            position: relative;
+            cursor: pointer;
+        }
+        [data-tooltip]::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--forest-950);
+            color: #ffffff;
+            font-size: 0.73rem;
+            font-weight: 600;
+            line-height: 1.35;
+            letter-spacing: 0.02em;
+            padding: 5px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(200, 148, 66, 0.4);
+            z-index: 99999;
+        }
+        [data-tooltip]::after {
+            content: "";
+            position: absolute;
+            bottom: calc(100% + 3px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            border-width: 5px 5px 0 5px;
+            border-style: solid;
+            border-color: var(--forest-950) transparent transparent transparent;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            z-index: 99999;
+        }
+        [data-tooltip]:hover::before,
+        [data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .status-icon-wrapper i,
+        .btn i {
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .status-icon-wrapper:hover i,
+        .btn:hover i {
+            transform: scale(1.15);
+        }
     </style>
 </head>
 <body>
@@ -216,16 +274,16 @@
 
     <section class="status-card">
         @if ($payment->status === 'paid')
-            <div class="status-icon-wrapper status-paid">
-                <i class="fa-solid fa-circle-check"></i>
+            <div class="status-icon-wrapper status-paid" data-tooltip="Payment Confirmed Successfully">
+                <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
             </div>
             <h1>DEVYA CEYLON payment status</h1>
             <p class="status-lead">Your LKR {{ number_format((float) $payment->amount, 2) }} booking advance is confirmed.</p>
             <p class="status-lead-sinhala" lang="si">ඔබගේ LKR {{ number_format((float) $payment->amount, 2) }} වෙන්කිරීමේ අත්තිකාරම් ගෙවීම සාර්ථකව තහවුරු විය.</p>
 
-            <div class="appointment-box">
+            <div class="appointment-box" data-tooltip="Confirmed Booking Reference Code">
                 <div class="booking-row">
-                    <span style="color: var(--muted);">Booking Reference:</span>
+                    <span style="color: var(--muted);"><i class="fa-solid fa-receipt text-gold" style="margin-right: 5px;"></i> Booking Reference:</span>
                     <span class="booking-badge">Booking number: {{ $payment->appointment->booking_number }}</span>
                 </div>
             </div>
@@ -235,87 +293,87 @@
             </p>
 
             <div class="actions-group">
-                <a href="{{ $websiteUrl }}/index.php" class="btn btn-primary">
-                    <i class="fa-solid fa-house"></i> Return to Home
+                <a href="{{ $websiteUrl }}/index.php" class="btn btn-primary" data-tooltip="Return to DEVYA CEYLON homepage">
+                    <i class="fa-solid fa-house" aria-hidden="true"></i> Return to Home
                 </a>
-                <a href="https://wa.me/94713423173?text={{ urlencode('Hello DEVYA CEYLON, I have paid the booking advance for booking number ' . $payment->appointment->booking_number) }}" class="btn btn-whatsapp" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-whatsapp"></i> Notify Centre on WhatsApp
+                <a href="https://wa.me/94713423173?text={{ urlencode('Hello DEVYA CEYLON, I have paid the booking advance for booking number ' . $payment->appointment->booking_number) }}" class="btn btn-whatsapp" target="_blank" rel="noopener" data-tooltip="Notify Centre receptionist on WhatsApp">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Notify Centre on WhatsApp
                 </a>
             </div>
 
         @elseif ($payment->status === 'duplicate')
-            <div class="status-icon-wrapper status-duplicate">
-                <i class="fa-solid fa-triangle-exclamation"></i>
+            <div class="status-icon-wrapper status-duplicate" data-tooltip="Duplicate Payment Received">
+                <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
             </div>
             <h1>DEVYA CEYLON payment status</h1>
             <p class="status-lead" lang="en">We received an additional payment notification. Please contact the Centre before paying again.</p>
             <p class="status-lead-sinhala" lang="si">අමතර ගෙවීම් දැනුම්දීමක් ලැබී ඇත. නැවත ගෙවීමට පෙර මධ්‍යස්ථානය අමතන්න.</p>
 
-            <div class="appointment-box">
+            <div class="appointment-box" data-tooltip="Booking Reference Code">
                 <div class="booking-row">
-                    <span style="color: var(--muted);">Booking Reference:</span>
+                    <span style="color: var(--muted);"><i class="fa-solid fa-receipt text-gold" style="margin-right: 5px;"></i> Booking Reference:</span>
                     <span class="booking-badge">{{ $payment->appointment->booking_number }}</span>
                 </div>
             </div>
 
             <div class="actions-group">
-                <a href="tel:+94722000008" class="btn btn-primary">
-                    <i class="fa-solid fa-phone"></i> Call Centre (072 200 0008)
+                <a href="tel:+94722000008" class="btn btn-primary" data-tooltip="Call Centre reception desk">
+                    <i class="fa-solid fa-phone" aria-hidden="true"></i> Call Centre (072 200 0008)
                 </a>
-                <a href="https://wa.me/94713423173" class="btn btn-whatsapp" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                <a href="https://wa.me/94713423173" class="btn btn-whatsapp" target="_blank" rel="noopener" data-tooltip="Chat with support on WhatsApp">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
                 </a>
             </div>
 
         @elseif ($result === 'cancel')
-            <div class="status-icon-wrapper status-cancel">
-                <i class="fa-solid fa-circle-xmark"></i>
+            <div class="status-icon-wrapper status-cancel" data-tooltip="Payment Cancelled or Incomplete">
+                <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
             </div>
             <h1>DEVYA CEYLON payment status</h1>
             <p class="status-lead" lang="en">Checkout was cancelled or left incomplete. No successful payment has been confirmed. Contact the Centre to request a new payment link.</p>
             <p class="status-lead-sinhala" lang="si">ගෙවීම අවලංගු කර හෝ සම්පූර්ණ කර නැත. සාර්ථක ගෙවීමක් තහවුරු කර නැත. නව ගෙවීම් සබැඳියක් සඳහා මධ්‍යස්ථානය අමතන්න.</p>
 
-            <div class="appointment-box">
+            <div class="appointment-box" data-tooltip="Booking Reference Code">
                 <div class="booking-row">
-                    <span style="color: var(--muted);">Booking Reference:</span>
+                    <span style="color: var(--muted);"><i class="fa-solid fa-receipt text-gold" style="margin-right: 5px;"></i> Booking Reference:</span>
                     <span class="booking-badge">{{ $payment->appointment->booking_number }}</span>
                 </div>
             </div>
 
             <div class="actions-group">
-                <a href="https://wa.me/94713423173?text={{ urlencode('Hello DEVYA CEYLON, my checkout was cancelled for booking ' . $payment->appointment->booking_number . '. Please assist me.') }}" class="btn btn-whatsapp" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-whatsapp"></i> Request Assistance via WhatsApp
+                <a href="https://wa.me/94713423173?text={{ urlencode('Hello DEVYA CEYLON, my checkout was cancelled for booking ' . $payment->appointment->booking_number . '. Please assist me.') }}" class="btn btn-whatsapp" target="_blank" rel="noopener" data-tooltip="Request new payment link via WhatsApp">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Request Assistance via WhatsApp
                 </a>
-                <a href="{{ $websiteUrl }}/contact.php?lang=en" class="btn btn-outline">
-                    Contact the Centre
+                <a href="{{ $websiteUrl }}/contact.php?lang=en" class="btn btn-outline" data-tooltip="Contact the Centre for help">
+                    <i class="fa-solid fa-headset" aria-hidden="true"></i> Contact the Centre
                 </a>
             </div>
 
         @else
-            <div class="status-icon-wrapper status-processing">
-                <i class="fa-solid fa-clock-rotate-left"></i>
+            <div class="status-icon-wrapper status-processing" data-tooltip="Payment is Processing">
+                <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
             </div>
             <h1>DEVYA CEYLON payment status</h1>
             <p class="status-lead" lang="en">PayHere is processing your payment notification. This page alone does not confirm payment. Please contact the Centre if the status does not update.</p>
             <p class="status-lead-sinhala" lang="si">PayHere ගෙවීම් දැනුම්දීම සැකසෙමින් පවතී. මෙම පිටුව පමණක් ගෙවීම තහවුරු නොකරයි. තත්ත්වය යාවත්කාලීන නොවන්නේ නම් මධ්‍යස්ථානය අමතන්න.</p>
 
-            <div class="appointment-box">
+            <div class="appointment-box" data-tooltip="Booking Reference Code">
                 <div class="booking-row">
-                    <span style="color: var(--muted);">Booking Reference:</span>
+                    <span style="color: var(--muted);"><i class="fa-solid fa-receipt text-gold" style="margin-right: 5px;"></i> Booking Reference:</span>
                     <span class="booking-badge">{{ $payment->appointment->booking_number }}</span>
                 </div>
             </div>
 
             <div class="actions-group">
-                <a href="{{ $websiteUrl }}/contact.php?lang=en" class="btn btn-primary">
-                    Contact the Centre
+                <a href="{{ $websiteUrl }}/contact.php?lang=en" class="btn btn-primary" data-tooltip="Contact the Centre support desk">
+                    <i class="fa-solid fa-headset" aria-hidden="true"></i> Contact the Centre
                 </a>
             </div>
         @endif
 
         <div class="footer-note">
-            <a href="{{ $websiteUrl }}/contact.php?lang=en">Contact the Centre</a> ·
-            <a href="{{ $websiteUrl }}/index.php">DEVYA CEYLON Home</a>
+            <a href="{{ $websiteUrl }}/contact.php?lang=en" data-tooltip="Contact reception desk"><i class="fa-solid fa-headset"></i> Contact the Centre</a> ·
+            <a href="{{ $websiteUrl }}/index.php" data-tooltip="Go to homepage"><i class="fa-solid fa-house"></i> DEVYA CEYLON Home</a>
         </div>
     </section>
 </main>

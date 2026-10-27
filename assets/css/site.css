@@ -1940,3 +1940,117 @@ html[lang="si"] .appointment-hero-overlay h2 { font-size: clamp(1.8rem, 3vw, 2.5
     font-size: 0.78rem;
   }
 }
+
+
+/* =========================================================
+   UNIVERSAL FONTAWESOME & ICON TOOLTIP SYSTEM
+========================================================= */
+
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--forest-950, #0a2117);
+  color: var(--white, #ffffff);
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  padding: 5px 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.35), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(221, 180, 96, 0.4);
+  z-index: 99999;
+}
+
+[data-tooltip]::after {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 3px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: var(--forest-950, #0a2117) transparent transparent transparent;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 99999;
+}
+
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::before,
+[data-tooltip]:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+[data-tooltip-pos="bottom"]::before {
+  bottom: auto;
+  top: calc(100% + 8px);
+  transform: translateX(-50%) translateY(-4px);
+}
+[data-tooltip-pos="bottom"]::after {
+  bottom: auto;
+  top: calc(100% + 3px);
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent var(--forest-950, #0a2117) transparent;
+  transform: translateX(-50%) translateY(-4px);
+}
+[data-tooltip-pos="bottom"]:hover::before,
+[data-tooltip-pos="bottom"]:hover::after,
+[data-tooltip-pos="bottom"]:focus-visible::before,
+[data-tooltip-pos="bottom"]:focus-visible::after {
+  transform: translateX(-50%) translateY(0);
+}
+
+[data-tooltip-pos="right"]::before {
+  bottom: auto;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+}
+[data-tooltip-pos="right"]::after {
+  bottom: auto;
+  left: calc(100% + 3px);
+  top: 50%;
+  border-width: 5px 5px 5px 0;
+  border-color: transparent var(--forest-950, #0a2117) transparent transparent;
+  transform: translateY(-50%) translateX(-4px);
+}
+[data-tooltip-pos="right"]:hover::before,
+[data-tooltip-pos="right"]:hover::after,
+[data-tooltip-pos="right"]:focus-visible::before,
+[data-tooltip-pos="right"]:focus-visible::after {
+  transform: translateY(-50%) translateX(0);
+}
+
+i[data-tooltip],
+span[data-tooltip] > i,
+button[data-tooltip] > i,
+a[data-tooltip] > i {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+i[data-tooltip]:hover,
+span[data-tooltip]:hover > i,
+button[data-tooltip]:hover > i,
+a[data-tooltip]:hover > i {
+  transform: scale(1.15);
+}

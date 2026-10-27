@@ -250,6 +250,64 @@
         }
         .footer-help a { color: var(--forest-800); font-weight: 700; text-decoration: none; }
         .footer-help a:hover { text-decoration: underline; }
+
+        /* Universal FontAwesome Tooltip */
+        [data-tooltip] {
+            position: relative;
+            cursor: pointer;
+        }
+        [data-tooltip]::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--forest-950);
+            color: #ffffff;
+            font-size: 0.73rem;
+            font-weight: 600;
+            line-height: 1.35;
+            letter-spacing: 0.02em;
+            padding: 5px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(200, 148, 66, 0.4);
+            z-index: 99999;
+        }
+        [data-tooltip]::after {
+            content: "";
+            position: absolute;
+            bottom: calc(100% + 3px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            border-width: 5px 5px 0 5px;
+            border-style: solid;
+            border-color: var(--forest-950) transparent transparent transparent;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            z-index: 99999;
+        }
+        [data-tooltip]:hover::before,
+        [data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        i[data-tooltip],
+        .security-badges span i {
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        i[data-tooltip]:hover,
+        .security-badges span:hover i {
+            transform: scale(1.18);
+        }
     </style>
 </head>
 <body>
@@ -263,7 +321,7 @@
     </a>
 
     <section class="checkout-card">
-        <span class="badge-pill">
+        <span class="badge-pill" data-tooltip="Certified Official Payment Portal">
             <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Official Payment Portal
         </span>
 
@@ -274,16 +332,25 @@
 
         <div class="appointment-info">
             <div class="info-row">
-                <span class="info-label">Booking Reference:</span>
+                <span class="info-label">
+                    <i class="fa-solid fa-receipt" style="color: var(--gold-600); margin-right: 5px;" data-tooltip="Unique booking reference code" aria-hidden="true"></i>
+                    Booking Reference:
+                </span>
                 <span class="booking-badge"><strong>Booking:</strong> {{ $appointment->booking_number }}</span>
             </div>
             <div class="info-row">
-                <span class="info-label">Patient Name:</span>
+                <span class="info-label">
+                    <i class="fa-solid fa-user" style="color: var(--gold-600); margin-right: 5px;" data-tooltip="Registered patient name" aria-hidden="true"></i>
+                    Patient Name:
+                </span>
                 <span class="info-val">{{ $appointment->full_name }}</span>
             </div>
             @if ($appointment->appointment_date)
             <div class="info-row">
-                <span class="info-label">Appointment Date:</span>
+                <span class="info-label">
+                    <i class="fa-regular fa-calendar-check" style="color: var(--gold-600); margin-right: 5px;" data-tooltip="Confirmed consultation date" aria-hidden="true"></i>
+                    Appointment Date:
+                </span>
                 <span class="info-val">{{ $appointment->appointment_date->format('l, d M Y') }}</span>
             </div>
             @endif
@@ -292,14 +359,20 @@
         <div class="pricing-table">
             <div class="pricing-row highlight">
                 <div>
-                    <strong style="color: var(--forest-900); display: block;">Booking advance payable now:</strong>
+                    <strong style="color: var(--forest-900); display: flex; align-items: center; gap: 6px;">
+                        <i class="fa-solid fa-hand-holding-dollar" style="color: var(--gold-600);" data-tooltip="Online deposit required to lock slot" aria-hidden="true"></i>
+                        Booking advance payable now:
+                    </strong>
                     <small style="color: var(--muted);">Required to confirm and reserve slot</small>
                 </div>
                 <div class="amount">LKR {{ number_format((float) $payment->amount, 2) }}</div>
             </div>
             <div class="pricing-row">
                 <div>
-                    <span style="color: var(--ink);">Doctor Consultation Fee:</span>
+                    <span style="color: var(--ink); display: flex; align-items: center; gap: 6px;">
+                        <i class="fa-solid fa-stethoscope" style="color: var(--gold-600);" data-tooltip="Doctor Consultation Fee payable at Centre" aria-hidden="true"></i>
+                        Doctor Consultation Fee:
+                    </span>
                     <small style="display: block; color: var(--muted);">Payable at the Centre on appointment date</small>
                 </div>
                 <div style="font-weight: 700; color: var(--forest-900);">
@@ -313,12 +386,12 @@
         </p>
 
         <div class="notice-box">
-            <i class="fa-solid fa-lock" style="color: var(--gold-600); margin-right: 6px;"></i>
+            <i class="fa-solid fa-lock" style="color: var(--gold-600); margin-right: 6px;" data-tooltip="256-Bit Encrypted Payment Verification" aria-hidden="true"></i>
             <strong>Payment Verification:</strong> Use the secure PayHere checkout to complete payment. Your appointment advance is recorded only after the server verifies PayHere’s payment notification. Returning to this website alone does not confirm a successful payment.
         </div>
 
         <div class="sinhala-notice" lang="si">
-            <i class="fa-solid fa-circle-info" style="color: var(--gold-600); margin-right: 6px;"></i>
+            <i class="fa-solid fa-circle-info" style="color: var(--gold-600); margin-right: 6px;" data-tooltip="විස්තරාත්මක දැනුම්දීම" aria-hidden="true"></i>
             ඔබගේ වෛද්‍ය හමුව මධ්‍යස්ථානයේ කාර්ය මණ්ඩලය විසින් තහවුරු කර ඇත. දැන් ගෙවන්නේ වෙන්කිරීමේ අත්තිකාරම පමණි. LKR {{ number_format((float) config('appointments.website_consultation_fee_lkr'), 2) }} වෛද්‍ය උපදේශන ගාස්තුව හමුවීම් දිනයේදී මධ්‍යස්ථානයට ගෙවිය යුතුය.
         </div>
 
@@ -326,16 +399,16 @@
             @foreach ($checkout as $name => $value)
                 <input type="hidden" name="{{ $name }}" value="{{ $value }}">
             @endforeach
-            <button type="submit" class="pay-button">
-                <i class="fa-solid fa-lock"></i>
+            <button type="submit" class="pay-button" data-tooltip="Proceed to PayHere secure payment portal">
+                <i class="fa-solid fa-lock" aria-hidden="true"></i>
                 <span>Continue to secure PayHere payment</span>
             </button>
         </form>
 
         <div class="security-badges">
-            <span><i class="fa-solid fa-shield-check"></i> 256-Bit SSL Encryption</span>
-            <span><i class="fa-solid fa-building-columns"></i> PayHere Certified Gateway</span>
-            <span><i class="fa-regular fa-credit-card"></i> Cards / Wallets Accepted</span>
+            <span data-tooltip="Protected with 256-bit bank-grade SSL encryption"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> 256-Bit SSL Encryption</span>
+            <span data-tooltip="Licensed & Central Bank approved payment service provider"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> PayHere Certified Gateway</span>
+            <span data-tooltip="Credit Cards, Debit Cards, and Mobile Wallets"><i class="fa-regular fa-credit-card" aria-hidden="true"></i> Cards / Wallets Accepted</span>
         </div>
 
         <nav class="policies" aria-label="Legal policies">
@@ -353,8 +426,8 @@
 
     <div class="footer-help">
         Need assistance with this payment?
-        <a href="tel:+94722000008"><i class="fa-solid fa-phone"></i> 072 200 0008</a> or
-        <a href="https://wa.me/94713423173" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp Support</a>
+        <a href="tel:+94722000008" data-tooltip="Direct phone line to reception"><i class="fa-solid fa-phone" aria-hidden="true"></i> 072 200 0008</a> or
+        <a href="https://wa.me/94713423173" target="_blank" rel="noopener" data-tooltip="Chat directly with Centre staff"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Support</a>
     </div>
 </main>
 </body>

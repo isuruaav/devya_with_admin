@@ -184,11 +184,66 @@
             color: var(--forest-700);
             text-decoration: underline;
         }
+        /* Universal FontAwesome Tooltip */
+        [data-tooltip] {
+            position: relative;
+            cursor: pointer;
+        }
+        [data-tooltip]::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--forest-950);
+            color: #ffffff;
+            font-size: 0.73rem;
+            font-weight: 600;
+            line-height: 1.35;
+            letter-spacing: 0.02em;
+            padding: 5px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(200, 148, 66, 0.4);
+            z-index: 99999;
+        }
+        [data-tooltip]::after {
+            content: "";
+            position: absolute;
+            bottom: calc(100% + 3px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            border-width: 5px 5px 0 5px;
+            border-style: solid;
+            border-color: var(--forest-950) transparent transparent transparent;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            z-index: 99999;
+        }
+        [data-tooltip]:hover::before,
+        [data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .btn i {
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn:hover i {
+            transform: scale(1.18);
+        }
     </style>
 </head>
 <body>
 <main class="wrap">
-    <a href="{{ config('branding.website_url') }}" class="header-brand" aria-label="DEVYA CEYLON">
+    <a href="{{ config('branding.website_url') }}" class="header-brand" aria-label="DEVYA CEYLON" data-tooltip="DEVYA CEYLON Healthcare">
         <img src="{{ asset('images/logo.png') }}" alt="{{ config('branding.company_name') }}" class="brand-logo" onerror="this.src='{{ config('branding.website_url') }}assets/images/brand-logo.webp'">
         <div class="brand-text">
             <strong>{{ config('branding.company_name') }}</strong>
@@ -197,34 +252,38 @@
     </a>
 
     <section class="card">
-        <div class="success-icon">
-            <i class="fa-solid fa-check"></i>
+        <div class="success-icon" data-tooltip="Appointment request successfully submitted!">
+            <i class="fa-solid fa-circle-check"></i>
         </div>
 
         <h1>Request received</h1>
         <p class="lead">Your appointment request is pending Reception confirmation. A staff member will review your preferred date and contact you shortly.</p>
 
-        <div class="booking-box">
-            <span class="booking-label">Booking Reference Number</span>
+        <div class="booking-box" data-tooltip="Reference number for tracking your consultation request">
+            <span class="booking-label">
+                <i class="fa-solid fa-receipt" style="color: var(--gold-600); margin-right: 5px;"></i>
+                Booking Reference Number
+            </span>
             <strong class="booking-code">{{ $onlineAppointment->booking_number }}</strong>
         </div>
 
         <p style="font-size: 0.88rem; color: var(--muted); margin: 0 0 16px;">
+            <i class="fa-solid fa-circle-info" data-tooltip="Keep this reference code safe" style="color: var(--forest-800); margin-right: 6px;"></i>
             Please keep this booking number for reference. You will receive an SMS or WhatsApp notification once confirmed.
         </p>
 
         <div class="actions">
-            <a href="{{ config('branding.website_url') }}" class="btn btn-primary">
+            <a href="{{ config('branding.website_url') }}" class="btn btn-primary" data-tooltip="Go back to DEVYA CEYLON homepage">
                 <i class="fa-solid fa-house"></i> Return to Main Website
             </a>
-            <a class="btn btn-outline" href="{{ route('online-appointments.create') }}">
-                <i class="fa-solid fa-plus"></i> Book another appointment
+            <a class="btn btn-outline" href="{{ route('online-appointments.create') }}" data-tooltip="Book another patient appointment">
+                <i class="fa-solid fa-calendar-plus"></i> Book another appointment
             </a>
         </div>
     </section>
 
     <div class="footer-note">
-        Need assistance? <a href="{{ config('branding.website_url') }}contact.php">Contact Centre Support</a>
+        Need assistance? <a href="{{ config('branding.website_url') }}contact.php" data-tooltip="Get assistance from customer support"><i class="fa-solid fa-headset"></i> Contact Centre Support</a>
     </div>
 </main>
 </body>

@@ -60,9 +60,9 @@
 
                     </div>
 
-                    <div class="rounded-xl bg-sky-100 p-3">
+                    <div class="rounded-xl bg-sky-100 p-3" data-tooltip="Total Patients Registered Under Your Care">
 
-                        <x-heroicon-o-users class="h-7 w-7 text-sky-600" />
+                        <i class="fa-solid fa-hospital-user text-2xl text-sky-600" aria-hidden="true"></i>
 
                     </div>
 
@@ -89,9 +89,9 @@
 
                     </div>
 
-                    <div class="rounded-xl bg-emerald-100 p-3">
+                    <div class="rounded-xl bg-emerald-100 p-3" data-tooltip="Your Consultations Scheduled Today">
 
-                        <x-heroicon-o-calendar-days class="h-7 w-7 text-emerald-600" />
+                        <i class="fa-solid fa-calendar-check text-2xl text-emerald-600" aria-hidden="true"></i>
 
                     </div>
 
@@ -118,9 +118,9 @@
 
                     </div>
 
-                    <div class="rounded-xl bg-amber-100 p-3">
+                    <div class="rounded-xl bg-amber-100 p-3" data-tooltip="Patients Waiting to See You">
 
-                        <x-heroicon-o-clock class="h-7 w-7 text-amber-600" />
+                        <i class="fa-solid fa-clock-rotate-left text-2xl text-amber-600" aria-hidden="true"></i>
 
                     </div>
 
@@ -147,9 +147,9 @@
 
                     </div>
 
-                    <div class="rounded-xl bg-violet-100 p-3">
+                    <div class="rounded-xl bg-violet-100 p-3" data-tooltip="Patients Consulted Today">
 
-                        <x-heroicon-o-check-circle class="h-7 w-7 text-violet-600" />
+                        <i class="fa-solid fa-circle-check text-2xl text-violet-600" aria-hidden="true"></i>
 
                     </div>
 
@@ -171,9 +171,9 @@
 
                 <div class="flex items-center gap-4">
 
-                    <div class="rounded-xl bg-blue-100 p-3">
+                    <div class="rounded-xl bg-blue-100 p-3" data-tooltip="Local Resident Patients Today">
 
-                        <x-heroicon-o-user class="h-6 w-6 text-blue-600" />
+                        <i class="fa-solid fa-user-tag text-xl text-blue-600" aria-hidden="true"></i>
 
                     </div>
 
@@ -198,9 +198,9 @@
 
                 <div class="flex items-center gap-4">
 
-                    <div class="rounded-xl bg-purple-100 p-3">
+                    <div class="rounded-xl bg-purple-100 p-3" data-tooltip="International / Foreign Patients Today">
 
-                        <x-heroicon-o-globe-alt class="h-6 w-6 text-purple-600" />
+                        <i class="fa-solid fa-earth-americas text-xl text-purple-600" aria-hidden="true"></i>
 
                     </div>
 
@@ -225,9 +225,9 @@
 
                 <div class="flex items-center gap-4">
 
-                    <div class="rounded-xl bg-green-100 p-3">
+                    <div class="rounded-xl bg-green-100 p-3" data-tooltip="Appointments with Completed Payments">
 
-                        <x-heroicon-o-banknotes class="h-6 w-6 text-green-600" />
+                        <i class="fa-solid fa-receipt text-xl text-green-600" aria-hidden="true"></i>
 
                     </div>
 
@@ -267,9 +267,9 @@
 
                         <div class="flex items-center gap-2">
 
-                            <div class="rounded-xl bg-emerald-100 p-2">
+                            <div class="rounded-xl bg-emerald-100 p-2" data-tooltip="Doctor Schedule Calendar">
 
-                                <x-heroicon-o-calendar-days class="h-6 w-6 text-emerald-600" />
+                                <i class="fa-solid fa-calendar-days text-xl text-emerald-600" aria-hidden="true"></i>
 
                             </div>
 
@@ -300,9 +300,10 @@
                             type="button"
                             wire:click="previousDoctorMonth"
                             class="rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50"
+                            data-tooltip="View Previous Month"
                         >
 
-                            <x-heroicon-o-chevron-left class="h-5 w-5" />
+                            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
 
                         </button>
 
@@ -311,6 +312,7 @@
                             type="button"
                             wire:click="todayDoctorCalendar"
                             class="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
+                            data-tooltip="Jump to Today's Calendar"
                         >
 
                             Today
@@ -322,9 +324,10 @@
                             type="button"
                             wire:click="nextDoctorMonth"
                             class="rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50"
+                            data-tooltip="View Next Month"
                         >
 
-                            <x-heroicon-o-chevron-right class="h-5 w-5" />
+                            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
 
                         </button>
 
@@ -514,9 +517,10 @@
                         type="button"
                         wire:click="resetDoctorFilters"
                         class="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-100"
+                        data-tooltip="Clear all search and status filters"
                     >
 
-                        <x-heroicon-o-arrow-path class="h-4 w-4" />
+                        <i class="fa-solid fa-rotate-right text-xs" aria-hidden="true"></i>
 
                         Reset Filters
 
@@ -746,9 +750,11 @@
 
                     <div class="relative">
 
-                        <x-heroicon-o-magnifying-glass
-                            class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
-                        />
+                        <i
+                            class="fa-solid fa-magnifying-glass pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"
+                            aria-hidden="true"
+                            data-tooltip="Live search filter"
+                        ></i>
 
                         <input
                             type="text"
@@ -1034,17 +1040,21 @@
 
                                             @if(strcasecmp($patientType, 'Foreign') === 0)
 
-                                                <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-xs font-bold text-purple-700">
+                                                <span class="inline-flex items-center gap-1.5 rounded-full bg-purple-100 px-3 py-1 text-xs font-bold text-purple-700" data-tooltip="International / Foreign Citizen">
 
-                                                    Foreign
+                                                    <i class="fa-solid fa-earth-americas text-xs" aria-hidden="true"></i>
+
+                                                    <span>Foreign</span>
 
                                                 </span>
 
                                             @else
 
-                                                <span class="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700">
+                                                <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700" data-tooltip="Local Sri Lankan Resident">
 
-                                                    Local
+                                                    <i class="fa-solid fa-user text-xs" aria-hidden="true"></i>
+
+                                                    <span>Local</span>
 
                                                 </span>
 
@@ -1059,21 +1069,21 @@
 
                                             @if($appointment->payment_status === 'paid')
 
-                                                <span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">
+                                                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700" data-tooltip="Payment Completed & Verified">
 
-                                                    <x-heroicon-o-check-circle class="h-4 w-4" />
+                                                    <i class="fa-solid fa-circle-check text-xs" aria-hidden="true"></i>
 
-                                                    Paid
+                                                    <span>Paid</span>
 
                                                 </span>
 
                                             @else
 
-                                                <span class="inline-flex items-center gap-1 rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-700">
+                                                <span class="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-700" data-tooltip="Payment Pending / Unsettled">
 
-                                                    <x-heroicon-o-x-circle class="h-4 w-4" />
+                                                    <i class="fa-solid fa-circle-xmark text-xs" aria-hidden="true"></i>
 
-                                                    Unpaid
+                                                    <span>Unpaid</span>
 
                                                 </span>
 
@@ -1088,21 +1098,21 @@
 
                                             @if($isSeen)
 
-                                                <span class="inline-flex items-center gap-1 rounded-full bg-violet-100 px-3 py-1 text-xs font-bold text-violet-700">
+                                                <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-xs font-bold text-violet-700" data-tooltip="Doctor Consultation Completed">
 
-                                                    <x-heroicon-o-check class="h-4 w-4" />
+                                                    <i class="fa-solid fa-check text-xs" aria-hidden="true"></i>
 
-                                                    Seen
+                                                    <span>Seen</span>
 
                                                 </span>
 
                                             @else
 
-                                                <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-700">
+                                                <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-700" data-tooltip="Patient is Waiting in Line">
 
-                                                    <x-heroicon-o-clock class="h-4 w-4" />
+                                                    <i class="fa-solid fa-clock text-xs" aria-hidden="true"></i>
 
-                                                    Waiting
+                                                    <span>Waiting</span>
 
                                                 </span>
 
@@ -1120,11 +1130,12 @@
                                                 <a
                                                     href="{{ url('/admin/consultations/' . $appointment->consultation_id . '/edit') }}"
                                                     class="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-violet-700"
+                                                    data-tooltip="Open existing clinical records & prescription"
                                                 >
 
-                                                    <x-heroicon-o-eye class="h-4 w-4" />
+                                                    <i class="fa-solid fa-eye text-xs" aria-hidden="true"></i>
 
-                                                    View Consultation
+                                                    <span>View Consultation</span>
 
                                                 </a>
 
@@ -1133,21 +1144,25 @@
                                                 <a
                                                     href="{{ url('/admin/consultations/create?appointment_id=' . $appointment->id) }}"
                                                     class="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700"
+                                                    data-tooltip="Begin patient diagnosis & prescription"
                                                 >
 
-                                                    <x-heroicon-o-plus-circle class="h-4 w-4" />
+                                                    <i class="fa-solid fa-notes-medical text-xs" aria-hidden="true"></i>
 
-                                                    Start Consultation
+                                                    <span>Start Consultation</span>
 
                                                 </a>
 
                                             @else
 
-                                                <span class="inline-flex items-center gap-2 rounded-xl bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-500">
+                                                <span
+                                                    class="inline-flex items-center gap-2 rounded-xl bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-500"
+                                                    data-tooltip="Consultation requires payment settlement at counter"
+                                                >
 
-                                                    <x-heroicon-o-clock class="h-4 w-4" />
+                                                    <i class="fa-solid fa-hourglass-half text-xs" aria-hidden="true"></i>
 
-                                                    Payment Pending
+                                                    <span>Payment Pending</span>
 
                                                 </span>
 
@@ -1169,9 +1184,9 @@
 
                     <div class="px-6 py-14 text-center">
 
-                        <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+                        <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100" data-tooltip="No patient appointments found">
 
-                            <x-heroicon-o-calendar-days class="h-8 w-8 text-gray-400" />
+                            <i class="fa-solid fa-calendar-xmark text-2xl text-gray-400" aria-hidden="true"></i>
 
                         </div>
 
@@ -1234,26 +1249,30 @@
 
                 <div class="flex flex-wrap gap-3">
 
-                    <div class="rounded-xl bg-white px-4 py-3 shadow-sm dark:bg-gray-900 dark:ring-1 dark:ring-gray-800">
+                    <div class="rounded-xl bg-white px-4 py-3 shadow-sm dark:bg-gray-900 dark:ring-1 dark:ring-gray-800 flex items-center gap-2" data-tooltip="Total appointments scheduled today">
+
+                        <i class="fa-solid fa-calendar-check text-emerald-600 dark:text-emerald-400" aria-hidden="true"></i>
 
                         <span class="text-xs text-gray-500 dark:text-gray-400">
                             Today
                         </span>
 
-                        <span class="ml-2 font-bold text-emerald-700 dark:text-emerald-400">
+                        <span class="ml-1 font-bold text-emerald-700 dark:text-emerald-400">
                             {{ $this->getTodayAppointmentCount() }}
                         </span>
 
                     </div>
 
 
-                    <div class="rounded-xl bg-white px-4 py-3 shadow-sm dark:bg-gray-900 dark:ring-1 dark:ring-gray-800">
+                    <div class="rounded-xl bg-white px-4 py-3 shadow-sm dark:bg-gray-900 dark:ring-1 dark:ring-gray-800 flex items-center gap-2" data-tooltip="Total consultations completed today">
+
+                        <i class="fa-solid fa-circle-check text-violet-600 dark:text-violet-400" aria-hidden="true"></i>
 
                         <span class="text-xs text-gray-500 dark:text-gray-400">
                             Seen
                         </span>
 
-                        <span class="ml-2 font-bold text-violet-700 dark:text-violet-400">
+                        <span class="ml-1 font-bold text-violet-700 dark:text-violet-400">
                             {{ $this->getSeenAppointmentCount() }}
                         </span>
 
@@ -1282,13 +1301,24 @@
 
             <div class="rounded-3xl bg-gradient-to-r from-emerald-700 to-teal-600 p-6 shadow-xl">
 
-                <h1 class="text-3xl font-bold text-white">
-                    {{ config('branding.company_short_name') }} Dashboard
-                </h1>
+                <div class="flex items-center gap-4">
 
-                <p class="mt-2 text-emerald-100">
-                    {{ config('branding.system_name') }} Management Dashboard
-                </p>
+                    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/20 text-white text-xl shadow-inner" data-tooltip="{{ config('branding.company_short_name') }} Healthcare Portal">
+                        <i class="fa-solid fa-hospital" aria-hidden="true"></i>
+                    </div>
+
+                    <div>
+                        <h1 class="text-3xl font-bold text-white">
+                            {{ config('branding.company_short_name') }} Dashboard
+                        </h1>
+
+                        <p class="mt-1 text-emerald-100 flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-shield-heart text-xs" data-tooltip="Verified Hospital System" aria-hidden="true"></i>
+                            <span>{{ config('branding.system_name') }} Management Dashboard</span>
+                        </p>
+                    </div>
+
+                </div>
 
             </div>
 
@@ -1297,52 +1327,92 @@
 
                 <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Total Patients
-                    </p>
+                    <div class="flex items-center justify-between">
 
-                    <p class="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
-                        {{ $stats['patients'] }}
-                    </p>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                Total Patients
+                            </p>
 
-                </div>
+                            <p class="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
+                                {{ $stats['patients'] }}
+                            </p>
+                        </div>
 
+                        <div class="rounded-xl bg-gray-100 p-3 text-gray-600 dark:bg-gray-800 dark:text-gray-300" data-tooltip="Total registered patient records in the system">
+                            <i class="fa-solid fa-hospital-user text-xl" aria-hidden="true"></i>
+                        </div>
 
-                <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
-
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Today's Appointments
-                    </p>
-
-                    <p class="mt-2 text-3xl font-bold text-emerald-700 dark:text-emerald-400">
-                        {{ $stats['today_appointments'] }}
-                    </p>
+                    </div>
 
                 </div>
 
 
                 <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Today's Consultations
-                    </p>
+                    <div class="flex items-center justify-between">
 
-                    <p class="mt-2 text-3xl font-bold text-violet-700 dark:text-violet-400">
-                        {{ $stats['today_consultations'] }}
-                    </p>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                Today's Appointments
+                            </p>
+
+                            <p class="mt-2 text-3xl font-bold text-emerald-700 dark:text-emerald-400">
+                                {{ $stats['today_appointments'] }}
+                            </p>
+                        </div>
+
+                        <div class="rounded-xl bg-emerald-100 p-3 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400" data-tooltip="Scheduled patient appointments for today">
+                            <i class="fa-solid fa-calendar-check text-xl" aria-hidden="true"></i>
+                        </div>
+
+                    </div>
 
                 </div>
 
 
                 <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Waiting Queue
-                    </p>
+                    <div class="flex items-center justify-between">
 
-                    <p class="mt-2 text-3xl font-bold text-amber-700 dark:text-amber-400">
-                        {{ $stats['waiting_queue'] }}
-                    </p>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                Today's Consultations
+                            </p>
+
+                            <p class="mt-2 text-3xl font-bold text-violet-700 dark:text-violet-400">
+                                {{ $stats['today_consultations'] }}
+                            </p>
+                        </div>
+
+                        <div class="rounded-xl bg-violet-100 p-3 text-violet-600 dark:bg-violet-950/60 dark:text-violet-400" data-tooltip="Doctor consultations completed today">
+                            <i class="fa-solid fa-stethoscope text-xl" aria-hidden="true"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
+
+                    <div class="flex items-center justify-between">
+
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                Waiting Queue
+                            </p>
+
+                            <p class="mt-2 text-3xl font-bold text-amber-700 dark:text-amber-400">
+                                {{ $stats['waiting_queue'] }}
+                            </p>
+                        </div>
+
+                        <div class="rounded-xl bg-amber-100 p-3 text-amber-600 dark:bg-amber-950/60 dark:text-amber-400" data-tooltip="Patients currently waiting in the clinic queue">
+                            <i class="fa-solid fa-clock-rotate-left text-xl" aria-hidden="true"></i>
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -1353,16 +1423,25 @@
 
                 <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <h2 class="text-lg font-bold text-gray-900 dark:text-white">
-                        Today's Income
-                    </h2>
+                    <div class="flex items-center justify-between">
+
+                        <h2 class="text-lg font-bold text-gray-900 dark:text-white">
+                            Today's Income
+                        </h2>
+
+                        <div class="rounded-xl bg-emerald-100 p-2.5 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400" data-tooltip="Today's total revenue collections">
+                            <i class="fa-solid fa-wallet text-base" aria-hidden="true"></i>
+                        </div>
+
+                    </div>
 
                     <div class="mt-4 grid grid-cols-2 gap-4">
 
-                        <div class="rounded-xl bg-emerald-50 p-4 dark:bg-emerald-950/50 dark:border dark:border-emerald-800/50">
+                        <div class="rounded-xl bg-emerald-50 p-4 dark:bg-emerald-950/50 dark:border dark:border-emerald-800/50" data-tooltip="Today's total collections in Sri Lankan Rupees">
 
-                            <p class="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-                                LKR
+                            <p class="text-xs font-semibold text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-coins text-xs" aria-hidden="true"></i>
+                                <span>LKR</span>
                             </p>
 
                             <p class="mt-1 text-2xl font-bold text-emerald-900 dark:text-emerald-100">
@@ -1374,10 +1453,11 @@
                         </div>
 
 
-                        <div class="rounded-xl bg-blue-50 p-4 dark:bg-blue-950/50 dark:border dark:border-blue-800/50">
+                        <div class="rounded-xl bg-blue-50 p-4 dark:bg-blue-950/50 dark:border dark:border-blue-800/50" data-tooltip="Today's total collections in US Dollars">
 
-                            <p class="text-xs font-semibold text-blue-700 dark:text-blue-300">
-                                USD
+                            <p class="text-xs font-semibold text-blue-700 dark:text-blue-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-dollar-sign text-xs" aria-hidden="true"></i>
+                                <span>USD</span>
                             </p>
 
                             <p class="mt-1 text-2xl font-bold text-blue-900 dark:text-blue-100">
@@ -1395,16 +1475,25 @@
 
                 <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
 
-                    <h2 class="text-lg font-bold text-gray-900 dark:text-white">
-                        Pending Balance
-                    </h2>
+                    <div class="flex items-center justify-between">
+
+                        <h2 class="text-lg font-bold text-gray-900 dark:text-white">
+                            Pending Balance
+                        </h2>
+
+                        <div class="rounded-xl bg-amber-100 p-2.5 text-amber-600 dark:bg-amber-950/60 dark:text-amber-400" data-tooltip="Total pending unpaid patient balances">
+                            <i class="fa-solid fa-file-invoice-dollar text-base" aria-hidden="true"></i>
+                        </div>
+
+                    </div>
 
                     <div class="mt-4 grid grid-cols-2 gap-4">
 
-                        <div class="rounded-xl bg-amber-50 p-4 dark:bg-amber-950/50 dark:border dark:border-amber-800/50">
+                        <div class="rounded-xl bg-amber-50 p-4 dark:bg-amber-950/50 dark:border dark:border-amber-800/50" data-tooltip="Outstanding unpaid balances in Sri Lankan Rupees">
 
-                            <p class="text-xs font-semibold text-amber-700 dark:text-amber-300">
-                                LKR
+                            <p class="text-xs font-semibold text-amber-700 dark:text-amber-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-coins text-xs" aria-hidden="true"></i>
+                                <span>LKR</span>
                             </p>
 
                             <p class="mt-1 text-2xl font-bold text-amber-900 dark:text-amber-100">
@@ -1416,10 +1505,11 @@
                         </div>
 
 
-                        <div class="rounded-xl bg-red-50 p-4 dark:bg-red-950/50 dark:border dark:border-red-800/50">
+                        <div class="rounded-xl bg-red-50 p-4 dark:bg-red-950/50 dark:border dark:border-red-800/50" data-tooltip="Outstanding unpaid balances in US Dollars">
 
-                            <p class="text-xs font-semibold text-red-700 dark:text-red-300">
-                                USD
+                            <p class="text-xs font-semibold text-red-700 dark:text-red-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-dollar-sign text-xs" aria-hidden="true"></i>
+                                <span>USD</span>
                             </p>
 
                             <p class="mt-1 text-2xl font-bold text-red-900 dark:text-red-100">

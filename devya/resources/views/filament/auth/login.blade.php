@@ -32,7 +32,10 @@
 
                 {{-- Heading --}}
                 <div class="ayu-heading">
-                    <h2>Staff sign in</h2>
+                    <h2>
+                        <i class="fa-solid fa-lock mr-1 text-sm text-emerald-600" data-tooltip="Secure Staff Authentication" aria-hidden="true"></i>
+                        Staff sign in
+                    </h2>
                     <p>Manage appointments and patient care.</p>
                 </div>
 
@@ -50,6 +53,7 @@
                         wire:loading.attr="disabled"
                         wire:target="authenticate"
                         class="ayu-login-button"
+                        data-tooltip="Sign in to Hospital Management System"
                     >
 
                         <span
@@ -65,47 +69,18 @@
                             class="ayu-loading"
                         >
 
-                            <svg
-                                class="ayu-spinner"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                            >
-                                <circle
-                                    cx="12"
-                                    cy="12"
-                                    r="9"
-                                    stroke="currentColor"
-                                    stroke-width="3"
-                                    opacity="0.25"
-                                />
-
-                                <path
-                                    d="M21 12a9 9 0 0 0-9-9"
-                                    stroke="currentColor"
-                                    stroke-width="3"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
+                            <i class="fa-solid fa-circle-notch fa-spin mr-2" aria-hidden="true"></i>
 
                             Signing in...
 
                         </span>
 
-                        <svg
+                        <i
                             wire:loading.remove
                             wire:target="authenticate"
-                            class="ayu-arrow"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M13 7l5 5m0 0l-5 5m5-5H6"
-                            />
-                        </svg>
+                            class="fa-solid fa-arrow-right ayu-arrow"
+                            aria-hidden="true"
+                        ></i>
 
                     </button>
 

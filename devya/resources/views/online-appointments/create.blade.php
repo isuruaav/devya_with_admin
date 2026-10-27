@@ -137,6 +137,68 @@
             font-weight: 700;
             font-size: 0.85rem;
             color: var(--forest-900);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .icon-gold {
+            color: var(--gold-600);
+            font-size: 0.95rem;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+        }
+        label:hover .icon-gold,
+        .icon-gold:hover {
+            transform: scale(1.18);
+            color: var(--forest-800);
+        }
+        /* Universal FontAwesome Tooltip */
+        [data-tooltip] {
+            position: relative;
+            cursor: pointer;
+        }
+        [data-tooltip]::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--forest-950);
+            color: #ffffff;
+            font-size: 0.73rem;
+            font-weight: 600;
+            line-height: 1.35;
+            letter-spacing: 0.02em;
+            padding: 5px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(200, 148, 66, 0.4);
+            z-index: 99999;
+        }
+        [data-tooltip]::after {
+            content: "";
+            position: absolute;
+            bottom: calc(100% + 3px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            border-width: 5px 5px 0 5px;
+            border-style: solid;
+            border-color: var(--forest-950) transparent transparent transparent;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            z-index: 99999;
+        }
+        [data-tooltip]:hover::before,
+        [data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
         }
         input, select, textarea {
             width: 100%;
@@ -208,7 +270,7 @@
     </a>
 
     <section class="card">
-        <span class="badge-pill">
+        <span class="badge-pill" data-tooltip="Official Online Appointment Booking Portal">
             <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Online Appointment System
         </span>
 
@@ -217,7 +279,7 @@
 
         @if ($errors->any())
             <div class="errors">
-                <strong><i class="fa-solid fa-triangle-exclamation"></i> Please check the form errors below:</strong>
+                <strong><i class="fa-solid fa-triangle-exclamation" data-tooltip="Validation warnings"></i> Please check the form errors below:</strong>
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -229,30 +291,48 @@
         <form method="POST" action="{{ route('online-appointments.store') }}" class="grid">
             @csrf
             <div class="field">
-                <label for="full_name">Full Name *</label>
+                <label for="full_name">
+                    <i class="fa-solid fa-user icon-gold" data-tooltip="Enter your full name as in National Identity Card or Passport" aria-hidden="true"></i>
+                    <span>Full Name *</span>
+                </label>
                 <input id="full_name" name="full_name" value="{{ old('full_name') }}" placeholder="e.g. K. Perera" required>
             </div>
             <div class="field">
-                <label for="nic_or_passport">NIC / Passport Number *</label>
+                <label for="nic_or_passport">
+                    <i class="fa-solid fa-id-card icon-gold" data-tooltip="National Identity Card or Passport number for patient record" aria-hidden="true"></i>
+                    <span>NIC / Passport Number *</span>
+                </label>
                 <input id="nic_or_passport" name="nic_or_passport" value="{{ old('nic_or_passport') }}" placeholder="National Identity or Passport" required>
             </div>
             <div class="field">
-                <label for="phone_number">Phone / WhatsApp *</label>
+                <label for="phone_number">
+                    <i class="fa-solid fa-phone icon-gold" data-tooltip="Active mobile phone or WhatsApp number for appointment updates" aria-hidden="true"></i>
+                    <span>Phone / WhatsApp *</span>
+                </label>
                 <input id="phone_number" name="phone_number" value="{{ old('phone_number') }}" placeholder="07X XXX XXXX" required>
             </div>
             <div class="field">
-                <label for="email">Email Address (Optional)</label>
+                <label for="email">
+                    <i class="fa-solid fa-envelope icon-gold" data-tooltip="Email address for e-receipt and digital notifications (optional)" aria-hidden="true"></i>
+                    <span>Email Address (Optional)</span>
+                </label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="name@example.com">
             </div>
             <div class="field">
-                <label for="patient_type">Patient Type *</label>
+                <label for="patient_type">
+                    <i class="fa-solid fa-earth-americas icon-gold" data-tooltip="Select whether Local (Sri Lankan) or Foreign (International) Patient" aria-hidden="true"></i>
+                    <span>Patient Type *</span>
+                </label>
                 <select id="patient_type" name="patient_type" required>
                     <option value="Local" @selected(old('patient_type', 'Local') === 'Local')>Local Patient (ශ්‍රී ලාංකික)</option>
                     <option value="Foreign" @selected(old('patient_type') === 'Foreign')>Foreign Patient (ජාත්‍යන්තර)</option>
                 </select>
             </div>
             <div class="field">
-                <label for="doctor_id">Doctor / Practitioner *</label>
+                <label for="doctor_id">
+                    <i class="fa-solid fa-user-doctor icon-gold" data-tooltip="Choose your preferred consulting doctor or specialist" aria-hidden="true"></i>
+                    <span>Doctor / Practitioner *</span>
+                </label>
                 <select id="doctor_id" name="doctor_id" required>
                     <option value="">Select Doctor</option>
                     @foreach ($doctors as $doctor)
@@ -263,16 +343,22 @@
                 </select>
             </div>
             <div class="field full">
-                <label for="appointment_date">Preferred Date &amp; Time *</label>
+                <label for="appointment_date">
+                    <i class="fa-regular fa-clock icon-gold" data-tooltip="Select preferred consultation date and arrival time" aria-hidden="true"></i>
+                    <span>Preferred Date &amp; Time *</span>
+                </label>
                 <input id="appointment_date" type="datetime-local" name="appointment_date" value="{{ old('appointment_date') }}" min="{{ now()->format('Y-m-d\TH:i') }}" required>
             </div>
             <div class="field full">
-                <label for="notes">Reason for Consultation / Special Requests (Optional)</label>
+                <label for="notes">
+                    <i class="fa-solid fa-notes-medical icon-gold" data-tooltip="Briefly describe your symptoms, existing conditions, or wellness consultation goals" aria-hidden="true"></i>
+                    <span>Reason for Consultation / Special Requests (Optional)</span>
+                </label>
                 <textarea id="notes" name="notes" placeholder="Briefly describe your symptoms or wellness goal...">{{ old('notes') }}</textarea>
             </div>
             <div class="full" style="margin-top: 8px;">
-                <button class="button" type="submit">
-                    <i class="fa-solid fa-calendar-check"></i>
+                <button class="button" type="submit" data-tooltip="Submit your consultation booking request to reception">
+                    <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
                     <span>Submit Appointment Request</span>
                 </button>
             </div>
@@ -280,8 +366,8 @@
     </section>
 
     <div class="footer-links">
-        <a href="{{ config('branding.website_url') }}"><i class="fa-solid fa-arrow-left"></i> Return to Main Website</a> ·
-        <a href="{{ config('branding.website_url') }}contact.php">Need Help? Contact Us</a>
+        <a href="{{ config('branding.website_url') }}" data-tooltip="Back to DEVYA CEYLON official website"><i class="fa-solid fa-arrow-left"></i> Return to Main Website</a> ·
+        <a href="{{ config('branding.website_url') }}contact.php" data-tooltip="Need assistance? Call or message our team"><i class="fa-solid fa-headset"></i> Need Help? Contact Us</a>
     </div>
 </main>
 </body>

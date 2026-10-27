@@ -1,4 +1,4 @@
-<div class="devya-panel-brand">
+<div class="devya-panel-brand" data-tooltip="{{ config('branding.company_name') }} System">
     <img
         src="{{ asset(config('branding.logo_path')) }}"
         alt="{{ config('branding.company_name') }} logo"
