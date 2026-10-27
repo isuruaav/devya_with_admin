@@ -309,6 +309,16 @@ class SecurityWorkflowsTest extends TestCase
 
     private function appointmentPayload(): array
     {
-        return ['fullName' => 'Website Test', 'phone' => '0770000000', 'service' => 'Ayurveda Consultation', 'preferredDate' => today()->addDay()->toDateString(), 'preferredTime' => 'Morning', 'contactMethod' => 'Phone call'];
+        return [
+            'fullName' => 'Website Test',
+            'phone' => '0770000000',
+            'email' => 'website-test@example.test',
+            'address' => '12 Test Road',
+            'city' => 'Kandy',
+            'service' => 'Ayurveda Consultation',
+            'preferredDate' => today()->addDay()->toDateString(),
+            'preferredTime' => 'Morning',
+            'contactMethod' => 'Phone call',
+        ];
     }
 }

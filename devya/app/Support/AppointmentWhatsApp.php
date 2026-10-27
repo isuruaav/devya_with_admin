@@ -61,4 +61,37 @@ class AppointmentWhatsApp
 
         return 'https://wa.me/'.$phoneNumber.'?text='.rawurlencode($message);
     }
+
+    public static function bookingAdvancePaymentUrl(OnlineAppointment $appointment, string $paymentUrl): ?string
+    {
+        $phoneNumber = WhatsAppNumber::normalize($appointment->phone_number);
+
+        if ($appointment->status !== 'confirmed' || ! $phoneNumber || $appointment->source !== 'Website') {
+            return null;
+        }
+
+        $message = implode("\n", [
+            config('branding.company_name'),
+            '',
+            'Hello '.$appointment->full_name.',',
+            'Your appointment is confirmed.',
+            '',
+            'Booking number: '.$appointment->booking_number,
+            'Booking advance to reserve your appointment: LKR '.number_format(
+                (float) config('appointments.website_booking_advance_lkr'),
+                2
+            ),
+            'Consultation fee payable at the Centre on the appointment date: LKR '.number_format(
+                (float) config('appointments.website_consultation_fee_lkr'),
+                2
+            ),
+            '',
+            'Secure PayHere link for the booking advance:',
+            $paymentUrl,
+            '',
+            'The consultation fee is not included in this online payment.',
+        ]);
+
+        return 'https://wa.me/'.$phoneNumber.'?text='.rawurlencode($message);
+    }
 }

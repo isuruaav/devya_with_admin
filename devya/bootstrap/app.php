@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->preventRequestForgery(except: [
             'website-appointment',
+            'payments/payhere/notify',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

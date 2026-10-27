@@ -85,6 +85,15 @@ require __DIR__ . '/includes/header.php';
           </div>
         </div>
         <div class="booking-note"><strong style="color:var(--forest-900)"><?= e(t('Important:')) ?></strong> <?= e(t('This page is for appointment requests only. Emergency medical concerns should be directed to an appropriate emergency healthcare provider.')) ?></div>
+        <div class="booking-note">
+          <strong style="color:var(--forest-900)"><?= e(t('Payment and confirmation:')) ?></strong>
+          <?= e(t('Submitting this form does not confirm an appointment and does not require payment. After staff confirm your appointment, they will send an official link to pay the LKR 1,500 booking advance. The LKR 3,000 consultation fee is payable at the Centre on the appointment date.')) ?>
+          <nav class="appointment-policy-links" aria-label="<?= e(t('Legal policies')) ?>">
+            <a href="<?= e(site_url('privacy-policy.php')) ?>"><?= e(t('Privacy Policy')) ?></a>
+            <a href="<?= e(site_url('refund-policy.php')) ?>"><?= e(t('Refund & Cancellation Policy')) ?></a>
+            <a href="<?= e(site_url('terms-and-conditions.php')) ?>"><?= e(t('Terms & Conditions')) ?></a>
+          </nav>
+        </div>
       </aside>
 
       <form
@@ -102,6 +111,9 @@ require __DIR__ . '/includes/header.php';
         <div class="form-grid">
           <div class="form-group"><label for="fullName"><?= e(t('Full name *')) ?></label><input class="form-control" id="fullName" name="fullName" type="text" autocomplete="name" required></div>
           <div class="form-group"><label for="phone"><?= e(t('Phone / WhatsApp number *')) ?></label><input class="form-control" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="<?= e(t('07X XXX XXXX')) ?>" required></div>
+          <div class="form-group"><label for="email"><?= e(t('Email address *')) ?></label><input class="form-control" id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="form-group"><label for="address"><?= e(t('Address *')) ?></label><input class="form-control" id="address" name="address" type="text" autocomplete="street-address" required></div>
+          <div class="form-group"><label for="city"><?= e(t('City *')) ?></label><input class="form-control" id="city" name="city" type="text" autocomplete="address-level2" required></div>
           <div class="form-group"><label for="service"><?= e(t('Preferred service *')) ?></label><select class="form-control" id="service" name="service" required>
               <option value=""><?= e(t('Select a service')) ?></option>
               <optgroup label="<?= e(t('Weekly special clinics')) ?>">

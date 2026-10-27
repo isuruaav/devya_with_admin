@@ -3,6 +3,7 @@
 use App\Http\Controllers\BillingDocumentController;
 use App\Http\Controllers\ConsultationReceiptController;
 use App\Http\Controllers\OnlineAppointmentController;
+use App\Http\Controllers\PayHerePaymentController;
 use App\Http\Controllers\PharmacyBillPrintController;
 use App\Http\Controllers\PharmacyBillReceiptController;
 use App\Http\Controllers\PrivateDocumentController;
@@ -185,6 +186,21 @@ Route::get(
     '/online-appointment/{onlineAppointment}/success',
     [OnlineAppointmentController::class, 'success']
 )->name('online-appointments.success');
+
+Route::get('/booking-advance/{paymentTransaction:uuid}/return', [PayHerePaymentController::class, 'return'])
+    ->middleware('signed')
+    ->name('payhere.return');
+
+Route::get('/booking-advance/{paymentTransaction:uuid}/cancel', [PayHerePaymentController::class, 'cancel'])
+    ->middleware('signed')
+    ->name('payhere.cancel');
+
+Route::get('/booking-advance/{onlineAppointment}/{bookingAdvancePayment:uuid}', [PayHerePaymentController::class, 'checkout'])
+    ->middleware('signed')
+    ->name('payhere.checkout');
+
+Route::post('/payments/payhere/notify', [PayHerePaymentController::class, 'notify'])
+    ->name('payhere.notify');
 
 /*
 |--------------------------------------------------------------------------

@@ -137,6 +137,9 @@ class WebsiteAppointmentNotificationsTest extends TestCase
         return [
             'fullName' => 'Website Notification Test',
             'phone' => '0770000000',
+            'email' => 'notification-test@example.test',
+            'address' => '25 Test Road',
+            'city' => 'Kandy',
             'service' => 'General Ayurveda OPD Consultation',
             'preferredDate' => '2026-10-20',
             'preferredTime' => 'Afternoon',

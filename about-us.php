@@ -22,7 +22,7 @@ require __DIR__ . '/includes/header.php';
       </h1>
 
       <p>
-        <?= e(t('DEVYA CEYLON is being developed as a modern Ayurveda Channelling Centre that connects authentic Sri Lankan healing traditions with professional, convenient and patient-centred appointment-based care.')) ?>
+        <?= e(t('DEVYA CEYLON Ayurveda Channelling Centre in Kandy accepts appointment requests and coordinates them with the listed practitioners. Staff confirm the practitioner, service and appointment time before a visit.')) ?>
       </p>
 
       <div class="breadcrumbs">
@@ -63,9 +63,9 @@ require __DIR__ . '/includes/header.php';
         <div class="section-head"><h2><?= e(t('Traditional consultation, wellness and modern access in one patient journey.')) ?></h2><p><?= e(t('The Centre is designed to improve accessibility, convenience and quality in Ayurveda healthcare.')) ?></p></div>
       </div>
       <article class="prose-card reveal">
-        <p><?= e(t('Devya Ceylon Ayurveda Centre proposes to establish a modern Ayurveda Channelling Centre that integrates traditional Sri Lankan Ayurveda consultation and wellness therapies with efficient appointment-based healthcare delivery.')) ?></p>
-        <p><?= e(t('The Centre will serve as a trusted gateway connecting patients to qualified Ayurveda medical practitioners, specialized treatment packages, wellness consultations and preventive healthcare services in a professional, client-friendly environment.')) ?></p>
-        <p><?= e(t('Located in Kandy, Sri Lanka, the project aims to improve accessibility, convenience and quality of Ayurveda healthcare while supporting preventive medicine and wellness tourism.')) ?></p>
+        <p><?= e(t('DEVYA CEYLON Ayurveda Channelling Centre is based in Kandy, Sri Lanka. Patients can submit an appointment request for a listed practitioner or consultation pathway using this website.')) ?></p>
+        <p><?= e(t('A request is not a confirmed appointment. Centre staff check the practitioner schedule and contact the patient to confirm the service, date and time. Treatment suitability and any treatment plan are decided after assessment by a qualified practitioner.')) ?></p>
+        <p><?= e(t('Specialist clinics, therapies, wellness programmes and other services shown on this website are subject to practitioner and Centre availability. Please contact the Centre to confirm whether a particular service is currently being provided before making plans or payment.')) ?></p>
       </article>
     </div>
   </section>
@@ -186,8 +186,8 @@ require __DIR__ . '/includes/header.php';
   <section class="section audience-section" id="objectives">
     <div class="container">
       <div class="section-head split reveal">
-        <div><span class="eyebrow"><i class="fa-solid fa-list-check"></i> <?= e(t('Project objectives')) ?></span><h2><?= e(t('Building a sustainable Ayurveda Channelling Centre.')) ?></h2></div>
-        <div><p><strong style="color:var(--forest-900)"><?= e(t('General objective:')) ?></strong> <?= e(t('To establish a sustainable Ayurveda Channelling Centre delivering quality traditional healthcare and wellness services.')) ?></p></div>
+        <div><span class="eyebrow"><i class="fa-solid fa-list-check"></i> <?= e(t('Long-term objectives')) ?></span><h2><?= e(t('Our long-term aims for Ayurveda care.')) ?></h2></div>
+        <div><p><?= e(t('The objectives below describe future aims. They are not a statement that every clinic, programme or facility is currently available.')) ?></p></div>
       </div>
       <div class="objective-grid">
         <article class="objective-card reveal"><span><?= e(t('OBJECTIVE 01')) ?></span><h3><?= e(t('Qualified consultations')) ?></h3><p><?= e(t('Facilitate appointment-based consultations with qualified Ayurveda doctors.')) ?></p></article>
@@ -202,7 +202,7 @@ require __DIR__ . '/includes/header.php';
 
   <section class="cta-section">
     <div class="container cta-panel reveal">
-      <div><span class="eyebrow light"><i class="fa-solid fa-leaf"></i> <?= e(t('Continue your journey')) ?></span><h2><?= e(t('Explore our proposed care services in Kandy.')) ?></h2><p><?= e(t('Review the clinical, specialist, wellness and supportive service pathways or request an appointment.')) ?></p></div>
+      <div><span class="eyebrow light"><i class="fa-solid fa-leaf"></i> <?= e(t('Continue your journey')) ?></span><h2><?= e(t('Explore Ayurveda care pathways in Kandy.')) ?></h2><p><?= e(t('Review the consultation and care pathways, then contact the Centre to confirm current availability or request an appointment.')) ?></p></div>
       <div class="cta-actions"><a class="button button-gold" href="<?= e(site_url('services.php')) ?>"><i class="fa-solid fa-spa"></i> <?= e(t('View Services')) ?></a><a class="button button-secondary" href="<?= e(site_url('appointments.php')) ?>"><i class="fa-solid fa-calendar-check"></i> <?= e(t('Appointment')) ?></a></div>
     </div>
   </section>

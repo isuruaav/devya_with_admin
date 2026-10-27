@@ -14,6 +14,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 use Throwable;
 
@@ -42,6 +43,14 @@ class OnlineAppointmentsTable
     protected static function isDoctor(): bool
     {
         return static::getLoggedInDoctor() !== null;
+    }
+
+    protected static function payHereIsConfigured(): bool
+    {
+        return filled(config('services.payhere.merchant_id'))
+            && filled(config('services.payhere.merchant_secret'))
+            && filled(config('services.payhere.notify_url'))
+            && in_array(config('services.payhere.mode'), ['sandbox', 'live'], true);
     }
 
     /*
@@ -240,6 +249,29 @@ class OnlineAppointmentsTable
                     )
                     ->sortable(),
 
+                TextColumn::make('booking_advance_payment')
+                    ->label('Booking Advance')
+                    ->state(function (OnlineAppointment $record): string {
+                        if ($record->bookingAdvancePayments()->where('status', 'paid')->exists()) {
+                            return 'Paid';
+                        }
+
+                        if ($record->bookingAdvancePayments()->where('status', 'duplicate')->exists()) {
+                            return 'Review duplicate';
+                        }
+
+                        $status = $record->bookingAdvancePayments()->latest()->value('status');
+
+                        return $status ? ucfirst(str_replace('_', ' ', (string) $status)) : 'Not paid';
+                    })
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'Paid' => 'success',
+                        'Review duplicate', 'Failed', 'Charged back' => 'danger',
+                        'Pending' => 'warning',
+                        default => 'gray',
+                    }),
+
                 /*
                 |--------------------------------------------------------------------------
                 | FEE
@@ -333,12 +365,18 @@ class OnlineAppointmentsTable
                             'booking_number' => $record->booking_number,
                             'full_name' => $record->full_name,
                             'phone_number' => $record->phone_number,
+                            'email' => $record->email,
+                            'address' => $record->address,
+                            'city' => $record->city,
                             'notes' => $record->notes,
                         ])
                         ->form([
                             TextInput::make('booking_number')->label('Booking Number')->disabled(),
                             TextInput::make('full_name')->label('Patient')->disabled(),
                             TextInput::make('phone_number')->label('Phone / WhatsApp')->disabled(),
+                            TextInput::make('email')->label('Email')->disabled(),
+                            TextInput::make('address')->label('Address')->disabled(),
+                            TextInput::make('city')->label('City')->disabled(),
                             Textarea::make('notes')->label('Request Details')->rows(7)->disabled(),
                         ])
                         ->modalSubmitAction(false)
@@ -367,6 +405,11 @@ class OnlineAppointmentsTable
                             ): array => [
                                 'doctor_id' => $record->doctor_id,
 
+                                'appointment_fee' => $record->appointment_fee
+                                    ?? ($record->source === 'Website'
+                                        ? config('appointments.website_consultation_fee_lkr')
+                                        : null),
+
                                 'facility_service_fee' => (float) $record->facility_service_fee,
                             ]
                         )
@@ -385,6 +428,15 @@ class OnlineAppointmentsTable
                                 ->helperText(
                                     'Website requests can be saved before a doctor is assigned. Select the doctor before confirmation.'
                                 ),
+
+                            TextInput::make('appointment_fee')
+                                ->label('Consultation Fee')
+                                ->numeric()
+                                ->minValue(0)
+                                ->maxValue(9999999999.99)
+                                ->required()
+                                ->visible(fn (OnlineAppointment $record): bool => $record->source === 'Website')
+                                ->helperText('Website requests default to the published LKR 3,000 consultation fee. Update the website if this standard fee changes.'),
 
                             TextInput::make('facility_service_fee')
                                 ->label('Facilities / Service Fee')
@@ -421,6 +473,10 @@ class OnlineAppointmentsTable
 
                                     $record->update([
                                         'doctor_id' => $doctor->id,
+
+                                        'appointment_fee' => $record->source === 'Website'
+                                            ? round((float) $data['appointment_fee'], 2)
+                                            : $record->appointment_fee,
 
                                         'facility_service_fee' => round(
                                             (float) $data['facility_service_fee'],
@@ -486,6 +542,62 @@ class OnlineAppointmentsTable
                         ->url(fn (OnlineAppointment $record): ?string => AppointmentWhatsApp::confirmationUrl($record))
                         ->openUrlInNewTab()
                         ->tooltip('Open the confirmation message in WhatsApp, then press Send.'),
+
+                    Action::make('sendBookingAdvancePayment')
+                        ->label('Send PayHere Advance Link')
+                        ->icon('heroicon-o-credit-card')
+                        ->color('success')
+                        ->visible(fn (OnlineAppointment $record): bool => $record->source === 'Website'
+                            && $record->status === 'confirmed'
+                            && filled($record->email)
+                            && filled($record->address)
+                            && filled($record->city)
+                            && static::payHereIsConfigured()
+                            && ! $record->bookingAdvancePayments()
+                                ->whereIn('status', ['paid', 'duplicate'])
+                                ->exists())
+                        ->action(function (OnlineAppointment $record): void {
+                            $payment = $record->bookingAdvancePayments()
+                                ->where('status', 'pending')
+                                ->where('expires_at', '>', now())
+                                ->latest()
+                                ->first();
+
+                            if (! $payment) {
+                                $uuid = (string) \Illuminate\Support\Str::uuid();
+                                $payment = $record->bookingAdvancePayments()->create([
+                                    'uuid' => $uuid,
+                                    'order_id' => 'DEVYA-BA-'.$record->getKey().'-'.str_replace('-', '', $uuid),
+                                    'amount' => config('appointments.website_booking_advance_lkr'),
+                                    'currency' => 'LKR',
+                                    'status' => 'pending',
+                                    'expires_at' => now()->addDay(),
+                                ]);
+                            }
+
+                            $checkoutUrl = URL::temporarySignedRoute(
+                                'payhere.checkout',
+                                $payment->expires_at,
+                                [
+                                    'onlineAppointment' => $record->getKey(),
+                                    'bookingAdvancePayment' => $payment->uuid,
+                                ]
+                            );
+                            $whatsAppUrl = AppointmentWhatsApp::bookingAdvancePaymentUrl($record, $checkoutUrl);
+
+                            Notification::make()
+                                ->title('PayHere booking advance link ready')
+                                ->body('Send the secure link to the patient. The LKR 3,000 consultation fee remains payable at the Centre.')
+                                ->persistent()
+                                ->actions([
+                                    Action::make('openBookingAdvanceLink')
+                                        ->label($whatsAppUrl ? 'Send with WhatsApp' : 'Open payment link')
+                                        ->url($whatsAppUrl ?? $checkoutUrl)
+                                        ->openUrlInNewTab(),
+                                ])
+                                ->success()
+                                ->send();
+                        }),
 
                     /*
                     |--------------------------------------------------------------------------

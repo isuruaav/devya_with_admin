@@ -11,6 +11,9 @@ function seo_pages(): array
         'facilities' => ['path' => 'facilities.php', 'label' => 'Facilities & Team', 'type' => 'WebPage'],
         'appointments' => ['path' => 'appointments.php', 'label' => 'Appointments', 'type' => 'WebPage'],
         'contact' => ['path' => 'contact.php', 'label' => 'Contact', 'type' => 'ContactPage'],
+        'privacy-policy' => ['path' => 'privacy-policy.php', 'label' => 'Privacy Policy', 'type' => 'WebPage'],
+        'refund-policy' => ['path' => 'refund-policy.php', 'label' => 'Refund & Cancellation Policy', 'type' => 'WebPage'],
+        'terms-and-conditions' => ['path' => 'terms-and-conditions.php', 'label' => 'Terms & Conditions', 'type' => 'WebPage'],
     ];
 }
 

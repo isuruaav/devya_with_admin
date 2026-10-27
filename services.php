@@ -10,12 +10,34 @@ require __DIR__ . '/includes/header.php';
   <section class="page-hero">
     <div class="container page-hero-grid">
       <div class="reveal">
-        <span class="eyebrow"><i class="fa-solid fa-spa"></i> <?= e(t('Proposed services')) ?></span>
+        <span class="eyebrow"><i class="fa-solid fa-spa"></i> <?= e(t('Appointment-based care pathways')) ?></span>
         <h1 class="page-title"><?= e(t('Integrated care from')) ?> <span style="color:var(--gold-700)"><?= e(t('consultation to wellness.')) ?></span></h1>
-        <p><?= e(t('Explore the proposed clinical, specialist, wellness and supportive services of DEVYA CEYLON Ayurveda Channelling Centre.')) ?></p>
+        <p><?= e(t('Submit an appointment request for a consultation pathway. Staff will confirm current service and practitioner availability before your visit.')) ?></p>
         <div class="breadcrumbs"><a href="<?= e(site_url('index.php')) ?>"><?= e(t('Home')) ?></a><i class="fa-solid fa-chevron-right"></i><span><?= e(t('Services')) ?></span></div>
       </div>
       <aside class="page-hero-card reveal"><span class="icon-box"><i class="fa-solid fa-notes-medical"></i></span><h2><?= e(t('Professional guidance first.')) ?></h2><p><?= e(t('Final therapies, programmes and treatment plans should be selected after consultation with a qualified Ayurveda practitioner.')) ?></p><a class="text-link" href="<?= e(site_url('index.php#doctor-schedule')) ?>"><?= e(t('View doctors & weekly clinics')) ?> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></aside>
+    </div>
+  </section>
+
+  <section class="section intro-section service-readiness-section">
+    <div class="container">
+      <div class="service-pricing-panel reveal">
+        <div>
+          <span class="eyebrow"><i class="fa-solid fa-receipt" aria-hidden="true"></i> <?= e(t('Consultation and booking fees')) ?></span>
+          <h2><?= e(t('Published consultation charges')) ?></h2>
+          <p><?= e(t('Pay the booking advance only after staff confirm your appointment. The consultation fee is payable at the Centre on the appointment date. No payment is due from this page.')) ?></p>
+        </div>
+        <dl class="service-price-list">
+          <div><dt><?= e(t('Consultation fee')) ?></dt><dd>LKR <?= e(number_format($site['consultation_fee_lkr'])) ?></dd></div>
+          <div><dt><?= e(t('Additional booking advance')) ?></dt><dd>LKR <?= e(number_format($site['booking_advance_lkr'])) ?></dd></div>
+          <div class="service-price-total"><dt><?= e(t('Total when both charges apply')) ?></dt><dd>LKR <?= e(number_format($site['consultation_fee_lkr'] + $site['booking_advance_lkr'])) ?></dd></div>
+          <div><dt><?= e(t('Treatment and programme charges')) ?></dt><dd><?= e(t('Confirmed after practitioner assessment')) ?></dd></div>
+        </dl>
+      </div>
+      <div class="booking-note">
+        <strong><?= e(t('Service availability:')) ?></strong>
+        <?= e(t('The website accepts appointment requests. A listed clinic, therapy or programme is not a guarantee that it is currently available; staff will confirm availability and the applicable fee before any payment.')) ?>
+      </div>
     </div>
   </section>
 
@@ -175,7 +197,7 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
       <div class="section-head split reveal">
         <div><span class="eyebrow"><i class="fa-solid fa-layer-group"></i> <?= e(t('Complete service portfolio')) ?></span><h2><?= e(t('Find the care pathway that matches your need.')) ?></h2></div>
-        <div><p><?= e(t('Use the filters to review the proposed categories. Appointment confirmation and practitioner guidance are required before beginning a treatment programme.')) ?></p></div>
+        <div><p><?= e(t('The service descriptions below are care pathways, not confirmation that every service is currently available. Ask staff to confirm availability and charges. Practitioner guidance is required before beginning a treatment programme.')) ?></p></div>
       </div>
 
       <div class="filter-bar" role="group" aria-label="<?= e(t('Filter services')) ?>">

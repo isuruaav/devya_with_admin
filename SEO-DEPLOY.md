@@ -4,12 +4,12 @@ Production URL: https://devyaceylon.lk
 
 ## මේ update එකෙන් ලැබෙන දේ
 
-- පිටු හය සඳහා English/Sinhala titles සහ meta descriptions.
+- Public පිටු නවය සඳහා English/Sinhala titles සහ meta descriptions.
 - භාෂා දෙක සඳහා වෙන වෙනම canonical URLs සහ සම්පූර්ණ `hreflang` links.
 - දින/වේලාවන්, ලිපිනය සහ දුරකථන අංක සහිත MedicalClinic structured data, WebSite/WebPage සහ breadcrumbs.
 - Facebook/WhatsApp සහ වෙනත් social previews සඳහා 1200 × 630 image එකක් සහ Open Graph/Twitter metadata.
 - Browser tab සඳහා favicon.ico සහ 96 × 96 PNG; Apple home-screen සඳහා 180 × 180 icon.
-- භාෂා දෙකේ public URLs 12ක් සහිත sitemap.xml සහ robots.txt.
+- භාෂා දෙකේ public URLs 18ක් සහිත sitemap.xml සහ robots.txt.
 - මුල් logo එකෙන් සකස් කළ සැහැල්ලු header/footer logo එකක්.
 
 Local/staging host එකේ pages `noindex` ලෙස පෙන්වයි. `devyaceylon.lk` හෝ `www.devyaceylon.lk` host එකේ pages index කළ හැකි ලෙස පෙන්වයි. Canonical URLs සෑම විටම HTTPS සහ www නැති domain එක භාවිත කරයි.

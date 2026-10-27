@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
@@ -370,6 +371,12 @@ class OnlineAppointment extends Model
 
     }
 
+    /** @return HasMany<BookingAdvancePayment, $this> */
+    public function bookingAdvancePayments(): HasMany
+    {
+        return $this->hasMany(BookingAdvancePayment::class);
+    }
+
     /*
 
     |--------------------------------------------------------------------------
@@ -489,11 +496,11 @@ class OnlineAppointment extends Model
 
         */
 
-        $fee = $isForeign
-
-            ? (float) ($doctor->foreign_fee ?? 0)
-
-            : (float) ($doctor->local_fee ?? 0);
+        $fee = $this->appointment_fee !== null
+            ? (float) $this->appointment_fee
+            : ($isForeign
+                ? (float) ($doctor->foreign_fee ?? 0)
+                : (float) ($doctor->local_fee ?? 0));
 
         /*
 

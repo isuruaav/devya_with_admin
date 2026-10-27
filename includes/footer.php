@@ -81,12 +81,21 @@
       <a class="footer-phone" href="tel:<?= e($site['secondary_phone_href']) ?>"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><?= e(t($site['secondary_phone_contact'])) ?>: <?= e($site['secondary_phone_display']) ?></span></a>
       <a class="footer-email" href="mailto:<?= e($site['email']) ?>"><i class="fa-solid fa-envelope"></i><?= e($site['email']) ?></a>
       <a class="footer-location" href="<?= e($site['maps_url']) ?>" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><?= e(t($site['address'])) ?></a>
+      <p class="footer-legal-name">
+        <?= e(t($site['legal_name_is_example'] ? 'Business Registration name (verify before PayHere application)' : 'Business Registration name')) ?>:
+        <?= e($site['legal_name']) ?>
+      </p>
     </div>
   </div>
 
   <div class="container footer-bottom">
     <span>&copy; <?= date('Y') ?> <?= e($site['name']) ?>. <?= e(t('All rights reserved.')) ?></span>
     <span><?= e(t($site['tagline'])) ?>.</span>
+    <nav class="footer-policy-links" aria-label="<?= e(t('Legal policies')) ?>">
+      <a href="<?= e(site_url('privacy-policy.php')) ?>"><?= e(t('Privacy Policy')) ?></a>
+      <a href="<?= e(site_url('refund-policy.php')) ?>"><?= e(t('Refund & Cancellation Policy')) ?></a>
+      <a href="<?= e(site_url('terms-and-conditions.php')) ?>"><?= e(t('Terms & Conditions')) ?></a>
+    </nav>
   </div>
 </footer>
 

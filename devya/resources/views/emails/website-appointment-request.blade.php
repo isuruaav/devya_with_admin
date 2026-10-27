@@ -11,6 +11,8 @@
             <tr><th style="padding:8px 12px 8px 0;">Booking number</th><td>{{ $appointment->booking_number }}</td></tr>
             <tr><th style="padding:8px 12px 8px 0;">Patient name</th><td>{{ $appointment->full_name }}</td></tr>
             <tr><th style="padding:8px 12px 8px 0;">Phone / WhatsApp</th><td>{{ $appointment->phone_number }}</td></tr>
+            <tr><th style="padding:8px 12px 8px 0;">Email</th><td>{{ $appointment->email }}</td></tr>
+            <tr><th style="padding:8px 12px 8px 0;">Address</th><td>{{ $appointment->address }}, {{ $appointment->city }}</td></tr>
             <tr><th style="padding:8px 12px 8px 0;">Preferred date</th><td>{{ $appointment->appointment_date->format('d M Y') }}</td></tr>
         </table>
         <h2 style="font-size:18px;">Request details</h2>

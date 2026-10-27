@@ -44,6 +44,9 @@ class WebsiteAppointmentFlowTest extends TestCase
         $response = $this->postJson('/website-appointment', [
             'fullName' => 'Website Test Patient',
             'phone' => '0770000000',
+            'email' => 'patient@example.test',
+            'address' => '12 Test Road',
+            'city' => 'Kandy',
             'service' => 'General Ayurveda OPD Consultation',
             'preferredDate' => '2026-10-20',
             'preferredTime' => 'Afternoon',
@@ -104,6 +107,9 @@ class WebsiteAppointmentFlowTest extends TestCase
         $response = $this->postJson('/website-appointment', [
             'fullName' => 'Unassigned Website Patient',
             'phone' => '0770000000',
+            'email' => 'unassigned@example.test',
+            'address' => '15 Test Road',
+            'city' => 'Kandy',
             'service' => 'General Ayurveda OPD Consultation',
             'preferredDate' => '2026-10-20',
         ])->assertCreated();
@@ -162,6 +168,7 @@ class WebsiteAppointmentFlowTest extends TestCase
         Livewire::test(ListOnlineAppointments::class)
             ->callTableAction('confirm', $appointment, data: [
                 'doctor_id' => $doctor->id,
+                'appointment_fee' => 3000,
                 'facility_service_fee' => 300,
             ])
             ->assertHasNoTableActionErrors();
@@ -170,6 +177,7 @@ class WebsiteAppointmentFlowTest extends TestCase
         $this->assertSame('confirmed', $appointment->status);
         $this->assertSame($doctor->id, $appointment->doctor_id);
         $this->assertNotNull($appointment->invoice_number);
+        $this->assertSame('3000.00', $appointment->appointment_fee);
 
         $notification = Livewire::test(Notifications::class)->assertSeeText('Appointment confirmed');
         $dailyAppointments = Livewire::test(ListOnlineAppointments::class)

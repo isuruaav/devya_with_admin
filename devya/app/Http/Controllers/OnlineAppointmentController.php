@@ -74,9 +74,21 @@ class OnlineAppointmentController extends Controller
             ],
 
             'email' => [
-                'nullable',
+                'required',
                 'email',
                 'max:255',
+            ],
+
+            'address' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'city' => [
+                'required',
+                'string',
+                'max:100',
             ],
 
             'patient_type' => [
@@ -307,6 +319,24 @@ class OnlineAppointmentController extends Controller
                 'max:50',
             ],
 
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+            ],
+
+            'address' => [
+                'required',
+                'string',
+                'max:500',
+            ],
+
+            'city' => [
+                'required',
+                'string',
+                'max:120',
+            ],
+
             'service' => [
                 'required',
                 'string',
@@ -365,6 +395,9 @@ class OnlineAppointmentController extends Controller
         $fingerprint = hash('sha256', json_encode([
             Str::lower(trim($data['fullName'])),
             preg_replace('/\D+/', '', $data['phone']),
+            Str::lower(trim($data['email'])),
+            Str::lower(trim($data['address'])),
+            Str::lower(trim($data['city'])),
             Str::lower(trim($data['service'])),
             $appointmentDate->toDateTimeString(),
             $data['contactMethod'] ?? 'WhatsApp',
@@ -390,7 +423,9 @@ class OnlineAppointmentController extends Controller
                         'full_name' => trim($data['fullName']),
                         'nic_or_passport' => 'WEBSITE-'.now()->format('YmdHis').'-'.Str::upper(Str::random(4)),
                         'phone_number' => trim($data['phone']),
-                        'email' => null,
+                        'email' => trim($data['email']),
+                        'address' => trim($data['address']),
+                        'city' => trim($data['city']),
                         'patient_type' => 'Local',
                         'doctor_id' => null,
                         'appointment_date' => $appointmentDate,

@@ -70,7 +70,7 @@ function localized_page_path(string $path): string
 {
     global $language;
 
-    $publicPages = ['', 'index.php', 'about.php', 'about-us.php', 'vision-mission.php', 'services.php', 'facilities.php', 'appointments.php', 'contact.php'];
+    $publicPages = ['', 'index.php', 'about.php', 'about-us.php', 'vision-mission.php', 'services.php', 'facilities.php', 'appointments.php', 'contact.php', 'privacy-policy.php', 'refund-policy.php', 'terms-and-conditions.php'];
     $parts = parse_url($path);
     if ($parts === false || !in_array(ltrim($parts['path'] ?? '', '/'), $publicPages, true)) {
         return $path;
@@ -87,7 +87,7 @@ function localized_page_path(string $path): string
 
 function language_url(string $locale): string
 {
-    $publicPages = ['index.php', 'about.php', 'about-us.php', 'vision-mission.php', 'services.php', 'facilities.php', 'appointments.php', 'contact.php'];
+    $publicPages = ['index.php', 'about.php', 'about-us.php', 'vision-mission.php', 'services.php', 'facilities.php', 'appointments.php', 'contact.php', 'privacy-policy.php', 'refund-policy.php', 'terms-and-conditions.php'];
     $page = basename($_SERVER['SCRIPT_NAME'] ?? 'index.php');
     if (!in_array($page, $publicPages, true)) {
         $page = 'index.php';
