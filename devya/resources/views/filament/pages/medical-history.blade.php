@@ -49,7 +49,7 @@
                         <tr>
 
                             <th scope="col" class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">
-                                Date
+                                <i class="fa-regular fa-calendar-days mr-1 text-emerald-600"></i> Date
                             </th>
 
                             <th scope="col" class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">
@@ -606,7 +606,7 @@
                                             <tr>
 
                                                 <th scope="col" class="px-5 py-3 text-left text-xs font-bold uppercase text-gray-500">
-                                                    Date
+                                                    <i class="fa-regular fa-calendar-days mr-1 text-emerald-600"></i> Date
                                                 </th>
 
                                                 <th scope="col" class="px-5 py-3 text-left text-xs font-bold uppercase text-gray-500">
@@ -717,7 +717,7 @@
                                             <tr>
 
                                                 <th scope="col" class="px-5 py-3 text-left text-xs font-bold uppercase text-gray-500">
-                                                    Date
+                                                    <i class="fa-regular fa-calendar-days mr-1 text-emerald-600"></i> Date
                                                 </th>
 
                                                 <th scope="col" class="px-5 py-3 text-left text-xs font-bold uppercase text-gray-500">
@@ -809,7 +809,7 @@
                                             <tr>
 
                                                 <th scope="col" class="px-5 py-3 text-left text-xs font-bold uppercase text-gray-500">
-                                                    Date
+                                                    <i class="fa-regular fa-calendar-days mr-1 text-emerald-600"></i> Date
                                                 </th>
 
                                                 <th scope="col" class="px-5 py-3 text-left text-xs font-bold uppercase text-gray-500">
@@ -944,7 +944,7 @@
                                                 <tr>
 
                                                     <th scope="col" class="px-5 py-3 text-left text-xs font-bold uppercase text-gray-500">
-                                                        Date
+                                                        <i class="fa-regular fa-calendar-days mr-1 text-emerald-600"></i> Date
                                                     </th>
 
                                                     <th scope="col" class="px-5 py-3 text-left text-xs font-bold uppercase text-gray-500">
@@ -1350,7 +1350,7 @@
                                                         <div class="flex justify-between gap-3">
 
                                                             <span class="text-gray-500">
-                                                                Date
+                                                                <i class="fa-regular fa-calendar-days mr-1 text-emerald-600"></i> Date
                                                             </span>
 
                                                             <span class="font-semibold">
