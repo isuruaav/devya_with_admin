@@ -46,3 +46,4 @@ class SendTestSmsCommand extends Command
         return 1;
     }
 }
+
