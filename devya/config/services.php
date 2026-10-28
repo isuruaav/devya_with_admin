@@ -42,4 +42,11 @@ return [
         'notify_url' => env('PAYHERE_NOTIFY_URL'),
     ],
 
+    'textlk' => [
+        'api_token' => env('TEXTLK_API_TOKEN'),
+        'sender_id' => env('TEXTLK_SENDER_ID', 'DEVYA'),
+        'enabled' => env('TEXTLK_ENABLED', false),
+        'endpoint' => env('TEXTLK_ENDPOINT', 'https://app.text.lk/api/v3/sms/send'),
+    ],
+
 ];

@@ -206,6 +206,24 @@ class PayHerePaymentController extends Controller
                     'order_id' => $lockedPayment->order_id,
                 ]);
             }
+
+
+            if ($newStatus === 'paid') {
+                try {
+                    $appointment = $lockedPayment->onlineAppointment;
+                    $smsService = app(\App\Services\TextLkSmsService::class);
+                    if ($appointment && $smsService->isEnabled() && filled($appointment->phone_number)) {
+                        $smsService->sendPaymentReceived($appointment, $data['payhere_amount'], $lockedPayment->order_id);
+                    }
+                } catch (\Throwable $smsEx) {
+                    \Illuminate\Support\Facades\Log::warning('PayHere advance payment SMS notification failed.', [
+                        'order_id' => $lockedPayment->order_id,
+                        'error' => $smsEx->getMessage(),
+                    ]);
+                }
+            }
+
+
         });
 
         return response('OK', 200);

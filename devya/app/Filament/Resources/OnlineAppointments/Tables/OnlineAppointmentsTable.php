@@ -515,6 +515,15 @@ class OnlineAppointmentsTable
                                             ]);
                                     }
 
+                                    try {
+                                        $smsService = app(\App\Services\TextLkSmsService::class);
+                                        if ($smsService->isEnabled() && filled($record->phone_number)) {
+                                            $smsService->sendAppointmentConfirmed($record);
+                                        }
+                                    } catch (Throwable $smsEx) {
+                                        \Illuminate\Support\Facades\Log::warning('Automatic appointment confirmation SMS failed', ['error' => $smsEx->getMessage()]);
+                                    }
+
                                     $notification->send();
 
                                 } catch (Throwable $e) {
@@ -542,6 +551,38 @@ class OnlineAppointmentsTable
                         ->url(fn (OnlineAppointment $record): ?string => AppointmentWhatsApp::confirmationUrl($record))
                         ->openUrlInNewTab()
                         ->tooltip('Open the confirmation message in WhatsApp, then press Send.'),
+
+                    Action::make('sendSmsConfirmation')
+                        ->label('Send SMS Confirmation')
+                        ->icon('heroicon-o-chat-bubble-bottom-center-text')
+                        ->color('info')
+                        ->visible(
+                            fn (OnlineAppointment $record): bool => ! static::isDoctor()
+                                && $record->status === 'confirmed'
+                                && filled($record->phone_number)
+                                && app(\App\Services\TextLkSmsService::class)->isEnabled()
+                        )
+                        ->requiresConfirmation()
+                        ->modalHeading('Send SMS Confirmation')
+                        ->modalDescription(fn (OnlineAppointment $record): string => "Send an appointment confirmation SMS to {$record->full_name} ({$record->phone_number}) via Text.lk?")
+                        ->action(function (OnlineAppointment $record): void {
+                            $result = app(\App\Services\TextLkSmsService::class)->sendAppointmentConfirmed($record);
+
+                            if ($result['success']) {
+                                Notification::make()
+                                    ->title('SMS Sent Successfully')
+                                    ->body("Confirmation SMS delivered to {$record->phone_number}")
+                                    ->success()
+                                    ->send();
+                            } else {
+                                Notification::make()
+                                    ->title('SMS Sending Failed')
+                                    ->body($result['message'] ?? 'Could not deliver SMS via Text.lk')
+                                    ->danger()
+                                    ->send();
+                            }
+                        })
+                        ->tooltip('Send or resend an appointment confirmation SMS to the patient via Text.lk.'),
 
                     Action::make('sendBookingAdvancePayment')
                         ->label('Send PayHere Advance Link')
